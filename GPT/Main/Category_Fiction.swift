@@ -12,8 +12,7 @@ struct CategoryFiction1: View {
     struct Category_Fiction: View {
         var category = ["Романы", "Рассказы", "Повесть", "Поэзия", "Новеллы" , "Детектив", "Пьесы", "Фантастика", "Фэнтези", "Мистика", "Хоррор"]
         
-        @State private var selectCategory = 0
-        @State private var showTestView = false
+
         @State private var showingSheet = false
         @State private var isActive: Bool = false
         var API = ChatGPTAPI(apiKey: "PROVIDE_API_KEY") // in this place nead to add API_KEY

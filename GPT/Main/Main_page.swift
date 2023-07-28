@@ -16,19 +16,14 @@ struct Main_pages: View {
 
 
 struct Main_page: View {
-    
     @Binding var selectedGenres: Set<BookGenre>
     @ObservedObject var favoritesViewModel: FavoritesViewModel
-    @State private var showingSheet = false
-    @State private var selectedTabIndex = 0
     @ObservedObject var vm = ChatBlogsViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY")) // in this place nead to add API_KEY
     @State private var isActive: Bool = false
-    
     @StateObject var vmfavorite = Chat_CategoryFictionViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE")
     @State private var isFavoritesListPresented = false
     @EnvironmentObject var appState: AppState
-    @StateObject private var viewModel = ViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY")) // in this place nead to add API_KEY
-    
+
     var body: some View {
         ZStack(alignment: .leading) {
             Color(red: 240/255, green: 240/255, blue: 240/255)

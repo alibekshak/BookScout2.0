@@ -14,7 +14,6 @@ struct SameBookFiction: View {
     @State private var author = ""
     @State private var book = ""
     @State private var isActive: Bool = false
-    @State private var showingSheet = false
     var vm: Chat_SameBookViewModel {
         Chat_SameBookViewModel(api: ChatGPTAPI(apiKey: "CATEGORY_VALUE"), book: book, author: author)} // in this place nead to add API_KEY
     

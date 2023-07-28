@@ -12,9 +12,6 @@ struct CategoryNonFiction1: View {
 
     struct Category_NonFiction: View {
         var category = ["Биография", "Финансы", "Философия", "Бизнес", "Психология" , "Искусство", "Мемуары", "Спорт"]
-        
-        @State private var selectCategory = 0
-        @State private var showTestView = false
         @State private var showingSheet = false
         @State private var isActive: Bool = false
         var API = ChatGPTAPI(apiKey: "PROVIDE_API_KEY") // in this place nead to add API_KEY
