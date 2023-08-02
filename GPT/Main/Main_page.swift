@@ -56,7 +56,7 @@ struct Main_page: View {
 
                     VStack{
                         VStack{
-                            Text("Поиск по темам")
+                            Text("Жанры и темы")
                                 .font(.custom("SanFranciscoPro", size: 22))
                         }
                         .foregroundColor(Color.black)
@@ -86,7 +86,7 @@ struct Main_page: View {
                     
                     LazyVStack(spacing: 1) {
                         Blog(vm: vm, isActive: $isActive, image: "blog", text: "По версии ChatGPT", text2: "Топ 3 книг которые,", text3: "стоит прочитать", text_send: "Рекомендуй 3 книг которые, стоит прочитать, напищи интерестный факт об авторах данных книг. Так же расскажи подробно почему ты выбрал эти книги")
-                        Blog(vm: vm, isActive: $isActive, image: "blog2", text: "По версии ChatGPT", text2: "Книги о жизне", text3: nil, text_send: "Рекамендуй 3 книги о жизнe, кратко дай интерестную информацию об авторе. Так же расскажи подробно почему ты выбрал эти книги")
+                        Blog(vm: vm, isActive: $isActive, image: "blog2", text: "По версии ChatGPT", text2: "Книги о жизни", text3: nil, text_send: "Рекамендуй 3 книги о жизнe, кратко дай интерестную информацию об авторе. Так же расскажи подробно почему ты выбрал эти книги")
                     }
                     .padding(.top, 30)
                     .padding(.horizontal, 15)
@@ -121,7 +121,6 @@ struct Main_page: View {
         .navigationBarBackButtonHidden(true)
         .edgesIgnoringSafeArea(.all)
         .sheet(isPresented: $isFavoritesListPresented) {
-                    // Pass the FavoritesViewModel to the FavoritesListView
                     FavoritesListView(favoriteItems: $vmfavorite.favoritesViewModel.favoriteItems)
                 }
     }

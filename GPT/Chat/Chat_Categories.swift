@@ -208,10 +208,6 @@ struct Chat_CategoryFictionView: View {
                         .padding(.horizontal, -95) // Отступы по горизонтали, чтобы линия была шире
                 }
                 
-                Group {
-                    if vm.isGeneratingText {
-                        DotLoadingView().frame(width: 100, height: 50)
-                    }else{
                         HStack(alignment: .top, spacing: 120) {
                             Button(action: {
                                 self.showingSheet = true
@@ -244,8 +240,6 @@ struct Chat_CategoryFictionView: View {
                             
                         }
                         .offset(y: 5)
-                    }
-                }
             }
            
         }

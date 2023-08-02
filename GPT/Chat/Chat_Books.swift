@@ -49,7 +49,7 @@ class Chat_SameBookViewModel: ObservableObject {
         self.messages.remove(at: index)
         await send(text: message.sendText)
     }
-    
+            
     @MainActor
     internal func send(text: String) async {
         isInteractingWithChatGPT = true

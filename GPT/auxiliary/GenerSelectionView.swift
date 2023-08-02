@@ -25,17 +25,18 @@ struct GenreSelectionView: View {
         ZStack {
             Color(red: 240/255, green: 240/255, blue: 240/255)
                 .edgesIgnoringSafeArea(.all)
-            NavigationView {
                 VStack {
                     Spacer()
                     Text("Выбор жанров повлияет на ход диалога о книгах или авторе")
                         .padding(.horizontal, 40)
                         .font(.headline)
+                        .foregroundColor(.black)
                     Text("Выберите жанры:")
                         .font(.headline)
                         .padding(.top, 20)
+                        .foregroundColor(.black)
 
-                    ScrollView {
+                    ScrollView { // Add ScrollView around the ForEach loop
                         ForEach(BookGenre.allCases, id: \.self) { genre in
                             Button(action: {
                                 if temporarySelectedGenres.contains(genre) {
@@ -101,11 +102,10 @@ struct GenreSelectionView: View {
                     let genresData = try? JSONEncoder().encode(newGenres)
                     UserDefaults.standard.set(genresData, forKey: "selectedGenres")
                 }
-            }
+
         }
     }
 }
-
 
 enum BookGenre: String, CaseIterable, Codable {
     case fantasy = "Фэнтези"

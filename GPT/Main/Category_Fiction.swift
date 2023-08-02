@@ -31,7 +31,7 @@ struct CategoryFiction1: View {
                     Spacer()
                     
                     VStack{
-                        Text("Выбери категорию:")
+                        Text("Выбери жанр:")
                             .foregroundColor(Color.black)
                             .font(.title)
                             .frame(width: 260, height: 20)
