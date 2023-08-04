@@ -3,8 +3,7 @@ import SwiftUI
 
 struct GenreListViewMenu: View {
     @StateObject private var appState = AppState()
-    @State private var showGenreSelection = false // State to toggle the visibility of the GenreSelectionView
-    
+    @State private var showGenreSelection = false
     
     var body: some View {
         VStack {
@@ -12,7 +11,7 @@ struct GenreListViewMenu: View {
                 .foregroundColor(.black)
                 .font(.title)
                 .onTapGesture {
-                    showGenreSelection = true // Set the state to true to show the GenreSelectionView
+                    showGenreSelection = true
                 }
            
         }

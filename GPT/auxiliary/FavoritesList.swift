@@ -18,7 +18,7 @@ struct FavoritesListView: View {
                     Text(item.title)
                 }
                 .onDelete(perform: deleteFavoriteItem)
-                .onMove(perform: moveFavoriteItem) // Enable reordering
+                .onMove(perform: moveFavoriteItem)
             }
             .navigationBarTitle("Избранное")
             .navigationBarItems(trailing: HStack(spacing: 240) {

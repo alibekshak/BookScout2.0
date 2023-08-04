@@ -36,7 +36,7 @@ struct GenreSelectionView: View {
                         .padding(.top, 20)
                         .foregroundColor(.black)
 
-                    ScrollView { // Add ScrollView around the ForEach loop
+                    ScrollView { 
                         ForEach(BookGenre.allCases, id: \.self) { genre in
                             Button(action: {
                                 if temporarySelectedGenres.contains(genre) {
