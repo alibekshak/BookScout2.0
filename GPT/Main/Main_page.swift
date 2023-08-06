@@ -85,8 +85,8 @@ struct Main_page: View {
                     .offset(y: 40)
                     
                     LazyVStack(spacing: 1) {
-                        Blog(vm: vm, isActive: $isActive, image: "blog", text: "По версии ChatGPT", text2: "Топ 3 книг которые,", text3: "стоит прочитать", text_send: "Рекомендуй 3 книг которые, стоит прочитать, напищи интерестный факт об авторах данных книг. Так же расскажи подробно почему ты выбрал эти книги")
-                        Blog(vm: vm, isActive: $isActive, image: "blog2", text: "По версии ChatGPT", text2: "Книги о жизни", text3: nil, text_send: "Рекамендуй 3 книги о жизнe, кратко дай интерестную информацию об авторе. Так же расскажи подробно почему ты выбрал эти книги")
+                        Blog(vm: vm, isActive: $isActive, image: "blog", text2: "Топ 3 книг которые,", text3: "стоит прочитать", text_send: "Рекомендуй 3 книг которые, стоит прочитать, напищи интерестный факт об авторах данных книг. Так же расскажи подробно почему ты выбрал эти книги")
+                        Blog(vm: vm, isActive: $isActive, image: "blog2", text2: "Книги о жизни", text3: nil, text_send: "Рекамендуй 3 книги о жизнe, кратко дай интерестную информацию об авторе. Так же расскажи подробно почему ты выбрал эти книги")
                     }
                     .padding(.top, 30)
                     .padding(.horizontal, 15)
@@ -100,7 +100,6 @@ struct Main_page: View {
                             .frame(height: 1) // Высота линии
                             .padding(.top, -9) // Отступ сверху, чтобы линия отображалась выше остальных элементов
                             .padding(.horizontal, -95) // Отступы по горизонтали, чтобы линия была шире
-//                            .offset(y: 20)
                     
                     HStack(spacing: 90) {
                         
@@ -112,8 +111,6 @@ struct Main_page: View {
                         
                     }
                     .padding(.top, -25)
-//                    .offset(y: 5)
-
                 }
 
             }

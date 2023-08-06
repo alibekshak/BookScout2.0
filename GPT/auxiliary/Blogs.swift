@@ -5,7 +5,6 @@ struct Blog: View {
     var vm: ChatBlogsViewModel
     @Binding var isActive: Bool
     var image: String
-    var text: String
     var text2: String
     var text3: String?
     var text_send: String
@@ -21,12 +20,9 @@ struct Blog: View {
             })
             
             NavigationLink(destination: ChatBlogsView(vm: vm)) {
+                
                 HStack {
                     VStack(alignment: .leading) {
-                        
-                        Text(text)
-                            .font(.headline)
-                            .foregroundColor(.secondary)
                         Text(text2)
                             .font(.title3)
                             .fontWeight(.black)
@@ -64,3 +60,5 @@ struct Blog: View {
         }
     }
 }
+
+
