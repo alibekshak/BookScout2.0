@@ -2,7 +2,7 @@ import SwiftUI
 
 
 struct CategoryFic: View{
-    var vm: ChatCategoryFictionViewModel
+    var vm: ChatCategoryViewModel
     @Binding  var isActive: Bool
     var title: String
     var text: String
@@ -13,7 +13,7 @@ struct CategoryFic: View{
     var body: some View{
         ZStack {
             Color.white
-            NavigationLink(destination: ChatCategoryFictionView(vm: vm)){
+            NavigationLink(destination: ChatCategoryView(vm: vm)){
                 HStack {
                     VStack(alignment: .leading) {
                         Text(title)

@@ -20,7 +20,7 @@ struct MainPage: View {
     @ObservedObject var favoritesViewModel: FavoritesViewModel
     @ObservedObject var vm = ChatBlogsViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY")) // in this place nead to add API_KEY
     @State private var isActive: Bool = false
-    @StateObject var vmfavorite = ChatCategoryFictionViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE")
+    @StateObject var vmfavorite = ChatCategoryViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE")
     @State private var isFavoritesListPresented = false
     @EnvironmentObject var appState: AppState
 
