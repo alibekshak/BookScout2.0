@@ -2,10 +2,10 @@
 import SwiftUI
 import AVKit
 
-struct ContentView: View {
+struct ChatView: View {
     
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var vm: ViewModel
+    @ObservedObject var vm: ChatViewModel
     @FocusState var isTextFieldFocused: Bool
     
     var body: some View {
@@ -113,20 +113,20 @@ struct ContentView: View {
       }
   }
 
-struct ContentView_Previews: PreviewProvider {
+struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ContentView(vm: ViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY")))
+            ChatView(vm: ChatViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY")))
         }
     }
 }
 
 
 struct ChatButtonView: View {
-    @StateObject private var viewModel = ViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY")) // in this place nead to add API_KEY
+    @StateObject private var viewModel = ChatViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY")) // in this place nead to add API_KEY
     
     var body: some View {
-        NavigationLink(destination: ContentView(vm: viewModel)) {
+        NavigationLink(destination: ChatView(vm: viewModel)) {
             Image(systemName: "message")
                 .foregroundColor(.black)
                 .font(.title)
