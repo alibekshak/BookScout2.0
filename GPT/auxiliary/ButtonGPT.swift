@@ -3,11 +3,11 @@ import SwiftUI
 struct ButtonFind: View {
     var title: String = "Найти"
     var selectedAuthor: String
-    var vm: ChatSameBookViewModel
+    var vm: ChatBookViewModel
     @Binding var isActive: Bool
     
     var body: some View {
-        NavigationLink(destination: ChatSameBookView(vm: vm)) {
+        NavigationLink(destination: ChatBookView(vm: vm)) {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: 307, height: 44)
@@ -39,11 +39,11 @@ struct ButtonFindSameBook: View {
     var title: String = "Найти"
     var selectedBook: String
     var selectedAuthor: String
-    var vm: ChatSameBookViewModel
+    var vm: ChatBookViewModel
     @Binding var isActive: Bool
     
     var body: some View {
-        NavigationLink(destination: ChatSameBookView(vm: vm)) {
+        NavigationLink(destination: ChatBookView(vm: vm)) {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: 307, height: 44)

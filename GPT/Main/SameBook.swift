@@ -14,8 +14,8 @@ struct SameBookFiction: View {
     @State private var author = ""
     @State private var book = ""
     @State private var isActive: Bool = false
-    var vm: ChatSameBookViewModel {
-        ChatSameBookViewModel(api: ChatGPTAPI(apiKey: "CATEGORY_VALUE"), book: book, author: author)} // in this place nead to add API_KEY
+    var vm: ChatBookViewModel {
+        ChatBookViewModel(api: ChatGPTAPI(apiKey: "CATEGORY_VALUE"), book: book, author: author)} // in this place nead to add API_KEY
     
     var body: some View {
         ZStack{
