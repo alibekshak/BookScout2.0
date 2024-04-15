@@ -15,7 +15,7 @@ struct FavoriteItem: Identifiable, Hashable, Codable {
     }
 }
 
-class Chat_CategoryFictionViewModel: ObservableObject {
+class ChatCategoryFictionViewModel: ObservableObject {
     
     @Published var isInteractingWithChatGPT = false
     @Published var messages: [MessageRow] = []
@@ -110,8 +110,8 @@ class Chat_CategoryFictionViewModel: ObservableObject {
 }
 
 
-struct Chat_CategoryFictionView: View {
-    @StateObject var vm: Chat_CategoryFictionViewModel
+struct ChatCategoryFictionView: View {
+    @StateObject var vm: ChatCategoryFictionViewModel
     @FocusState var isTextFieldFocused: Bool
     @State private var showingSheet = false
     @State private var isLoading = false
@@ -158,11 +158,8 @@ struct Chat_CategoryFictionView: View {
                 }
 
                 Divider()
-    
                 bottomView(image: "profile", proxy: proxy)
                 Spacer()
-      
-
             }
             .onChange(of: vm.messages.last?.responseText) { _ in scrollToBottom(proxy: proxy) }
         }
@@ -245,9 +242,6 @@ struct Chat_CategoryFictionView: View {
         }
     }
     
-    
-    
-    
     private func scrollToBottom(proxy: ScrollViewProxy) {
         guard let id = vm.messages.last?.id else { return }
         withAnimation {
@@ -257,10 +251,10 @@ struct Chat_CategoryFictionView: View {
     
 }
 
-struct Chat_CategoryFictionView_Previews: PreviewProvider {
+struct ChatCategoryFictionView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            Chat_CategoryFictionView(vm: Chat_CategoryFictionViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE"))
+            ChatCategoryFictionView(vm: ChatCategoryFictionViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE"))
         }
     }
 }

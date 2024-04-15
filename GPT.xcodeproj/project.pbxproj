@@ -7,29 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1821957C2A56868B00093BA4 /* Chat_Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821957B2A56868B00093BA4 /* Chat_Books.swift */; };
-		182195862A5D64C700093BA4 /* Chat_Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182195852A5D64C700093BA4 /* Chat_Categories.swift */; };
+		1821957C2A56868B00093BA4 /* ChatBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821957B2A56868B00093BA4 /* ChatBooks.swift */; };
+		182195862A5D64C700093BA4 /* ChatCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182195852A5D64C700093BA4 /* ChatCategories.swift */; };
 		18548AB02A610F6D007E9AE6 /* ForFicCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18548AAF2A610F6D007E9AE6 /* ForFicCategory.swift */; };
 		18548AB22A6138CD007E9AE6 /* ForNonFicCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18548AB12A6138CD007E9AE6 /* ForNonFicCategory.swift */; };
 		1858B83A2A724E8300CF9FC3 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858B8392A724E8300CF9FC3 /* ViewModel.swift */; };
-		1858B83C2A724ED000CF9FC3 /* Chat_withAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858B83B2A724ED000CF9FC3 /* Chat_withAI.swift */; };
+		1858B83C2A724ED000CF9FC3 /* ChatWithAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858B83B2A724ED000CF9FC3 /* ChatWithAI.swift */; };
 		1858B83E2A72503F00CF9FC3 /* GenerSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858B83D2A72503F00CF9FC3 /* GenerSelectionView.swift */; };
 		1858B8402A72506700CF9FC3 /* GenreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858B83F2A72506700CF9FC3 /* GenreListView.swift */; };
 		1885B2382A5FA54A00FE7861 /* Blogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885B2372A5FA54A00FE7861 /* Blogs.swift */; };
-		1885B23A2A5FA62C00FE7861 /* Chat_Blogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885B2392A5FA62C00FE7861 /* Chat_Blogs.swift */; };
+		1885B23A2A5FA62C00FE7861 /* ChatBlogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885B2392A5FA62C00FE7861 /* ChatBlogs.swift */; };
 		188868E02A66EB3C0048548F /* FavoritesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188868DF2A66EB3C0048548F /* FavoritesList.swift */; };
 		188868E22A67CBA20048548F /* Categories_ForMainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188868E12A67CBA20048548F /* Categories_ForMainPage.swift */; };
 		188AE8682A52C8310094A212 /* GPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8672A52C8310094A212 /* GPTApp.swift */; };
 		188AE86C2A52C8330094A212 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188AE86B2A52C8330094A212 /* Assets.xcassets */; };
 		188AE8702A52C8330094A212 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188AE86F2A52C8330094A212 /* Preview Assets.xcassets */; };
-		188AE8792A531C510094A212 /* ChatGPT_API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8782A531C510094A212 /* ChatGPT_API.swift */; };
-		188AE87B2A531CF60094A212 /* GPT_Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE87A2A531CF60094A212 /* GPT_Models.swift */; };
+		188AE8792A531C510094A212 /* ChatGPTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8782A531C510094A212 /* ChatGPTAPI.swift */; };
+		188AE87B2A531CF60094A212 /* GPTModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE87A2A531CF60094A212 /* GPTModels.swift */; };
 		188AE87F2A53266F0094A212 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE87E2A53266F0094A212 /* LoadingView.swift */; };
 		188AE8812A53D1E20094A212 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8802A53D1E20094A212 /* MessageView.swift */; };
 		188AE8832A53D2100094A212 /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8822A53D2100094A212 /* MessageRow.swift */; };
-		188AE8872A53E28A0094A212 /* Button_GPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8862A53E28A0094A212 /* Button_GPT.swift */; };
-		188AE88F2A545AF20094A212 /* Main_page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE88E2A545AF20094A212 /* Main_page.swift */; };
-		188AE8932A545C070094A212 /* Category_Fiction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8922A545C070094A212 /* Category_Fiction.swift */; };
+		188AE8872A53E28A0094A212 /* ButtonGPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8862A53E28A0094A212 /* ButtonGPT.swift */; };
+		188AE88F2A545AF20094A212 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE88E2A545AF20094A212 /* MainPage.swift */; };
+		188AE8932A545C070094A212 /* CategoryFiction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8922A545C070094A212 /* CategoryFiction.swift */; };
 		188AE8952A545C610094A212 /* CategoryNonFic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8942A545C610094A212 /* CategoryNonFic.swift */; };
 		188AE8992A545CEC0094A212 /* SelectAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8982A545CEC0094A212 /* SelectAuthor.swift */; };
 		188AE89D2A545D400094A212 /* SameBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE89C2A545D400094A212 /* SameBook.swift */; };
@@ -39,16 +39,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1821957B2A56868B00093BA4 /* Chat_Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat_Books.swift; sourceTree = "<group>"; };
-		182195852A5D64C700093BA4 /* Chat_Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat_Categories.swift; sourceTree = "<group>"; };
+		1821957B2A56868B00093BA4 /* ChatBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBooks.swift; sourceTree = "<group>"; };
+		182195852A5D64C700093BA4 /* ChatCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCategories.swift; sourceTree = "<group>"; };
 		18548AAF2A610F6D007E9AE6 /* ForFicCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForFicCategory.swift; sourceTree = "<group>"; };
 		18548AB12A6138CD007E9AE6 /* ForNonFicCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForNonFicCategory.swift; sourceTree = "<group>"; };
 		1858B8392A724E8300CF9FC3 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		1858B83B2A724ED000CF9FC3 /* Chat_withAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat_withAI.swift; sourceTree = "<group>"; };
+		1858B83B2A724ED000CF9FC3 /* ChatWithAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatWithAI.swift; sourceTree = "<group>"; };
 		1858B83D2A72503F00CF9FC3 /* GenerSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerSelectionView.swift; sourceTree = "<group>"; };
 		1858B83F2A72506700CF9FC3 /* GenreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListView.swift; sourceTree = "<group>"; };
 		1885B2372A5FA54A00FE7861 /* Blogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blogs.swift; sourceTree = "<group>"; };
-		1885B2392A5FA62C00FE7861 /* Chat_Blogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat_Blogs.swift; sourceTree = "<group>"; };
+		1885B2392A5FA62C00FE7861 /* ChatBlogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBlogs.swift; sourceTree = "<group>"; };
 		188868DF2A66EB3C0048548F /* FavoritesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesList.swift; sourceTree = "<group>"; };
 		188868E12A67CBA20048548F /* Categories_ForMainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories_ForMainPage.swift; sourceTree = "<group>"; };
 		188AE8642A52C8310094A212 /* BookScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,14 +56,14 @@
 		188AE86B2A52C8330094A212 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		188AE86D2A52C8330094A212 /* GPT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GPT.entitlements; sourceTree = "<group>"; };
 		188AE86F2A52C8330094A212 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		188AE8782A531C510094A212 /* ChatGPT_API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPT_API.swift; sourceTree = "<group>"; };
-		188AE87A2A531CF60094A212 /* GPT_Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPT_Models.swift; sourceTree = "<group>"; };
+		188AE8782A531C510094A212 /* ChatGPTAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTAPI.swift; sourceTree = "<group>"; };
+		188AE87A2A531CF60094A212 /* GPTModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTModels.swift; sourceTree = "<group>"; };
 		188AE87E2A53266F0094A212 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		188AE8802A53D1E20094A212 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		188AE8822A53D2100094A212 /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
-		188AE8862A53E28A0094A212 /* Button_GPT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button_GPT.swift; sourceTree = "<group>"; };
-		188AE88E2A545AF20094A212 /* Main_page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_page.swift; sourceTree = "<group>"; };
-		188AE8922A545C070094A212 /* Category_Fiction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category_Fiction.swift; sourceTree = "<group>"; };
+		188AE8862A53E28A0094A212 /* ButtonGPT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGPT.swift; sourceTree = "<group>"; };
+		188AE88E2A545AF20094A212 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
+		188AE8922A545C070094A212 /* CategoryFiction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFiction.swift; sourceTree = "<group>"; };
 		188AE8942A545C610094A212 /* CategoryNonFic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryNonFic.swift; sourceTree = "<group>"; };
 		188AE8982A545CEC0094A212 /* SelectAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAuthor.swift; sourceTree = "<group>"; };
 		188AE89C2A545D400094A212 /* SameBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SameBook.swift; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 				188AE87E2A53266F0094A212 /* LoadingView.swift */,
 				188AE89E2A545D740094A212 /* ButtonNavigation.swift */,
 				188AE8A02A545DA30094A212 /* WordField.swift */,
-				188AE8862A53E28A0094A212 /* Button_GPT.swift */,
+				188AE8862A53E28A0094A212 /* ButtonGPT.swift */,
 				188AE86B2A52C8330094A212 /* Assets.xcassets */,
 				188868DF2A66EB3C0048548F /* FavoritesList.swift */,
 				189454D12A6A6F3700FCDD88 /* FavoritesViewModel.swift */,
@@ -107,9 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				188AE8672A52C8310094A212 /* GPTApp.swift */,
-				188AE88E2A545AF20094A212 /* Main_page.swift */,
+				188AE88E2A545AF20094A212 /* MainPage.swift */,
 				188AE8942A545C610094A212 /* CategoryNonFic.swift */,
-				188AE8922A545C070094A212 /* Category_Fiction.swift */,
+				188AE8922A545C070094A212 /* CategoryFiction.swift */,
 				188AE89C2A545D400094A212 /* SameBook.swift */,
 				188AE8982A545CEC0094A212 /* SelectAuthor.swift */,
 			);
@@ -119,10 +119,10 @@
 		18548AB32A650777007E9AE6 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				182195852A5D64C700093BA4 /* Chat_Categories.swift */,
-				1821957B2A56868B00093BA4 /* Chat_Books.swift */,
-				1885B2392A5FA62C00FE7861 /* Chat_Blogs.swift */,
-				1858B83B2A724ED000CF9FC3 /* Chat_withAI.swift */,
+				182195852A5D64C700093BA4 /* ChatCategories.swift */,
+				1821957B2A56868B00093BA4 /* ChatBooks.swift */,
+				1885B2392A5FA62C00FE7861 /* ChatBlogs.swift */,
+				1858B83B2A724ED000CF9FC3 /* ChatWithAI.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -146,8 +146,8 @@
 		188AE8662A52C8310094A212 /* GPT */ = {
 			isa = PBXGroup;
 			children = (
-				188AE8782A531C510094A212 /* ChatGPT_API.swift */,
-				188AE87A2A531CF60094A212 /* GPT_Models.swift */,
+				188AE8782A531C510094A212 /* ChatGPTAPI.swift */,
+				188AE87A2A531CF60094A212 /* GPTModels.swift */,
 				188AE8802A53D1E20094A212 /* MessageView.swift */,
 				188AE8822A53D2100094A212 /* MessageRow.swift */,
 				1858B8392A724E8300CF9FC3 /* ViewModel.swift */,
@@ -238,32 +238,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1821957C2A56868B00093BA4 /* Chat_Books.swift in Sources */,
+				1821957C2A56868B00093BA4 /* ChatBooks.swift in Sources */,
 				188AE8812A53D1E20094A212 /* MessageView.swift in Sources */,
 				18548AB02A610F6D007E9AE6 /* ForFicCategory.swift in Sources */,
-				188AE87B2A531CF60094A212 /* GPT_Models.swift in Sources */,
+				188AE87B2A531CF60094A212 /* GPTModels.swift in Sources */,
 				1858B8402A72506700CF9FC3 /* GenreListView.swift in Sources */,
 				1858B83A2A724E8300CF9FC3 /* ViewModel.swift in Sources */,
 				188868E22A67CBA20048548F /* Categories_ForMainPage.swift in Sources */,
-				1885B23A2A5FA62C00FE7861 /* Chat_Blogs.swift in Sources */,
+				1885B23A2A5FA62C00FE7861 /* ChatBlogs.swift in Sources */,
 				18548AB22A6138CD007E9AE6 /* ForNonFicCategory.swift in Sources */,
 				188AE89F2A545D740094A212 /* ButtonNavigation.swift in Sources */,
-				188AE8792A531C510094A212 /* ChatGPT_API.swift in Sources */,
+				188AE8792A531C510094A212 /* ChatGPTAPI.swift in Sources */,
 				188AE8A12A545DA30094A212 /* WordField.swift in Sources */,
 				1885B2382A5FA54A00FE7861 /* Blogs.swift in Sources */,
-				188AE8872A53E28A0094A212 /* Button_GPT.swift in Sources */,
-				188AE8932A545C070094A212 /* Category_Fiction.swift in Sources */,
+				188AE8872A53E28A0094A212 /* ButtonGPT.swift in Sources */,
+				188AE8932A545C070094A212 /* CategoryFiction.swift in Sources */,
 				188AE8992A545CEC0094A212 /* SelectAuthor.swift in Sources */,
 				188AE8832A53D2100094A212 /* MessageRow.swift in Sources */,
-				182195862A5D64C700093BA4 /* Chat_Categories.swift in Sources */,
+				182195862A5D64C700093BA4 /* ChatCategories.swift in Sources */,
 				1858B83E2A72503F00CF9FC3 /* GenerSelectionView.swift in Sources */,
 				188AE89D2A545D400094A212 /* SameBook.swift in Sources */,
 				189454D22A6A6F3700FCDD88 /* FavoritesViewModel.swift in Sources */,
 				188AE87F2A53266F0094A212 /* LoadingView.swift in Sources */,
 				188AE8952A545C610094A212 /* CategoryNonFic.swift in Sources */,
 				188AE8682A52C8310094A212 /* GPTApp.swift in Sources */,
-				1858B83C2A724ED000CF9FC3 /* Chat_withAI.swift in Sources */,
-				188AE88F2A545AF20094A212 /* Main_page.swift in Sources */,
+				1858B83C2A724ED000CF9FC3 /* ChatWithAI.swift in Sources */,
+				188AE88F2A545AF20094A212 /* MainPage.swift in Sources */,
 				188868E02A66EB3C0048548F /* FavoritesList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

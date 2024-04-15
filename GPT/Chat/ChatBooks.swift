@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-class Chat_SameBookViewModel: ObservableObject {
+class ChatSameBookViewModel: ObservableObject {
     @Published var isInteractingWithChatGPT = false
     @Published var messages: [MessageRow] = []
     @Published var inputMessage: String = ""
@@ -94,8 +94,8 @@ class Chat_SameBookViewModel: ObservableObject {
     }
 }
 
-struct Chat_SameBookView: View {
-    @ObservedObject var vm: Chat_SameBookViewModel
+struct ChatSameBookView: View {
+    @ObservedObject var vm: ChatSameBookViewModel
     @FocusState var isTextFieldFocused: Bool
     @State private var showingSheet = false
     @Environment(\.presentationMode) var presentationMode
@@ -118,7 +118,6 @@ struct Chat_SameBookView: View {
                     }
                 }
     }
-    
     
     var chatListView: some View {
         ScrollViewReader { proxy in
@@ -205,10 +204,10 @@ struct Chat_SameBookView: View {
     }
 }
 
-struct Chat_SameBookView_Previews: PreviewProvider {
+struct ChatSameBookView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            Chat_SameBookView(vm: Chat_SameBookViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), book: "BOOK", author: "AUTHOR"))
+            ChatSameBookView(vm: ChatSameBookViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), book: "BOOK", author: "AUTHOR"))
         }
     }
 }

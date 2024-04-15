@@ -10,7 +10,7 @@ struct GPTApp: App {
                 GenreSelectionView(selectedGenres: $appState.selectedGenres, isGenreSelectionCompleted: $appState.isGenreSelectionCompleted)
                     .environmentObject(appState)
             } else {
-                Main_pages()
+                MainPages()
                     .environmentObject(appState)
             }
             

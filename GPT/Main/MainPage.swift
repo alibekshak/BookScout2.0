@@ -1,13 +1,13 @@
 import SwiftUI
 
 
-struct Main_pages: View {
+struct MainPages: View {
     @StateObject private var favoritesViewModel = FavoritesViewModel()
     @State private var selectedGenres: Set<BookGenre> = []
     
     var body: some View {
         NavigationView {
-                    Main_page(selectedGenres: $selectedGenres, favoritesViewModel: favoritesViewModel) // Передаем selectedGenres здесь
+                    MainPage(selectedGenres: $selectedGenres, favoritesViewModel: favoritesViewModel) // Передаем selectedGenres здесь
                         .navigationBarTitle("")
                 }
                 .navigationBarBackButtonHidden(true)
@@ -15,12 +15,12 @@ struct Main_pages: View {
 }
 
 
-struct Main_page: View {
+struct MainPage: View {
     @Binding var selectedGenres: Set<BookGenre>
     @ObservedObject var favoritesViewModel: FavoritesViewModel
     @ObservedObject var vm = ChatBlogsViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY")) // in this place nead to add API_KEY
     @State private var isActive: Bool = false
-    @StateObject var vmfavorite = Chat_CategoryFictionViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE")
+    @StateObject var vmfavorite = ChatCategoryFictionViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE")
     @State private var isFavoritesListPresented = false
     @EnvironmentObject var appState: AppState
 
@@ -65,8 +65,8 @@ struct Main_page: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: -13) {
-                                ButtonsForTransition(destination: Category_Fiction(), image: "choice_fiction", title: "Художественная литература")
-                                ButtonsForTransition(destination: Category_NonFiction(), image: "choice_nonfic1", title: "Нон-фикшн литература")
+                                ButtonsForTransition(destination: CategoryFiction(), image: "choice_fiction", title: "Художественная литература")
+                                ButtonsForTransition(destination: CategoryNonFiction(), image: "choice_nonfic1", title: "Нон-фикшн литература")
                                 ButtonsForTransition(destination: SelectAuthorFiction(), image: "authors", title: "Найти по автору")
                                 ButtonsForTransition(destination: SameBookFiction(), image: "same_book", title: "Похожие книги")
                             }
@@ -124,9 +124,9 @@ struct Main_page: View {
 }
 
 
-struct Main_page_Previews: PreviewProvider {
+struct MainPage_Previews: PreviewProvider {
     static var previews: some View {
-        Main_pages()
+        MainPages()
     }
 }
 
