@@ -2,7 +2,8 @@ import Foundation
 import SwiftUI
 
 struct ChatBlogsView: View {
-    @ObservedObject var vm: ChatBlogsViewModel
+    
+    @StateObject var vm: ChatBlogsViewModel
     @FocusState var isTextFieldFocused: Bool
     @State private var showingSheet = false
     @State private var isLoading = false

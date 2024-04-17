@@ -6,7 +6,6 @@ struct MessageRowView: View {
     @Environment(\.colorScheme) private var colorScheme
     let message: MessageRow
     let retryCallback: (MessageRow) -> Void
-
     var imageSize: CGSize {
         CGSize(width: 25, height: 25)
     }

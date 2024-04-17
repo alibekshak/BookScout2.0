@@ -1,47 +1,45 @@
 import SwiftUI
 
-struct SameBookFiction1: View {
+struct SelectAuthorFiction1: View {
     var body: some View {
         NavigationView {
-            SameBookFiction()
+            SelectAuthorFiction()
                 .navigationBarTitle("")
         }
         .navigationBarBackButtonHidden(true)
     }
 }
 
-struct SameBookFiction: View {
+struct SelectAuthorFiction: View {
+    
+    @State private var isActive: Bool = false
     @State private var author = ""
     @State private var book = ""
-    @State private var isActive: Bool = false
-    var vm: ChatBookViewModel {
-        ChatBookViewModel(api: ChatGPTAPI(apiKey: "CATEGORY_VALUE"), book: book, author: author)} // in this place nead to add API_KEY
+    @StateObject var vm = ChatBookViewModel(api: ChatGPTAPI(apiKey: "")) // in this place nead to add API_KEY
     
     var body: some View {
         ZStack{
             Color(red: 240/255, green: 240/255, blue: 240/255)
-            
             VStack{
+                
 
                 Chevron()
-                .padding(.top, 50)
+                .padding(.top, 55)
                 .padding(.leading, -170)
-
                 
                 VStack{
-                    Text("Введите данные:")
+                    Text("Имя автора")
                         .foregroundColor(Color.black)
                         .font(.custom("SanFrancisco", size: 36))
-
+                        
                 }
-                .offset(y: 25)
-                .padding(.leading, -40)
+                .padding(.leading, -140)
+                .offset(y: 55)
                 
-                VStack(spacing: 20){
+                VStack{
                     WordField(word: $author, placeholder: "Харуки Мураками")
-                    WordField(word: $book, placeholder: "Норвежский лес")
                 }
-                .offset(y: 40)
+                .offset(y: 70)
 
                 
                 VStack{
@@ -56,15 +54,16 @@ struct SameBookFiction: View {
                 }
                 .padding(.leading, 30)
                 .padding(.trailing, 28)
-                .offset(y: 80)
+                .offset(y: 110)
+                
                 Spacer()
                 
-               
-                Spacer()
                 
-                ButtonFindSameBook(selectedBook: book, selectedAuthor: author, vm: vm, isActive: $isActive)
-                    .offset(y: -80)
+                Spacer()
 
+                ButtonFind(selectedAuthor: author, vm: vm, isActive: $isActive)
+                .offset(y: -80)
+                
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -72,9 +71,9 @@ struct SameBookFiction: View {
     }
 }
 
-struct SameBookFiction_Previews: PreviewProvider {
+struct SelectAuthorFiction_Previews: PreviewProvider {
     static var previews: some View {
-        SameBookFiction1()
+        SelectAuthorFiction1()
     }
 }
 

@@ -39,6 +39,7 @@
 		188AE89F2A545D740094A212 /* ButtonNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE89E2A545D740094A212 /* ButtonNavigation.swift */; };
 		188AE8A12A545DA30094A212 /* WordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8A02A545DA30094A212 /* WordField.swift */; };
 		189454D22A6A6F3700FCDD88 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189454D12A6A6F3700FCDD88 /* FavoritesViewModel.swift */; };
+		18E4BC1F2BCFF42400BBC06F /* AppStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4BC1E2BCFF42400BBC06F /* AppStateViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		188AE89E2A545D740094A212 /* ButtonNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNavigation.swift; sourceTree = "<group>"; };
 		188AE8A02A545DA30094A212 /* WordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordField.swift; sourceTree = "<group>"; };
 		189454D12A6A6F3700FCDD88 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		18E4BC1E2BCFF42400BBC06F /* AppStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,13 +114,9 @@
 		1821957A2A567E5700093BA4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				18E4BC202BCFF48300BBC06F /* View */,
+				18E4BC1D2BCFF40D00BBC06F /* ViewModel */,
 				188AE8672A52C8310094A212 /* GPTApp.swift */,
-				188AE8802A53D1E20094A212 /* MessageView.swift */,
-				188AE88E2A545AF20094A212 /* MainPage.swift */,
-				188AE8942A545C610094A212 /* CategoryNonFic.swift */,
-				188AE8922A545C070094A212 /* CategoryFiction.swift */,
-				188AE89C2A545D400094A212 /* SameBook.swift */,
-				188AE8982A545CEC0094A212 /* SelectAuthor.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -225,6 +223,27 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		18E4BC1D2BCFF40D00BBC06F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				18E4BC1E2BCFF42400BBC06F /* AppStateViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		18E4BC202BCFF48300BBC06F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				188AE8802A53D1E20094A212 /* MessageView.swift */,
+				188AE88E2A545AF20094A212 /* MainPage.swift */,
+				188AE8942A545C610094A212 /* CategoryNonFic.swift */,
+				188AE8922A545C070094A212 /* CategoryFiction.swift */,
+				188AE89C2A545D400094A212 /* SameBook.swift */,
+				188AE8982A545CEC0094A212 /* SelectAuthor.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -301,6 +320,7 @@
 				188AE87B2A531CF60094A212 /* GPTModels.swift in Sources */,
 				1858B8402A72506700CF9FC3 /* GenreListView.swift in Sources */,
 				1858B83A2A724E8300CF9FC3 /* ChatViewModel.swift in Sources */,
+				18E4BC1F2BCFF42400BBC06F /* AppStateViewModel.swift in Sources */,
 				188868E22A67CBA20048548F /* Categories_ForMainPage.swift in Sources */,
 				1885B23A2A5FA62C00FE7861 /* ChatBlogs.swift in Sources */,
 				18548AB22A6138CD007E9AE6 /* ForNonFicCategory.swift in Sources */,

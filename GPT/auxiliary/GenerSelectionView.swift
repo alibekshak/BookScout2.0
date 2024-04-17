@@ -3,7 +3,7 @@ import SwiftUI
 struct GenreSelectionView: View {
     @Binding var selectedGenres: Set<BookGenre>
     @Binding var isGenreSelectionCompleted: Bool
-    @EnvironmentObject var appState: AppState
+    @EnvironmentObject var appState: AppStateViewModel
 
     @State private var temporarySelectedGenres: Set<BookGenre> = []
     @Environment(\.dismiss) var dismiss

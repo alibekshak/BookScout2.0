@@ -11,11 +11,11 @@ struct CategoryNonFiction1: View {
 }
 
     struct CategoryNonFiction: View {
+        
         var category = ["Биография", "Финансы", "Философия", "Бизнес", "Психология" , "Искусство", "Мемуары", "Спорт"]
         @State private var showingSheet = false
         @State private var isActive: Bool = false
         var API = ChatGPTAPI(apiKey: "PROVIDE_API_KEY") // in this place nead to add API_KEY
-
         
         var body: some View {
             ZStack{

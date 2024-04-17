@@ -2,7 +2,8 @@ import Foundation
 import SwiftUI
 
 struct ChatBookView: View {
-    @ObservedObject var vm: ChatBookViewModel
+    
+    @StateObject var vm: ChatBookViewModel
     @FocusState var isTextFieldFocused: Bool
     @State private var showingSheet = false
     @Environment(\.presentationMode) var presentationMode
@@ -114,7 +115,7 @@ struct ChatBookView: View {
 struct ChatBookView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ChatBookView(vm: ChatBookViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), book: "BOOK", author: "AUTHOR"))
+            ChatBookView(vm: ChatBookViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY")))
         }
     }
 }

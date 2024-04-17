@@ -5,7 +5,7 @@ import AVKit
 struct ChatView: View {
     
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var vm: ChatViewModel
+    @StateObject var vm: ChatViewModel
     @FocusState var isTextFieldFocused: Bool
     
     var body: some View {

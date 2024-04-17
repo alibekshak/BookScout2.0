@@ -16,13 +16,14 @@ struct MainPages: View {
 
 
 struct MainPage: View {
+    
     @Binding var selectedGenres: Set<BookGenre>
-    @ObservedObject var favoritesViewModel: FavoritesViewModel
-    @ObservedObject var vm = ChatBlogsViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY")) // in this place nead to add API_KEY
+    @StateObject var favoritesViewModel: FavoritesViewModel
+    @StateObject var vm = ChatBlogsViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY")) // in this place nead to add API_KEY
     @State private var isActive: Bool = false
     @StateObject var vmfavorite = ChatCategoryViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE")
     @State private var isFavoritesListPresented = false
-    @EnvironmentObject var appState: AppState
+    @EnvironmentObject var appState: AppStateViewModel
 
     var body: some View {
         ZStack(alignment: .leading) {
@@ -94,7 +95,6 @@ struct MainPage: View {
                 
                 
                 VStack{
-                  
                         Rectangle()
                             .fill(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.7))
                             .frame(height: 1) // Высота линии
@@ -102,17 +102,11 @@ struct MainPage: View {
                             .padding(.horizontal, -95) // Отступы по горизонтали, чтобы линия была шире
                     
                     HStack(spacing: 90) {
-                        
-                        
                         ChatButtonView()
-
-                        
                         GenreListViewMenu()
-                        
                     }
                     .padding(.top, -25)
                 }
-
             }
         }
         .navigationBarBackButtonHidden(true)

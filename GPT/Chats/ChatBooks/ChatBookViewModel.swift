@@ -18,13 +18,9 @@ class ChatBookViewModel: ObservableObject {
     
     private let userDefaults = UserDefaults.standard
     private let api: ChatGPTAPI
-    private let book: String
-    private let author: String
     
-    init(api: ChatGPTAPI, book: String, author: String , enableSpeech: Bool = false) {
+    init(api: ChatGPTAPI, enableSpeech: Bool = false) {
         self.api = api
-        self.book = book
-        self.author = author
         
         let decoder = JSONDecoder()
         if let data = userDefaults.data(forKey: "FavoriteItems"),

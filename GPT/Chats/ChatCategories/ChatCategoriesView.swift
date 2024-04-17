@@ -2,6 +2,7 @@ import Foundation
 import SwiftUI
 
 struct ChatCategoryView: View {
+    
     @StateObject var vm: ChatCategoryViewModel
     @FocusState var isTextFieldFocused: Bool
     @State private var showingSheet = false
@@ -11,10 +12,7 @@ struct ChatCategoryView: View {
     @State private var addToFavoritesTapped = false
     @State private var isFavoritesListPresented = false
     
-    
     var body: some View {
-        
-        VStack{Text("")}
         chatListView
             .navigationTitle("Категория")
             .navigationBarItems(leading: vm.isGeneratingText ? nil : Chevron().imageScale(.medium))

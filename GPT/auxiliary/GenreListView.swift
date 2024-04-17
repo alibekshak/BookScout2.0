@@ -2,7 +2,7 @@ import SwiftUI
 
 
 struct GenreListViewMenu: View {
-    @StateObject private var appState = AppState()
+    @StateObject private var appState = AppStateViewModel()
     @State private var showGenreSelection = false
     
     var body: some View {
