@@ -13,7 +13,6 @@ struct GenreListViewMenu: View {
                 .onTapGesture {
                     showGenreSelection = true
                 }
-           
         }
         .fullScreenCover(isPresented: $showGenreSelection) {
             GenreSelectionView(selectedGenres: $appState.selectedGenres, isGenreSelectionCompleted: $appState.isGenreSelectionCompleted)

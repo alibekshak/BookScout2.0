@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 class FavoritesViewModel: ObservableObject {
     private let userDefaultsKey = "FavoriteItems"
 

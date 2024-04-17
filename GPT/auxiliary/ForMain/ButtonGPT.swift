@@ -1,11 +1,14 @@
 import SwiftUI
 
 struct ButtonFind: View {
-    var title: String = "Найти"
-    var selectedAuthor: String
-    var vm: ChatBookViewModel
+    
+    @StateObject var vm: ChatBookViewModel
+    
     @Binding var isActive: Bool
     
+    var title: String = "Найти"
+    var selectedAuthor: String
+
     var body: some View {
         NavigationLink(destination: ChatBookView(vm: vm)) {
             ZStack {
@@ -36,11 +39,13 @@ struct ButtonFind: View {
 
 
 struct ButtonFindSameBook: View {
+    @StateObject var vm: ChatBookViewModel
+    
+    @Binding var isActive: Bool
+    
     var title: String = "Найти"
     var selectedBook: String
     var selectedAuthor: String
-    var vm: ChatBookViewModel
-    @Binding var isActive: Bool
     
     var body: some View {
         NavigationLink(destination: ChatBookView(vm: vm)) {

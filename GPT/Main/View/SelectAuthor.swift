@@ -57,11 +57,9 @@ struct SelectAuthorFiction: View {
                 .offset(y: 110)
                 
                 Spacer()
-                
-                
                 Spacer()
 
-                ButtonFind(selectedAuthor: author, vm: vm, isActive: $isActive)
+                ButtonFind(vm: vm, isActive: $isActive, selectedAuthor: author)
                 .offset(y: -80)
                 
             }

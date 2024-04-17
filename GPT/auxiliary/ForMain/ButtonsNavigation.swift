@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct ButtonHouse: View {
     @Environment(\.dismiss) var dismiss
     @State private var isTapped = false

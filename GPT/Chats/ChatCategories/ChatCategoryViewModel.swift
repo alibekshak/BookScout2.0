@@ -8,19 +8,6 @@
 import Foundation
 import SwiftUI
 
-struct FavoriteItem: Identifiable, Hashable, Codable {
-    var id = UUID()
-    let title: String
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-
-    static func == (lhs: FavoriteItem, rhs: FavoriteItem) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
-
 class ChatCategoryViewModel: ObservableObject {
     
     @Published var isInteractingWithChatGPT = false

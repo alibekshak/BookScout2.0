@@ -58,11 +58,9 @@ struct SameBookFiction: View {
                 .padding(.trailing, 28)
                 .offset(y: 80)
                 Spacer()
-                
-               
                 Spacer()
                 
-                ButtonFindSameBook(selectedBook: book, selectedAuthor: author, vm: vm, isActive: $isActive)
+                ButtonFindSameBook(vm: vm, isActive: $isActive, selectedBook: book, selectedAuthor: author)
                     .offset(y: -80)
 
             }

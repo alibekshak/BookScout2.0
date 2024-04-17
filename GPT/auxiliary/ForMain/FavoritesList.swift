@@ -1,8 +1,5 @@
 import SwiftUI
 
-
-import SwiftUI
-
 struct FavoritesListView: View {
     @Binding var favoriteItems: [FavoriteItem]
 

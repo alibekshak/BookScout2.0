@@ -2,12 +2,16 @@ import SwiftUI
 
 
 struct Blog: View {
-    var vm: ChatBlogsViewModel
+    
+    @StateObject var vm: ChatBlogsViewModel
+    
     @Binding var isActive: Bool
+    
     var image: String
     var text2: String
     var text3: String?
     var text_send: String
+    
     var body: some View {
         VStack {
             NavigationLink(destination: ChatBlogsView(vm: vm)) {

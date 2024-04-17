@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct ButtonsForTransition<Destination: View>: View {
     var destination: Destination
     var image: String

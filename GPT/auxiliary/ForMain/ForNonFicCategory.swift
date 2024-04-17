@@ -1,9 +1,9 @@
 import SwiftUI
 
 
-struct CategoryFic: View{
-    var vm: ChatCategoryViewModel
-    @Binding  var isActive: Bool
+struct CategoryNonFic: View{
+    @StateObject var vm: ChatCategoryViewModel
+    @Binding var isActive: Bool
     var title: String
     var text: String
     var text2: String
@@ -21,7 +21,6 @@ struct CategoryFic: View{
                             .fontWeight(.black)
                             .foregroundColor(.primary)
                             .lineLimit(1)
-        
                         Text(text)
                             .font(.headline)
                             .foregroundColor(.black.opacity(0.6))
@@ -31,6 +30,7 @@ struct CategoryFic: View{
                         Text(text3)
                             .font(.headline)
                             .foregroundColor(.black.opacity(0.6))
+                        
                     }
                     .layoutPriority(110)
                     
@@ -45,16 +45,18 @@ struct CategoryFic: View{
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.7), lineWidth: 1)
+                .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.6), lineWidth: 1)
         )
         .padding([.top, .horizontal])
     }
-    
-    private func sendCategory() {
-        Task {
+    private func sendCategory(){
+        Task{
             await vm.send(text: text_send)
             isActive = true
         }
     }
 }
+
+
+
 
