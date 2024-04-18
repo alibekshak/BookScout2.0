@@ -15,7 +15,7 @@ struct ChatCategoryView: View {
     var body: some View {
         chatListView
             .navigationTitle("Категория")
-            .navigationBarItems(leading: vm.isGeneratingText ? nil : Chevron().imageScale(.medium))
+            .navigationBarItems(leading: vm.isGeneratingText ? nil : Chevron().imageScale(.small))
             .navigationBarBackButtonHidden(true)
             .onAppear {
                 // Load favorites from UserDefaults
@@ -45,7 +45,7 @@ struct ChatCategoryView: View {
                         isTextFieldFocused = false
                     }
                 }
-
+                
                 Divider()
                 bottomView(image: "profile", proxy: proxy)
                 Spacer()
@@ -94,40 +94,40 @@ struct ChatCategoryView: View {
                         .padding(.horizontal, -95) // Отступы по горизонтали, чтобы линия была шире
                 }
                 
-                        HStack(alignment: .top, spacing: 120) {
-                            Button(action: {
-                                self.showingSheet = true
-                            }) {
-                                Image(systemName: "exclamationmark.octagon")
-                                    .foregroundColor(Color.black)
-                                    .font(.title)
-                            }
-                            .actionSheet(isPresented: $showingSheet) {
-                                ActionSheet(title: Text("Рекомендация"),
-                                            message: Text("Иногда искусственный интеллект неправильно переводит книги на русский язык, поэтому рекомендуется использовать англоязычное название книги"),
-                                            buttons: [.default(Text("Ок"))])
-                            }
-                            .offset(y: -2)
-                            if let generatedText = vm.messages.last?.responseText {
-                                Button(action: {
-                                    addToFavoritesTapped.toggle()
-                                    vm.addToFavorites(text: generatedText)
-                                }) {
-                                    Image(systemName: "bookmark.fill")
-                                        .foregroundColor(Color(red: 240/255, green: 240/255, blue: 240/255))
-                                        .frame(width: 30, height: 30)
-                                        .background(Color.black)
-                                        .cornerRadius(10)
-                                }
-                                .alert(isPresented: $addToFavoritesTapped) {
-                                    Alert(title: Text("Избранное"), message: Text("Текст добавлен в избранное"), dismissButton: .default(Text("Ок")))
-                                }
-                            }
-                            
+                HStack(alignment: .top, spacing: 120) {
+                    Button(action: {
+                        self.showingSheet = true
+                    }) {
+                        Image(systemName: "exclamationmark.octagon")
+                            .foregroundColor(Color.black)
+                            .font(.title)
+                    }
+                    .actionSheet(isPresented: $showingSheet) {
+                        ActionSheet(title: Text("Рекомендация"),
+                                    message: Text("Иногда искусственный интеллект неправильно переводит книги на русский язык, поэтому рекомендуется использовать англоязычное название книги"),
+                                    buttons: [.default(Text("Ок"))])
+                    }
+                    .offset(y: -2)
+                    if let generatedText = vm.messages.last?.responseText {
+                        Button(action: {
+                            addToFavoritesTapped.toggle()
+                            vm.addToFavorites(text: generatedText)
+                        }) {
+                            Image(systemName: "bookmark.fill")
+                                .foregroundColor(Color(red: 240/255, green: 240/255, blue: 240/255))
+                                .frame(width: 30, height: 30)
+                                .background(Color.black)
+                                .cornerRadius(10)
                         }
-                        .offset(y: 5)
+                        .alert(isPresented: $addToFavoritesTapped) {
+                            Alert(title: Text("Избранное"), message: Text("Текст добавлен в избранное"), dismissButton: .default(Text("Ок")))
+                        }
+                    }
+                    
+                }
+                .offset(y: 5)
             }
-           
+            
         }
     }
     

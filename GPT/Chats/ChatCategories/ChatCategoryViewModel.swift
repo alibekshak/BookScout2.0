@@ -93,7 +93,7 @@ class ChatCategoryViewModel: ObservableObject {
     func addToFavorites(text: String) {
         let favoriteItem = FavoriteItem(title: text)
         favoritesViewModel.addToFavorites(item: favoriteItem)
-
+        
         // Save the updated favoriteItems array to UserDefaults
         let encoder = JSONEncoder()
         if let encodedData = try? encoder.encode(favoritesViewModel.favoriteItems) {

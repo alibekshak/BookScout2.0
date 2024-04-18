@@ -20,26 +20,21 @@ struct CategoryNonFiction1: View {
         var body: some View {
             ZStack{
                 Color(red: 240/255, green: 240/255, blue: 240/255)
-                VStack{
-                    Spacer()
-                    
-                    VStack(alignment: .leading){
-                        Chevron()
-                            .padding(.top, 50)
-                            .padding(.leading, -170)
-                            .offset(y: -5)
-                    }
-                    Spacer()
-                    
+                    .ignoresSafeArea()
+                VStack {
                     VStack{
-                        Text("Выбери категорию:")
-                            .foregroundColor(Color.black)
-                            .font(.title)
-                            .frame(width: 260, height: 20)
+                        HStack {
+                            Chevron()
+                            Spacer()
+                            Text("Выбери категорию:")
+                                .foregroundColor(Color.black)
+                                .font(.title)
+                                .frame(width: 260, height: 20)
+                            Spacer()
+                        }
+                        .padding(.horizontal, 28)
                     }
                     .padding(.bottom, 10)
-                    
-                    
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         LazyVStack(spacing: -3) {
@@ -68,9 +63,6 @@ struct CategoryNonFiction1: View {
                         .padding(.horizontal, 10)
                     }
                     
-                    
-                    Spacer()
-                    
                     HStack{
                             Rectangle()
                                 .fill(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.7))
@@ -97,12 +89,10 @@ struct CategoryNonFiction1: View {
                     }
                     .padding(.top, 3)
                     .offset(y: -10)
-                    Spacer()
                 }
                 
             }
             .navigationBarBackButtonHidden(true)
-            .edgesIgnoringSafeArea(.all)
         }
     }
 

@@ -12,7 +12,7 @@ struct ChatBlogsView: View {
         VStack{Text("")}
         chatListView
             .navigationTitle("Blog")
-            .navigationBarItems(leading: vm.isGeneratingText ? nil : Chevron().imageScale(.medium))
+            .navigationBarItems(leading: vm.isGeneratingText ? nil : Chevron().imageScale(.small))
             .navigationBarBackButtonHidden(true)
     }
     

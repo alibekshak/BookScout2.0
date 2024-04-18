@@ -42,10 +42,9 @@ struct Chevron: View {
             goBack()
         }) {
             Image(systemName: "chevron.left")
+                .imageScale(.large)
                 .foregroundColor(.black)
-                .font(.largeTitle)
         }
-        
     }
     
     func goBack() {

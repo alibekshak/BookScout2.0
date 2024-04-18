@@ -52,7 +52,7 @@ class ChatBookViewModel: ObservableObject {
         self.messages.remove(at: index)
         await send(text: message.sendText)
     }
-            
+    
     @MainActor
     internal func send(text: String) async {
         isInteractingWithChatGPT = true
@@ -88,7 +88,7 @@ class ChatBookViewModel: ObservableObject {
     func addToFavorites(text: String) {
         let favoriteItem = FavoriteItem(title: text)
         favoritesViewModel.addToFavorites(item: favoriteItem)
-
+        
         // Save the updated favoriteItems array to UserDefaults
         let encoder = JSONEncoder()
         if let encodedData = try? encoder.encode(favoritesViewModel.favoriteItems) {

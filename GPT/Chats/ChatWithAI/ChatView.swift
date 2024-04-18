@@ -12,10 +12,9 @@ struct ChatView: View {
         VStack{Text("")}
         chatListView
             .navigationTitle("Чат AI")
-            .navigationBarItems(leading: Chevron().imageScale(.medium),
-                                trailing: refreshButton.imageScale(.medium))
+            .navigationBarItems(leading: Chevron().imageScale(.small),
+                                trailing: refreshButton.imageScale(.small))
             .navigationBarBackButtonHidden(true)
-         
     }
     
     var chatListView: some View {
@@ -35,11 +34,11 @@ struct ChatView: View {
                         isTextFieldFocused = false
                     }
                 }
-
+                
                 Divider()
                 bottomView(image: "profile", proxy: proxy)
                 Spacer()
-
+                
             }
             .onChange(of: vm.messages.last?.responseText) { _ in  scrollToBottom(proxy: proxy)
             }
@@ -57,7 +56,7 @@ struct ChatView: View {
                 } placeholder: {
                     ProgressView()
                 }
-
+                
             } else {
                 Image(image)
                     .resizable()
@@ -83,11 +82,11 @@ struct ChatView: View {
                         .rotationEffect(.degrees(45))
                         .font(.system(size: 30))
                 }
-
+                
                 .buttonStyle(.borderless)
                 .keyboardShortcut(.defaultAction)
                 .foregroundColor(.accentColor)
-
+                
                 .disabled(vm.inputMessage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }
         }
@@ -99,19 +98,19 @@ struct ChatView: View {
         guard let id = vm.messages.last?.id else { return }
         proxy.scrollTo(id, anchor: .bottomTrailing)
     }
-
+    
     private var refreshButton: some View {
-          Button(action: {
-              // Call the refresh function in the view model
-              vm.refreshChat()
-          }) {
-              Image(systemName: "arrow.clockwise")  .foregroundColor(.black)
-                  .font(.title)
-                  .opacity(vm.isInteractingWithChatGPT ? 0 : 1)
-                  .disabled(vm.isInteractingWithChatGPT)
-          }
-      }
-  }
+        Button(action: {
+            // Call the refresh function in the view model
+            vm.refreshChat()
+        }) {
+            Image(systemName: "arrow.clockwise")  .foregroundColor(.black)
+                .font(.title)
+                .opacity(vm.isInteractingWithChatGPT ? 0 : 1)
+                .disabled(vm.isInteractingWithChatGPT)
+        }
+    }
+}
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {

@@ -104,7 +104,7 @@ class ChatViewModel: ObservableObject {
     }
     
     @MainActor func refreshChat() {
-            clearMessages()
+        clearMessages()
         Task {
             if let selectedGenresData = UserDefaults.standard.data(forKey: "selectedGenres") {
                 if let selectedGenres = try? JSONDecoder().decode(Set<BookGenre>.self, from: selectedGenresData) {
@@ -114,5 +114,5 @@ class ChatViewModel: ObservableObject {
                 }
             }
         }
-        }
+    }
 }

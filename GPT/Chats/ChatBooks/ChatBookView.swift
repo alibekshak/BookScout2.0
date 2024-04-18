@@ -13,18 +13,18 @@ struct ChatBookView: View {
     
     var body: some View {
         VStack{Text("")}
-            chatListView
-                .navigationTitle("Похожии стиль")
-                .navigationBarItems(leading: vm.isGeneratingText ? nil : Chevron().imageScale(.medium))
-                .navigationBarBackButtonHidden(true)
-                .onAppear {
-                    // Load favorites from UserDefaults
-                    let decoder = JSONDecoder()
-                    if let data = UserDefaults.standard.data(forKey: "FavoriteItems"),
-                       let decodedData = try? decoder.decode([FavoriteItem].self, from: data) {
-                        vm.favoritesViewModel.favoriteItems = decodedData
-                    }
+        chatListView
+            .navigationTitle("Похожии стиль")
+            .navigationBarItems(leading: vm.isGeneratingText ? nil : Chevron().imageScale(.small))
+            .navigationBarBackButtonHidden(true)
+            .onAppear {
+                // Load favorites from UserDefaults
+                let decoder = JSONDecoder()
+                if let data = UserDefaults.standard.data(forKey: "FavoriteItems"),
+                   let decodedData = try? decoder.decode([FavoriteItem].self, from: data) {
+                    vm.favoritesViewModel.favoriteItems = decodedData
                 }
+            }
     }
     
     var chatListView: some View {
@@ -44,12 +44,12 @@ struct ChatBookView: View {
                         isTextFieldFocused = false
                     }
                 }
-
-                    Divider()
-                    bottomView(image: "profile", proxy: proxy)
-                    Spacer()
-            
-
+                
+                Divider()
+                bottomView(image: "profile", proxy: proxy)
+                Spacer()
+                
+                
             }
             .onChange(of: vm.messages.last?.responseText) { _ in scrollToBottom(proxy: proxy) }
         }
