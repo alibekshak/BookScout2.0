@@ -2,34 +2,43 @@ import SwiftUI
 
 
 struct MainPages: View {
+    
+    var API = ChatGPTAPI(apiKey: "PROVIDE_API_KEY")
+    
     @StateObject private var favoritesViewModel = FavoritesViewModel()
+    @StateObject private var vmfavorite = ChatCategoryViewModel(api:  ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE")
+    @StateObject var vm = ChatBlogsViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
+    
     @State private var selectedGenres: Set<BookGenre> = []
     
     var body: some View {
         NavigationView {
-                    MainPage(selectedGenres: $selectedGenres, favoritesViewModel: favoritesViewModel) // Передаем selectedGenres здесь
-                        .navigationBarTitle("")
-                }
-                .navigationBarBackButtonHidden(true)
+            MainPage(API: API, selectedGenres: $selectedGenres, favoritesViewModel: favoritesViewModel, vm: vm, vmfavorite: vmfavorite)
+        }
     }
 }
 
 
 struct MainPage: View {
     
+    var API: ChatGPTAPI
+    
     @Binding var selectedGenres: Set<BookGenre>
+    
     @StateObject var favoritesViewModel: FavoritesViewModel
-    @StateObject var vm = ChatBlogsViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY")) // in this place nead to add API_KEY
-    @State private var isActive: Bool = false
-    @StateObject var vmfavorite = ChatCategoryViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE")
-    @State private var isFavoritesListPresented = false
+    @StateObject var vm: ChatBlogsViewModel
+    @StateObject var vmfavorite: ChatCategoryViewModel
+    
     @EnvironmentObject var appState: AppStateViewModel
-
+    
+    @State private var isActive: Bool = false
+    @State private var isFavoritesListPresented = false
+    
+    
     var body: some View {
         ZStack(alignment: .leading) {
             Color(red: 240/255, green: 240/255, blue: 240/255)
-            
-            VStack {
+            VStack(spacing: .zero) {
                 Spacer()
                 HStack(spacing: 115){
                     VStack(alignment: .leading) {
@@ -37,24 +46,20 @@ struct MainPage: View {
                             .font(.custom("SanFranciscoPro", size: 36))
                     }
                     .foregroundColor(Color.black)
-                    
-             
-                        Button(action: {
-                            // Show the favorites list
-                            isFavoritesListPresented = true
-                        }) {
-                            Image(systemName: "bookmark")
-                                .foregroundColor(.black)
-                                .font(.largeTitle)
-                        }
-                    
+                    Button(action: {
+                        // Show the favorites list
+                        isFavoritesListPresented = true
+                    }) {
+                        Image(systemName: "bookmark")
+                            .foregroundColor(.black)
+                            .font(.largeTitle)
+                    }
                 }
                 .padding(.top, 40)
                 .padding(.bottom, 15)
                 .offset(y: 10)
                 
                 ScrollView(.vertical, showsIndicators: false) {
-
                     VStack{
                         VStack{
                             Text("Жанры и темы")
@@ -66,8 +71,8 @@ struct MainPage: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: -13) {
-                                ButtonsForTransition(destination: CategoryFiction(), image: "choice_fiction", title: "Художественная литература")
-                                ButtonsForTransition(destination: CategoryNonFiction(), image: "choice_nonfic1", title: "Нон-фикшн литература")
+                                ButtonsForTransition(destination: CategoriesView(API: API, categoryName: .fiction), image: "choice_fiction", title: "Художественная литература")
+                                ButtonsForTransition(destination: CategoriesView(API: API, categoryName: .nonFiction), image: "choice_nonfic1", title: "Нон-фикшн литература")
                                 ButtonsForTransition(destination: SelectAuthorFiction(), image: "authors", title: "Найти по автору")
                                 ButtonsForTransition(destination: SameBookFiction(), image: "same_book", title: "Похожие книги")
                             }
@@ -75,7 +80,6 @@ struct MainPage: View {
                         }
                     }
                     .padding(.top, 15)
-                    
                     
                     VStack{
                         Text("Блог о книгах")
@@ -93,27 +97,20 @@ struct MainPage: View {
                     .padding(.horizontal, 15)
                 }
                 
-                
-                VStack{
-                        Rectangle()
-                            .fill(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.7))
-                            .frame(height: 1) // Высота линии
-                            .padding(.top, -9) // Отступ сверху, чтобы линия отображалась выше остальных элементов
-                            .padding(.horizontal, -95) // Отступы по горизонтали, чтобы линия была шире
-                    
+                VStack(spacing: .zero) {
+                    Divider()
                     HStack(spacing: 90) {
                         ChatButtonView()
                         GenreListViewMenu()
                     }
-                    .padding(.top, -25)
+                    .padding(.bottom)
                 }
             }
         }
-        .navigationBarBackButtonHidden(true)
         .edgesIgnoringSafeArea(.all)
         .sheet(isPresented: $isFavoritesListPresented) {
-                    FavoritesListView(favoriteItems: $vmfavorite.favoritesViewModel.favoriteItems)
-                }
+            FavoritesListView(favoriteItems: $vmfavorite.favoritesViewModel.favoriteItems)
+        }
     }
 }
 

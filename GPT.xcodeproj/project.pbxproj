@@ -32,8 +32,6 @@
 		188AE8832A53D2100094A212 /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8822A53D2100094A212 /* MessageRow.swift */; };
 		188AE8872A53E28A0094A212 /* ButtonGPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8862A53E28A0094A212 /* ButtonGPT.swift */; };
 		188AE88F2A545AF20094A212 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE88E2A545AF20094A212 /* MainPage.swift */; };
-		188AE8932A545C070094A212 /* CategoryFiction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8922A545C070094A212 /* CategoryFiction.swift */; };
-		188AE8952A545C610094A212 /* CategoryNonFic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8942A545C610094A212 /* CategoryNonFic.swift */; };
 		188AE8992A545CEC0094A212 /* SelectAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE8982A545CEC0094A212 /* SelectAuthor.swift */; };
 		188AE89D2A545D400094A212 /* SameBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE89C2A545D400094A212 /* SameBook.swift */; };
 		188AE89F2A545D740094A212 /* ButtonsNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE89E2A545D740094A212 /* ButtonsNavigation.swift */; };
@@ -41,6 +39,7 @@
 		189454D22A6A6F3700FCDD88 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189454D12A6A6F3700FCDD88 /* FavoritesViewModel.swift */; };
 		18E4BC1F2BCFF42400BBC06F /* AppStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4BC1E2BCFF42400BBC06F /* AppStateViewModel.swift */; };
 		18E4BC222BCFFA0600BBC06F /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4BC212BCFFA0600BBC06F /* FavoriteItem.swift */; };
+		18E4BC2A2BD11BA000BBC06F /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4BC292BD11BA000BBC06F /* CategoriesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,8 +70,6 @@
 		188AE8822A53D2100094A212 /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
 		188AE8862A53E28A0094A212 /* ButtonGPT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGPT.swift; sourceTree = "<group>"; };
 		188AE88E2A545AF20094A212 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
-		188AE8922A545C070094A212 /* CategoryFiction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFiction.swift; sourceTree = "<group>"; };
-		188AE8942A545C610094A212 /* CategoryNonFic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryNonFic.swift; sourceTree = "<group>"; };
 		188AE8982A545CEC0094A212 /* SelectAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAuthor.swift; sourceTree = "<group>"; };
 		188AE89C2A545D400094A212 /* SameBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SameBook.swift; sourceTree = "<group>"; };
 		188AE89E2A545D740094A212 /* ButtonsNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsNavigation.swift; sourceTree = "<group>"; };
@@ -80,6 +77,7 @@
 		189454D12A6A6F3700FCDD88 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		18E4BC1E2BCFF42400BBC06F /* AppStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateViewModel.swift; sourceTree = "<group>"; };
 		18E4BC212BCFFA0600BBC06F /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
+		18E4BC292BD11BA000BBC06F /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,10 +228,9 @@
 			children = (
 				188AE8802A53D1E20094A212 /* MessageView.swift */,
 				188AE88E2A545AF20094A212 /* MainPage.swift */,
-				188AE8942A545C610094A212 /* CategoryNonFic.swift */,
-				188AE8922A545C070094A212 /* CategoryFiction.swift */,
 				188AE89C2A545D400094A212 /* SameBook.swift */,
 				188AE8982A545CEC0094A212 /* SelectAuthor.swift */,
+				18E4BC292BD11BA000BBC06F /* CategoriesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,6 +338,7 @@
 				1858B83A2A724E8300CF9FC3 /* ChatViewModel.swift in Sources */,
 				18E4BC1F2BCFF42400BBC06F /* AppStateViewModel.swift in Sources */,
 				188868E22A67CBA20048548F /* ButtonsForTransition.swift in Sources */,
+				18E4BC2A2BD11BA000BBC06F /* CategoriesView.swift in Sources */,
 				1885B23A2A5FA62C00FE7861 /* ChatBlogs.swift in Sources */,
 				18548AB22A6138CD007E9AE6 /* ForNonFicCategory.swift in Sources */,
 				188AE89F2A545D740094A212 /* ButtonsNavigation.swift in Sources */,
@@ -349,7 +347,6 @@
 				186EEE852BCD7B01007A6F5F /* ChatCategoryViewModel.swift in Sources */,
 				1885B2382A5FA54A00FE7861 /* Blogs.swift in Sources */,
 				188AE8872A53E28A0094A212 /* ButtonGPT.swift in Sources */,
-				188AE8932A545C070094A212 /* CategoryFiction.swift in Sources */,
 				188AE8992A545CEC0094A212 /* SelectAuthor.swift in Sources */,
 				188AE8832A53D2100094A212 /* MessageRow.swift in Sources */,
 				182195862A5D64C700093BA4 /* ChatCategoriesView.swift in Sources */,
@@ -357,7 +354,6 @@
 				188AE89D2A545D400094A212 /* SameBook.swift in Sources */,
 				189454D22A6A6F3700FCDD88 /* FavoritesViewModel.swift in Sources */,
 				188AE87F2A53266F0094A212 /* LoadingView.swift in Sources */,
-				188AE8952A545C610094A212 /* CategoryNonFic.swift in Sources */,
 				188AE8682A52C8310094A212 /* GPTApp.swift in Sources */,
 				1858B83C2A724ED000CF9FC3 /* ChatView.swift in Sources */,
 				186EEE8C2BCD7D3F007A6F5F /* ChatBlogsViewModel.swift in Sources */,
