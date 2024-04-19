@@ -13,11 +13,6 @@ struct ButtonHouse: View {
                 .onTapGesture {
                     withAnimation(.spring()) {
                         isTapped = true
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        withAnimation(.spring()) {
-                            isTapped = false
-                        }
                         dismiss()
                     }
                 }

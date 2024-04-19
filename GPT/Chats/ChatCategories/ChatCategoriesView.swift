@@ -30,7 +30,7 @@ struct ChatCategoryView: View {
     
     var chatListView: some View {
         ScrollViewReader { proxy in
-            VStack(spacing: 0) {
+            VStack(spacing: .zero) {
                 ScrollView {
                     LazyVStack(spacing: 0) {
                         ForEach(vm.messages) { message in
@@ -45,10 +45,7 @@ struct ChatCategoryView: View {
                         isTextFieldFocused = false
                     }
                 }
-                
-                Divider()
                 bottomView(image: "profile", proxy: proxy)
-                Spacer()
             }
             .onChange(of: vm.messages.last?.responseText) { _ in scrollToBottom(proxy: proxy) }
         }
@@ -83,51 +80,47 @@ struct ChatCategoryView: View {
                     .cornerRadius(10)
                 }
             }
-            
-            
-            VStack{
-                HStack{
-                    Rectangle()
-                        .fill(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.7))
-                        .frame(height: 1) // Высота линии
-                        .padding(.top, -1) // Отступ сверху, чтобы линия отображалась выше остальных элементов
-                        .padding(.horizontal, -95) // Отступы по горизонтали, чтобы линия была шире
-                }
-                
-                HStack(alignment: .top, spacing: 120) {
-                    Button(action: {
-                        self.showingSheet = true
-                    }) {
-                        Image(systemName: "exclamationmark.octagon")
-                            .foregroundColor(Color.black)
-                            .font(.title)
-                    }
-                    .actionSheet(isPresented: $showingSheet) {
-                        ActionSheet(title: Text("Рекомендация"),
-                                    message: Text("Иногда искусственный интеллект неправильно переводит книги на русский язык, поэтому рекомендуется использовать англоязычное название книги"),
-                                    buttons: [.default(Text("Ок"))])
-                    }
-                    .offset(y: -2)
+            VStack {
+                Divider()
+                HStack(alignment: .center, spacing: 120) {
+                    buttonSheet
                     if let generatedText = vm.messages.last?.responseText {
-                        Button(action: {
-                            addToFavoritesTapped.toggle()
-                            vm.addToFavorites(text: generatedText)
-                        }) {
-                            Image(systemName: "bookmark.fill")
-                                .foregroundColor(Color(red: 240/255, green: 240/255, blue: 240/255))
-                                .frame(width: 30, height: 30)
-                                .background(Color.black)
-                                .cornerRadius(10)
-                        }
-                        .alert(isPresented: $addToFavoritesTapped) {
-                            Alert(title: Text("Избранное"), message: Text("Текст добавлен в избранное"), dismissButton: .default(Text("Ок")))
-                        }
+                        bookmark(generatedText: generatedText)
                     }
-                    
                 }
-                .offset(y: 5)
+                .padding(.top)
             }
-            
+        }
+    }
+    
+    func bookmark(generatedText: String) -> some View {
+        Button(action: {
+            addToFavoritesTapped.toggle()
+            vm.addToFavorites(text: generatedText)
+        }) {
+            Image(systemName: "bookmark.fill")
+                .foregroundColor(Color(red: 240/255, green: 240/255, blue: 240/255))
+                .frame(width: 30, height: 30)
+                .background(Color.black)
+                .cornerRadius(10)
+        }
+        .alert(isPresented: $addToFavoritesTapped) {
+            Alert(title: Text("Избранное"), message: Text("Текст добавлен в избранное"), dismissButton: .default(Text("Ок")))
+        }
+    }
+    
+    var buttonSheet: some View {
+        Button(action: {
+            self.showingSheet = true
+        }) {
+            Image(systemName: "exclamationmark.octagon")
+                .foregroundColor(Color.black)
+                .font(.title)
+        }
+        .actionSheet(isPresented: $showingSheet) {
+            ActionSheet(title: Text("Рекомендация"),
+                        message: Text("Иногда искусственный интеллект неправильно переводит книги на русский язык, поэтому рекомендуется использовать англоязычное название книги"),
+                        buttons: [.default(Text("Ок"))])
         }
     }
     
@@ -137,7 +130,6 @@ struct ChatCategoryView: View {
             proxy.scrollTo(id, anchor: .bottom)
         }
     }
-    
 }
 
 struct ChatCategoryView_Previews: PreviewProvider {
