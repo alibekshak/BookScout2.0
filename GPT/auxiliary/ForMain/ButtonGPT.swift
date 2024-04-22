@@ -13,14 +13,13 @@ struct ButtonFind: View {
         NavigationLink(destination: ChatBookView(vm: vm)) {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .frame(width: 307, height: 44)
-                
+                    .foregroundColor(Color(red: 30/255, green: 30/255, blue: 30/255))
                 Text(title)
-                    .frame(width: 307, height: 44)
                     .foregroundColor(Color.white)
                     .font(.system(size: 22))
-                    .background(Color(red: 30/255, green: 30/255, blue: 30/255))
+                    
             }
+            .frame(height: 44)
             .cornerRadius(10)
         }
         .simultaneousGesture(TapGesture().onEnded {
