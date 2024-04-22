@@ -13,7 +13,7 @@ class ChatGPTAPI: @unchecked Sendable {
         let url = URL(string: "https://api.openai.com/v1/chat/completions")!
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
-        headers.forEach {  urlRequest.setValue($1, forHTTPHeaderField: $0) } // $1 - это синтаксис, используемый в Swift для обращения к первому аргументу замыкания, $0 - нуливой аргумент замыкания
+        headers.forEach {  urlRequest.setValue($1, forHTTPHeaderField: $0) }
         return urlRequest
     }
     

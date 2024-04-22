@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct WordField: View {
     @Binding var word: String
     var placeholder: String
@@ -11,7 +10,7 @@ struct WordField: View {
                 .stroke(Color.gray, lineWidth: 2)
             
             TextField(placeholder, text: $word)
-                .textFieldStyle(PlainTextFieldStyle()) // Use PlainTextFieldStyle to remove the default rounded border of TextField
+                .textFieldStyle(PlainTextFieldStyle())
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
         }
         .frame(width: 330, height: 44)
