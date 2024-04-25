@@ -28,7 +28,7 @@ struct SelectAuthorFiction: View {
                     textWarning
                 }
                 Spacer()
-                ButtonFind(vm: vm, isActive: $isActive, selectedAuthor: author)
+                ButtonFind(vm: vm, isActive: $isActive, changeView: .selectAutor, selectedAuthor: author)
                     .padding(.bottom)
             }
             .padding(.horizontal, 28)
