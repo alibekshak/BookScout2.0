@@ -40,6 +40,7 @@
 		18E4BC1F2BCFF42400BBC06F /* AppStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4BC1E2BCFF42400BBC06F /* AppStateViewModel.swift */; };
 		18E4BC222BCFFA0600BBC06F /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4BC212BCFFA0600BBC06F /* FavoriteItem.swift */; };
 		18E4BC2A2BD11BA000BBC06F /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4BC292BD11BA000BBC06F /* CategoriesView.swift */; };
+		18E4BC5A2BDAB08800BBC06F /* ChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4BC592BDAB08800BBC06F /* ChevronView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		18E4BC1E2BCFF42400BBC06F /* AppStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateViewModel.swift; sourceTree = "<group>"; };
 		18E4BC212BCFFA0600BBC06F /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		18E4BC292BD11BA000BBC06F /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		18E4BC592BDAB08800BBC06F /* ChevronView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +258,7 @@
 				188AE8A02A545DA30094A212 /* WordField.swift */,
 				188AE8862A53E28A0094A212 /* ButtonGPT.swift */,
 				188868DF2A66EB3C0048548F /* FavoritesList.swift */,
+				18E4BC592BDAB08800BBC06F /* ChevronView.swift */,
 			);
 			path = ForMain;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				186EEE8C2BCD7D3F007A6F5F /* ChatBlogsViewModel.swift in Sources */,
 				18E4BC222BCFFA0600BBC06F /* FavoriteItem.swift in Sources */,
 				188AE88F2A545AF20094A212 /* MainPage.swift in Sources */,
+				18E4BC5A2BDAB08800BBC06F /* ChevronView.swift in Sources */,
 				186EEE892BCD7C5B007A6F5F /* ChatBookViewModel.swift in Sources */,
 				188868E02A66EB3C0048548F /* FavoritesList.swift in Sources */,
 			);

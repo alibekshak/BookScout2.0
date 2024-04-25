@@ -25,15 +25,14 @@ struct CategoryNonFic: View{
                             .font(.headline)
                             .foregroundColor(.black.opacity(0.6))
                         Text(text2)
-                        .font(.headline)
-                        .foregroundColor(.black.opacity(0.6))
+                            .font(.headline)
+                            .foregroundColor(.black.opacity(0.6))
                         Text(text3)
                             .font(.headline)
                             .foregroundColor(.black.opacity(0.6))
                         
                     }
                     .layoutPriority(110)
-                    
                     Spacer()
                 }
                 .padding()
@@ -49,6 +48,7 @@ struct CategoryNonFic: View{
         )
         .padding([.top, .horizontal])
     }
+    
     private func sendCategory(){
         Task{
             await vm.send(text: text_send)

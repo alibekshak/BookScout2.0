@@ -41,6 +41,7 @@ struct ButtonFind: View {
         case .selectAutor:
             text = "Читал \(selectedAuthor) - \(selectedBook) на основании этого  предложи 5 стилистический похожие книги, так же напиши почему ты выбрал эти книги"
         }
+        
         Task {
             await vm.send(text: text)
             isActive = true

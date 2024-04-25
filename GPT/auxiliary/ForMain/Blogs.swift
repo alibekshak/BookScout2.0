@@ -22,9 +22,7 @@ struct Blog: View {
             .simultaneousGesture(TapGesture().onEnded {
                 sendTextBlog()
             })
-            
             NavigationLink(destination: ChatBlogsView(vm: vm)) {
-                
                 HStack {
                     VStack(alignment: .leading) {
                         Text(text2)
@@ -41,7 +39,6 @@ struct Blog: View {
                     }
                     .offset(y: -5)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    
                     Spacer()
                 }
                 .padding()
@@ -57,6 +54,7 @@ struct Blog: View {
         )
         .padding([.top, .horizontal])
     }
+    
     private func sendTextBlog() {
         Task {
             await vm.send(text: text_send)

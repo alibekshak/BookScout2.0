@@ -13,7 +13,6 @@ struct ButtonsForTransition<Destination: View>: View {
                     .frame(width: 320, height: 170)
                     .clipped()
             }
-            
             NavigationLink(destination: destination) {
                 HStack{
                     VStack(alignment: .leading) {

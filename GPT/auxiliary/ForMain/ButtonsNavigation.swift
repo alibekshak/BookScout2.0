@@ -29,23 +29,7 @@ struct ButtonHouse_Previews: PreviewProvider {
 }
 
 
-struct Chevron: View {
-    @State private var showModal = false
-    @Environment(\.dismiss) var dismiss
-    var body: some View{
-        Button(action: {
-            goBack()
-        }) {
-            Image(systemName: "chevron.left")
-                .imageScale(.large)
-                .foregroundColor(.black)
-        }
-    }
-    
-    func goBack() {
-        dismiss()
-    }
-}
+
 
 
 
