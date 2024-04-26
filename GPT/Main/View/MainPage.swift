@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct MainPages: View {
     
     var API = ChatGPTAPI(apiKey: "PROVIDE_API_KEY")
@@ -8,16 +7,16 @@ struct MainPages: View {
     @StateObject private var favoritesViewModel = FavoritesViewModel()
     @StateObject private var vmfavorite = ChatCategoryViewModel(api:  ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE")
     @StateObject var vm = ChatBlogsViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
+    @StateObject var favoritesListViewMode = FavoritesListViewModel(vm: FavoritesViewModel())
     
     @State private var selectedGenres: Set<BookGenre> = []
     
     var body: some View {
         NavigationView {
-            MainPage(API: API, selectedGenres: $selectedGenres, favoritesViewModel: favoritesViewModel, vm: vm, vmfavorite: vmfavorite)
+            MainPage(API: API, selectedGenres: $selectedGenres, favoritesViewModel: favoritesViewModel, vm: vm, vmfavorite: vmfavorite, favoritesListViewModel: favoritesListViewMode)
         }
     }
 }
-
 
 struct MainPage: View {
     
@@ -28,6 +27,7 @@ struct MainPage: View {
     @StateObject var favoritesViewModel: FavoritesViewModel
     @StateObject var vm: ChatBlogsViewModel
     @StateObject var vmfavorite: ChatCategoryViewModel
+    @StateObject var favoritesListViewModel: FavoritesListViewModel
     
     @EnvironmentObject var appState: AppStateViewModel
     
@@ -109,7 +109,7 @@ struct MainPage: View {
         }
         .edgesIgnoringSafeArea(.all)
         .sheet(isPresented: $isFavoritesListPresented) {
-            FavoritesListView(favoriteItems: $vmfavorite.favoritesViewModel.favoriteItems)
+            FavoritesListView(viewModel: favoritesListViewModel)
         }
     }
 }
