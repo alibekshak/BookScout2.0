@@ -13,39 +13,24 @@ struct Blog: View {
     var text_send: String
     
     var body: some View {
-        VStack {
-            NavigationLink(destination: ChatBlogsView(vm: vm)) {
-                Image(image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            }
-            .simultaneousGesture(TapGesture().onEnded {
-                sendTextBlog()
-            })
-            NavigationLink(destination: ChatBlogsView(vm: vm)) {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text(text2)
-                            .font(.title3)
-                            .fontWeight(.black)
-                            .foregroundColor(Color.black.opacity(0.8))
-                            .lineLimit(2)
-                        if let text3 = text3 {
-                            Text(text3)
-                                .font(.title3)
-                                .fontWeight(.black)
-                                .foregroundColor(Color.black.opacity(0.8))
-                        }
-                    }
-                    .offset(y: -5)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer()
+        VStack(alignment: .center) {
+            Image(image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            VStack(alignment: .center) {
+                Text(text2)
+                    .font(.title3)
+                    .fontWeight(.black)
+                    .foregroundColor(Color.black.opacity(0.8))
+                    .lineLimit(2)
+                if let text3 = text3 {
+                    Text(text3)
+                        .font(.title3)
+                        .fontWeight(.black)
+                        .foregroundColor(Color.black.opacity(0.8))
                 }
-                .padding()
             }
-            .simultaneousGesture(TapGesture().onEnded {
-                sendTextBlog()
-            })
+            .padding(.bottom)
         }
         .cornerRadius(10)
         .overlay(
@@ -53,6 +38,13 @@ struct Blog: View {
                 .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.5), lineWidth: 1)
         )
         .padding([.top, .horizontal])
+        .onTapGesture {
+            sendTextBlog()
+            print("Tap")
+        }
+        .onAppear{
+            print("Appear")
+        }
     }
     
     private func sendTextBlog() {
