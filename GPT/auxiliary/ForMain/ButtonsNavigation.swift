@@ -20,8 +20,6 @@ struct ButtonHouse: View {
     }
 }
 
-
-
 struct ButtonHouse_Previews: PreviewProvider {
     static var previews: some View {
         ButtonHouse()

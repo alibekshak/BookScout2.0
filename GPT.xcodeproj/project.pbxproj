@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		1821957C2A56868B00093BA4 /* ChatBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821957B2A56868B00093BA4 /* ChatBookView.swift */; };
 		182195862A5D64C700093BA4 /* ChatCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182195852A5D64C700093BA4 /* ChatCategoriesView.swift */; };
-		18548AB02A610F6D007E9AE6 /* ForFicCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18548AAF2A610F6D007E9AE6 /* ForFicCategory.swift */; };
-		18548AB22A6138CD007E9AE6 /* ForNonFicCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18548AB12A6138CD007E9AE6 /* ForNonFicCategory.swift */; };
+		18548AB02A610F6D007E9AE6 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18548AAF2A610F6D007E9AE6 /* CategoryView.swift */; };
 		1858B83A2A724E8300CF9FC3 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858B8392A724E8300CF9FC3 /* ChatViewModel.swift */; };
 		1858B83C2A724ED000CF9FC3 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858B83B2A724ED000CF9FC3 /* ChatView.swift */; };
 		1858B83E2A72503F00CF9FC3 /* GenerSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858B83D2A72503F00CF9FC3 /* GenerSelectionView.swift */; };
@@ -47,8 +46,7 @@
 /* Begin PBXFileReference section */
 		1821957B2A56868B00093BA4 /* ChatBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBookView.swift; sourceTree = "<group>"; };
 		182195852A5D64C700093BA4 /* ChatCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCategoriesView.swift; sourceTree = "<group>"; };
-		18548AAF2A610F6D007E9AE6 /* ForFicCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForFicCategory.swift; sourceTree = "<group>"; };
-		18548AB12A6138CD007E9AE6 /* ForNonFicCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForNonFicCategory.swift; sourceTree = "<group>"; };
+		18548AAF2A610F6D007E9AE6 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		1858B8392A724E8300CF9FC3 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		1858B83B2A724ED000CF9FC3 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		1858B83D2A72503F00CF9FC3 /* GenerSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerSelectionView.swift; sourceTree = "<group>"; };
@@ -253,8 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				188AE89E2A545D740094A212 /* ButtonsNavigation.swift */,
-				18548AAF2A610F6D007E9AE6 /* ForFicCategory.swift */,
-				18548AB12A6138CD007E9AE6 /* ForNonFicCategory.swift */,
+				18548AAF2A610F6D007E9AE6 /* CategoryView.swift */,
 				188868E12A67CBA20048548F /* ButtonsForTransition.swift */,
 				1885B2372A5FA54A00FE7861 /* Blogs.swift */,
 				188AE87E2A53266F0094A212 /* LoadingView.swift */,
@@ -339,7 +336,7 @@
 				1821957C2A56868B00093BA4 /* ChatBookView.swift in Sources */,
 				18E4BC5E2BDBCDD500BBC06F /* FavoritesListViewModel.swift in Sources */,
 				188AE8812A53D1E20094A212 /* MessageView.swift in Sources */,
-				18548AB02A610F6D007E9AE6 /* ForFicCategory.swift in Sources */,
+				18548AB02A610F6D007E9AE6 /* CategoryView.swift in Sources */,
 				188AE87B2A531CF60094A212 /* GPTModels.swift in Sources */,
 				1858B8402A72506700CF9FC3 /* GenreListView.swift in Sources */,
 				1858B83A2A724E8300CF9FC3 /* ChatViewModel.swift in Sources */,
@@ -347,7 +344,6 @@
 				188868E22A67CBA20048548F /* ButtonsForTransition.swift in Sources */,
 				18E4BC2A2BD11BA000BBC06F /* CategoriesView.swift in Sources */,
 				1885B23A2A5FA62C00FE7861 /* ChatBlogs.swift in Sources */,
-				18548AB22A6138CD007E9AE6 /* ForNonFicCategory.swift in Sources */,
 				188AE89F2A545D740094A212 /* ButtonsNavigation.swift in Sources */,
 				188AE8792A531C510094A212 /* ChatGPTAPI.swift in Sources */,
 				188AE8A12A545DA30094A212 /* WordField.swift in Sources */,

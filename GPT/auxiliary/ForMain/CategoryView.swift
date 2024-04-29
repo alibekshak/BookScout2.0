@@ -1,9 +1,10 @@
 import SwiftUI
 
-
-struct CategoryFic: View{
+struct CategoryView: View{
     @StateObject var vm: ChatCategoryViewModel
+    
     @Binding  var isActive: Bool
+    
     var title: String
     var text: String
     var text2: String
@@ -20,19 +21,14 @@ struct CategoryFic: View{
                             .font(.title2)
                             .fontWeight(.black)
                             .foregroundColor(.primary)
-                            .lineLimit(1)
-                        Text(text)
-                            .font(.headline)
-                            .foregroundColor(.black.opacity(0.6))
-                        Text(text2)
-                            .font(.headline)
-                            .foregroundColor(.black.opacity(0.6))
-                        Text(text3)
-                            .font(.headline)
-                            .foregroundColor(.black.opacity(0.6))
+                        VStack(alignment: .leading) {
+                            Text(text)
+                            Text(text2)
+                            Text(text3)
+                        }
+                        .font(.headline)
+                        .foregroundColor(.black.opacity(0.6))
                     }
-                    .layoutPriority(110)
-                    
                     Spacer()
                 }
                 .padding()
