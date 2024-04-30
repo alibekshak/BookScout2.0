@@ -7,7 +7,7 @@ struct FavoritesListView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var isEditing = false
-
+    
     var body: some View {
         NavigationView {
             List {
@@ -18,11 +18,13 @@ struct FavoritesListView: View {
                 .onMove(perform: viewModel.moveFavoriteItem)
             }
             .navigationBarTitle("Избранное")
-            .navigationBarItems(trailing: HStack(spacing: 240) {
+            .navigationBarItems(trailing:
+                                    HStack(spacing: 240) {
                 Button(action: {
                     isEditing.toggle()
                 }, label: {
-                    Image(systemName: isEditing ? "arrow.up.arrow.down" : "line.horizontal.3").font(.title2)
+                    Image(systemName: isEditing ? "arrow.up.arrow.down" : "line.horizontal.3")
+                        .font(.title2)
                 })
                 Button("Закрыть") {
                     dismiss()

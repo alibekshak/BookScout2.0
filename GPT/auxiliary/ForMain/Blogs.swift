@@ -40,10 +40,6 @@ struct Blog: View {
         .padding([.top, .horizontal])
         .onTapGesture {
             sendTextBlog()
-            print("Tap")
-        }
-        .onAppear{
-            print("Appear")
         }
     }
     

@@ -43,7 +43,7 @@ struct SameBookFiction: View {
             Spacer()
             Text("Введите данные:")
                 .foregroundColor(Color.black)
-                .font(.custom("SanFrancisco", size: 36))
+                .font(.title)
             Spacer()
         }
         .padding(.bottom, 10)
