@@ -119,17 +119,3 @@ struct ChatView_Previews: PreviewProvider {
         }
     }
 }
-
-
-struct ChatButtonView: View {
-    @StateObject private var viewModel = ChatViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY")) // in this place nead to add API_KEY
-    
-    var body: some View {
-        NavigationLink(destination: ChatView(vm: viewModel)) {
-            Image(systemName: "message")
-                .foregroundColor(.black)
-                .font(.title)
-        }
-    }
-}
-

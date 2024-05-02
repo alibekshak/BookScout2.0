@@ -14,7 +14,9 @@ struct Chevron: View {
     
     var body: some View {
         Button(action: {
-            dismiss()
+            withAnimation {
+                dismiss()
+            }
         }) {
             Image(systemName: "chevron.left")
                 .imageScale(.large)

@@ -8,12 +8,14 @@ struct MainPages: View {
     @StateObject private var vmfavorite = ChatCategoryViewModel(api:  ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE")
     @StateObject var vm = ChatBlogsViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
     @StateObject var favoritesListViewMode = FavoritesListViewModel(vm: FavoritesViewModel())
+    @StateObject var appState: AppStateViewModel
+    @StateObject var chatViewModel = ChatViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
     
     @State private var selectedGenres: Set<BookGenre> = []
     
     var body: some View {
         NavigationView {
-            MainPage(API: API, selectedGenres: $selectedGenres, favoritesViewModel: favoritesViewModel, vm: vm, vmfavorite: vmfavorite, favoritesListViewModel: favoritesListViewMode)
+            MainPage(API: API, selectedGenres: $selectedGenres, favoritesViewModel: favoritesViewModel, vm: vm, vmfavorite: vmfavorite, favoritesListViewModel: favoritesListViewMode, appState: appState, chatViewModel: chatViewModel)
         }
     }
 }
@@ -29,7 +31,8 @@ struct MainPage: View {
     @StateObject var vmfavorite: ChatCategoryViewModel
     @StateObject var favoritesListViewModel: FavoritesListViewModel
     
-    @EnvironmentObject var appState: AppStateViewModel
+    @StateObject var appState: AppStateViewModel
+    @StateObject var chatViewModel: ChatViewModel
     
     @State  var isActiveBlog: Bool = false
     @State  var isActiveBlog2: Bool = false
@@ -108,8 +111,8 @@ struct MainPage: View {
                     VStack(spacing: .zero) {
                         Divider()
                         HStack(spacing: 90) {
-                            ChatButtonView()
-                            GenreListViewMenu()
+                            ChatButtonView(viewModel: chatViewModel)
+                            GenreListViewMenu(appState: appState)
                         }
                     }
                     .padding(.bottom)
@@ -126,7 +129,7 @@ struct MainPage: View {
 
 struct MainPage_Previews: PreviewProvider {
     static var previews: some View {
-        MainPages()
+        MainPages(appState: AppStateViewModel())
     }
 }
 

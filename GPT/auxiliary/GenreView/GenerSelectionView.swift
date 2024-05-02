@@ -3,23 +3,11 @@ import SwiftUI
 struct GenreSelectionView: View {
     @Binding var selectedGenres: Set<BookGenre>
     @Binding var isGenreSelectionCompleted: Bool
-    @EnvironmentObject var appState: AppStateViewModel
+    
+    @StateObject var appState: AppStateViewModel
     
     @State private var temporarySelectedGenres: Set<BookGenre> = []
     @Environment(\.dismiss) var dismiss
-    
-    init(selectedGenres: Binding<Set<BookGenre>>, isGenreSelectionCompleted: Binding<Bool>) {
-        _selectedGenres = selectedGenres
-        _isGenreSelectionCompleted = isGenreSelectionCompleted
-        _temporarySelectedGenres = State(initialValue: selectedGenres.wrappedValue)
-        
-        let selectedGenresSet = Set(selectedGenres.wrappedValue)
-        BookGenre.allCases.forEach { genre in
-            if selectedGenresSet.contains(genre) {
-                temporarySelectedGenres.insert(genre)
-            }
-        }
-    }
     
     var body: some View {
         ZStack {
@@ -93,7 +81,7 @@ struct GenreSelectionView: View {
                         if temporarySelectedGenres.contains(genre) {
                             Spacer()
                             Image(systemName: "checkmark.square.fill")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.gray)
                         } else {
                             Spacer()
                             Image(systemName: "square")

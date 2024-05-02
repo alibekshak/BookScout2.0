@@ -2,21 +2,21 @@ import SwiftUI
 
 
 struct GenreListViewMenu: View {
-    @StateObject private var appState = AppStateViewModel()
+    @StateObject var appState: AppStateViewModel
     @State private var showGenreSelection = false
     
     var body: some View {
         VStack {
             Image(systemName: "books.vertical")
-                .foregroundColor(.black)
+                .foregroundColor(showGenreSelection ? .gray : .black)
                 .font(.title)
-                .onTapGesture {
-                    showGenreSelection = true
-                }
+        }
+        .onTapGesture {
+            showGenreSelection = true
+            
         }
         .fullScreenCover(isPresented: $showGenreSelection) {
-            GenreSelectionView(selectedGenres: $appState.selectedGenres, isGenreSelectionCompleted: $appState.isGenreSelectionCompleted)
-                .environmentObject(appState)
+            GenreSelectionView(selectedGenres: $appState.selectedGenres, isGenreSelectionCompleted: $appState.isGenreSelectionCompleted, appState: appState)
         }
         .padding()
     }
@@ -24,7 +24,7 @@ struct GenreListViewMenu: View {
 
 struct GenreListViewMenu_Previews: PreviewProvider {
     static var previews: some View {
-        GenreListViewMenu()
+        GenreListViewMenu(appState: AppStateViewModel())
     }
 }
 
