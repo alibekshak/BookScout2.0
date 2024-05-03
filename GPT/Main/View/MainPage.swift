@@ -10,12 +10,13 @@ struct MainPages: View {
     @StateObject var favoritesListViewMode = FavoritesListViewModel(vm: FavoritesViewModel())
     @StateObject var appState: AppStateViewModel
     @StateObject var chatViewModel = ChatViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
+    @StateObject var chatBookViewModel = ChatBookViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
     
     @State private var selectedGenres: Set<BookGenre> = []
     
     var body: some View {
         NavigationView {
-            MainPage(API: API, selectedGenres: $selectedGenres, favoritesViewModel: favoritesViewModel, vm: vm, vmfavorite: vmfavorite, favoritesListViewModel: favoritesListViewMode, appState: appState, chatViewModel: chatViewModel)
+            MainPage(API: API, selectedGenres: $selectedGenres, favoritesViewModel: favoritesViewModel, vm: vm, vmfavorite: vmfavorite, favoritesListViewModel: favoritesListViewMode, appState: appState, chatViewModel: chatViewModel, chatBookViewModel: chatBookViewModel)
         }
     }
 }
@@ -33,6 +34,7 @@ struct MainPage: View {
     
     @StateObject var appState: AppStateViewModel
     @StateObject var chatViewModel: ChatViewModel
+    @StateObject var chatBookViewModel: ChatBookViewModel
     
     @State  var isActiveBlog: Bool = false
     @State  var isActiveBlog2: Bool = false
@@ -78,8 +80,8 @@ struct MainPage: View {
                                 LazyHStack(spacing: -13) {
                                     ButtonsForTransition(destination: CategoriesView(API: API, categoryName: .fiction), image: "choice_fiction", title: "Художественная литература")
                                     ButtonsForTransition(destination: CategoriesView(API: API, categoryName: .nonFiction), image: "choice_nonfic1", title: "Нон-фикшн литература")
-                                    ButtonsForTransition(destination: SelectAuthorFiction(), image: "authors", title: "Найти по автору")
-                                    ButtonsForTransition(destination: SameBookFiction(), image: "same_book", title: "Похожие книги")
+                                    ButtonsForTransition(destination: SelectAuthorFiction(vm: chatBookViewModel), image: "authors", title: "Найти по автору")
+                                    ButtonsForTransition(destination: SameBookFiction(vm: chatBookViewModel), image: "same_book", title: "Похожие книги")
                                 }
                                 .padding(.horizontal, 15)
                             }

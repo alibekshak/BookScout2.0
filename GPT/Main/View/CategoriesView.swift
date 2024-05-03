@@ -18,6 +18,7 @@ struct CategoriesView: View {
     var categoryName: CategoryName
     
     var categoryNonFic = ["Биография", "Финансы", "Философия", "Бизнес", "Психология" , "Искусство", "Мемуары", "Спорт"]
+    
     var categoryFic = ["Романы", "Рассказы", "Повесть", "Поэзия", "Новеллы" , "Детектив", "Пьесы", "Фантастика", "Фэнтези", "Мистика", "Хоррор"]
     
     @State private var showingSheet = false

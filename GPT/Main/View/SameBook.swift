@@ -1,21 +1,12 @@
 import SwiftUI
 
-struct SameBookFiction1: View {
-    var body: some View {
-        NavigationView {
-            SameBookFiction()
-                .navigationBarTitle("")
-        }
-        .navigationBarBackButtonHidden(true)
-    }
-}
-
 struct SameBookFiction: View {
     
     @State private var author = ""
     @State private var book = ""
     @State private var isActive: Bool = false
-    @StateObject var vm = ChatBookViewModel(api: ChatGPTAPI(apiKey: "CATEGORY_VALUE")) // in this place nead to add API_KEY
+    
+    @StateObject var vm: ChatBookViewModel
     
     var body: some View {
         ZStack {
@@ -70,7 +61,7 @@ struct SameBookFiction: View {
 
 struct SameBookFiction_Previews: PreviewProvider {
     static var previews: some View {
-        SameBookFiction1()
+        SameBookFiction(vm: ChatBookViewModel(api: ChatGPTAPI(apiKey: "CATEGORY_VALUE")))
     }
 }
 

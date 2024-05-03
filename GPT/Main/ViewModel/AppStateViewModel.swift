@@ -16,7 +16,7 @@ class AppStateViewModel: ObservableObject {
         loadGenresFromUserDefaults()
     }
 
-    private func loadGenresFromUserDefaults() {
+    func loadGenresFromUserDefaults() {
         if let genresData = UserDefaults.standard.data(forKey: "selectedGenres") {
             if let genres = try? JSONDecoder().decode(Set<BookGenre>.self, from: genresData) {
                 selectedGenres = genres
