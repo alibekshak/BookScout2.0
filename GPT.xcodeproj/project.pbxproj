@@ -231,7 +231,6 @@
 		18E4BC202BCFF48300BBC06F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				188AE8802A53D1E20094A212 /* MessageView.swift */,
 				188AE88E2A545AF20094A212 /* MainPage.swift */,
 				188AE89C2A545D400094A212 /* SameBook.swift */,
 				188AE8982A545CEC0094A212 /* SelectAuthor.swift */,
@@ -252,6 +251,7 @@
 		18E4BC242BCFFD3100BBC06F /* ForMain */ = {
 			isa = PBXGroup;
 			children = (
+				188AE8802A53D1E20094A212 /* MessageView.swift */,
 				188AE89E2A545D740094A212 /* ButtonHouse.swift */,
 				18548AAF2A610F6D007E9AE6 /* CategoryView.swift */,
 				188868E12A67CBA20048548F /* ButtonsForTransition.swift */,
