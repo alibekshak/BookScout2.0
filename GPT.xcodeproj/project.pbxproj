@@ -98,6 +98,7 @@
 		182195742A566E6D00093BA4 /* auxiliary */ = {
 			isa = PBXGroup;
 			children = (
+				187BE2E02BE5EB05002F3D8C /* ReusedViews */,
 				18E4BC242BCFFD3100BBC06F /* ForMain */,
 				18E4BC232BCFFC7600BBC06F /* GenreView */,
 				188AE86B2A52C8330094A212 /* Assets.xcassets */,
@@ -160,6 +161,19 @@
 				1858B83B2A724ED000CF9FC3 /* ChatView.swift */,
 			);
 			path = ChatWithAI;
+			sourceTree = "<group>";
+		};
+		187BE2E02BE5EB05002F3D8C /* ReusedViews */ = {
+			isa = PBXGroup;
+			children = (
+				188AE8802A53D1E20094A212 /* MessageView.swift */,
+				188AE89E2A545D740094A212 /* ButtonHouse.swift */,
+				188AE87E2A53266F0094A212 /* LoadingView.swift */,
+				188AE8862A53E28A0094A212 /* ButtonGPT.swift */,
+				188AE8A02A545DA30094A212 /* WordField.swift */,
+				18E4BC592BDAB08800BBC06F /* ChevronView.swift */,
+			);
+			path = ReusedViews;
 			sourceTree = "<group>";
 		};
 		188AE85B2A52C8310094A212 = {
@@ -251,16 +265,10 @@
 		18E4BC242BCFFD3100BBC06F /* ForMain */ = {
 			isa = PBXGroup;
 			children = (
-				188AE8802A53D1E20094A212 /* MessageView.swift */,
-				188AE89E2A545D740094A212 /* ButtonHouse.swift */,
 				18548AAF2A610F6D007E9AE6 /* CategoryView.swift */,
 				188868E12A67CBA20048548F /* ButtonsForTransition.swift */,
 				1885B2372A5FA54A00FE7861 /* Blogs.swift */,
-				188AE87E2A53266F0094A212 /* LoadingView.swift */,
-				188AE8A02A545DA30094A212 /* WordField.swift */,
-				188AE8862A53E28A0094A212 /* ButtonGPT.swift */,
 				188868DF2A66EB3C0048548F /* FavoritesList.swift */,
-				18E4BC592BDAB08800BBC06F /* ChevronView.swift */,
 				187BE2CF2BE348E6002F3D8C /* ChatButtonView.swift */,
 			);
 			path = ForMain;
