@@ -6,7 +6,6 @@ struct ChatBlogsView: View {
     @StateObject var vm: ChatBlogsViewModel
     @FocusState var isTextFieldFocused: Bool
     @State private var showingSheet = false
-    @State private var isLoading = false
     
     var body: some View {
         chatListView
@@ -15,46 +14,45 @@ struct ChatBlogsView: View {
             .navigationBarBackButtonHidden(true)
     }
     
-    
     var chatListView: some View {
         ScrollViewReader { proxy in
             VStack(spacing: .zero) {
-                ScrollView {
-                    LazyVStack(spacing: 0) {
-                        ForEach(vm.messages) { message in
-                            MessageRowView(message: message) { message in
-                                Task { @MainActor in
-                                    await vm.retry(message: message)
-                                }
-                            }
-                        }
-                    }
-                    .onTapGesture {
-                        isTextFieldFocused = false
-                    }
-                }
+                message
                 bottomView(image: "profile", proxy: proxy)
             }
-            .onChange(of: vm.messages.last?.responseText) { _ in scrollToBottom(proxy: proxy) }
+            .onChange(of: vm.messages.last?.responseText) { _ in
+                scrollToBottom(proxy: proxy)
+            }
         }
         .background(Color(red: 240/255, green: 240/255, blue: 240/255))
     }
     
-    func bottomView(image: String, proxy: ScrollViewProxy) -> some View {
-        return VStack {
-            Divider()
-            Group {
-                if vm.isGeneratingText {
-                    DotLoadingView()
-                        .frame(width: 100, height: 50)
-                } else {
-                    HStack(alignment: .center, spacing: 110) {
-                        buttonSheet
-                        ButtonHouse()
+    var message: some View {
+        ScrollView {
+            LazyVStack(spacing: 0) {
+                ForEach(vm.messages) { message in
+                    MessageRowView(message: message) { message in
+                        Task { @MainActor in
+                            await vm.retry(message: message)
+                        }
                     }
-                    .padding(.top)
                 }
             }
+            .onTapGesture {
+                isTextFieldFocused = false
+            }
+        }
+    }
+    
+    func bottomView(image: String, proxy: ScrollViewProxy) -> some View {
+        VStack {
+            Divider()
+            HStack(alignment: .center, spacing: 110) {
+                buttonSheet
+                ButtonHouse()
+            }
+            .padding(.top)
+            .disabled( vm.isInteractingWithChatGPT)
         }
     }
     
@@ -66,7 +64,7 @@ struct ChatBlogsView: View {
                 .foregroundColor(Color.black)
                 .font(.title)
         }
-        .actionSheet(isPresented: $showingSheet){
+        .actionSheet(isPresented: $showingSheet) {
             ActionSheet(title: Text("Рекомендация"),
                         message: Text("Иногда искусственный интеллект неправильно переводит книги на русский язык, поэтому рекомендуется использовать англоязычное название книги"),
                         buttons: [.default(Text("Ок"))])

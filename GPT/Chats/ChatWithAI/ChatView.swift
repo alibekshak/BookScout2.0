@@ -31,10 +31,12 @@ struct ChatView: View {
     
     var messages: some View {
         ScrollView {
-            ForEach(vm.messages) { message in
-                MessageRowView(message: message) { message in
-                    Task { @MainActor in
-                        await vm.retry(message: message)
+            LazyVStack(spacing: 0) {
+                ForEach(vm.messages) { message in
+                    MessageRowView(message: message) { message in
+                        Task { @MainActor in
+                            await vm.retry(message: message)
+                        }
                     }
                 }
             }

@@ -41,8 +41,10 @@ class ChatBlogsViewModel: ObservableObject {
         guard let index = messages.firstIndex(where: { $0.id == message.id }) else {
             return
         }
+        isInteractingWithChatGPT = true
         self.messages.remove(at: index)
         await send(text: message.sendText)
+        isInteractingWithChatGPT = false
     }
     
     @MainActor
