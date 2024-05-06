@@ -98,9 +98,6 @@
 		182195742A566E6D00093BA4 /* auxiliary */ = {
 			isa = PBXGroup;
 			children = (
-				187BE2E02BE5EB05002F3D8C /* ReusedViews */,
-				18E4BC242BCFFD3100BBC06F /* ForMain */,
-				18E4BC232BCFFC7600BBC06F /* GenreView */,
 				188AE86B2A52C8330094A212 /* Assets.xcassets */,
 			);
 			path = auxiliary;
@@ -109,9 +106,10 @@
 		1821957A2A567E5700093BA4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				18E4BC202BCFF48300BBC06F /* View */,
-				18E4BC1D2BCFF40D00BBC06F /* ViewModel */,
-				188AE8672A52C8310094A212 /* GPTApp.swift */,
+				188AE88E2A545AF20094A212 /* MainPage.swift */,
+				188AE89C2A545D400094A212 /* SameBook.swift */,
+				188AE8982A545CEC0094A212 /* SelectAuthor.swift */,
+				18E4BC292BD11BA000BBC06F /* CategoriesView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -119,48 +117,12 @@
 		18548AB32A650777007E9AE6 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
-				186EEE8D2BCD7E67007A6F5F /* ChatWithAI */,
-				186EEE8A2BCD7D24007A6F5F /* ChatBlogs */,
-				186EEE872BCD7BB2007A6F5F /* ChatBooks */,
-				186EEE832BCD797E007A6F5F /* ChatCategories */,
+				1858B83B2A724ED000CF9FC3 /* ChatView.swift */,
+				1885B2392A5FA62C00FE7861 /* ChatBlogs.swift */,
+				1821957B2A56868B00093BA4 /* ChatBookView.swift */,
+				182195852A5D64C700093BA4 /* ChatCategoriesView.swift */,
 			);
 			path = Chats;
-			sourceTree = "<group>";
-		};
-		186EEE832BCD797E007A6F5F /* ChatCategories */ = {
-			isa = PBXGroup;
-			children = (
-				182195852A5D64C700093BA4 /* ChatCategoriesView.swift */,
-				186EEE842BCD7B01007A6F5F /* ChatCategoryViewModel.swift */,
-			);
-			path = ChatCategories;
-			sourceTree = "<group>";
-		};
-		186EEE872BCD7BB2007A6F5F /* ChatBooks */ = {
-			isa = PBXGroup;
-			children = (
-				1821957B2A56868B00093BA4 /* ChatBookView.swift */,
-				186EEE882BCD7C5B007A6F5F /* ChatBookViewModel.swift */,
-			);
-			path = ChatBooks;
-			sourceTree = "<group>";
-		};
-		186EEE8A2BCD7D24007A6F5F /* ChatBlogs */ = {
-			isa = PBXGroup;
-			children = (
-				186EEE8B2BCD7D3F007A6F5F /* ChatBlogsViewModel.swift */,
-				1885B2392A5FA62C00FE7861 /* ChatBlogs.swift */,
-			);
-			path = ChatBlogs;
-			sourceTree = "<group>";
-		};
-		186EEE8D2BCD7E67007A6F5F /* ChatWithAI */ = {
-			isa = PBXGroup;
-			children = (
-				1858B8392A724E8300CF9FC3 /* ChatViewModel.swift */,
-				1858B83B2A724ED000CF9FC3 /* ChatView.swift */,
-			);
-			path = ChatWithAI;
 			sourceTree = "<group>";
 		};
 		187BE2E02BE5EB05002F3D8C /* ReusedViews */ = {
@@ -174,6 +136,32 @@
 				18E4BC592BDAB08800BBC06F /* ChevronView.swift */,
 			);
 			path = ReusedViews;
+			sourceTree = "<group>";
+		};
+		187BE2E82BE8A6C2002F3D8C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1858B8392A724E8300CF9FC3 /* ChatViewModel.swift */,
+				186EEE8B2BCD7D3F007A6F5F /* ChatBlogsViewModel.swift */,
+				186EEE842BCD7B01007A6F5F /* ChatCategoryViewModel.swift */,
+				186EEE882BCD7C5B007A6F5F /* ChatBookViewModel.swift */,
+				18E4BC1E2BCFF42400BBC06F /* AppStateViewModel.swift */,
+				189454D12A6A6F3700FCDD88 /* FavoritesViewModel.swift */,
+				18E4BC5D2BDBCDD500BBC06F /* FavoritesListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		187BE2E92BE8A71C002F3D8C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1821957A2A567E5700093BA4 /* Main */,
+				18E4BC232BCFFC7600BBC06F /* GenreView */,
+				18E4BC242BCFFD3100BBC06F /* AuxiliaryForMain */,
+				187BE2E02BE5EB05002F3D8C /* ReusedViews */,
+				18548AB32A650777007E9AE6 /* Chats */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		188AE85B2A52C8310094A212 = {
@@ -195,11 +183,12 @@
 		188AE8662A52C8310094A212 /* GPT */ = {
 			isa = PBXGroup;
 			children = (
+				187BE2E92BE8A71C002F3D8C /* View */,
+				187BE2E82BE8A6C2002F3D8C /* ViewModel */,
 				18E4BC1A2BCFF18800BBC06F /* Model */,
 				18E4BC192BCFF14C00BBC06F /* Network */,
-				18548AB32A650777007E9AE6 /* Chats */,
 				188AE86D2A52C8330094A212 /* GPT.entitlements */,
-				1821957A2A567E5700093BA4 /* Main */,
+				188AE8672A52C8310094A212 /* GPTApp.swift */,
 				182195742A566E6D00093BA4 /* auxiliary */,
 				188AE86E2A52C8330094A212 /* Preview Content */,
 			);
@@ -232,27 +221,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		18E4BC1D2BCFF40D00BBC06F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				18E4BC1E2BCFF42400BBC06F /* AppStateViewModel.swift */,
-				189454D12A6A6F3700FCDD88 /* FavoritesViewModel.swift */,
-				18E4BC5D2BDBCDD500BBC06F /* FavoritesListViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		18E4BC202BCFF48300BBC06F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				188AE88E2A545AF20094A212 /* MainPage.swift */,
-				188AE89C2A545D400094A212 /* SameBook.swift */,
-				188AE8982A545CEC0094A212 /* SelectAuthor.swift */,
-				18E4BC292BD11BA000BBC06F /* CategoriesView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		18E4BC232BCFFC7600BBC06F /* GenreView */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,7 +230,7 @@
 			path = GenreView;
 			sourceTree = "<group>";
 		};
-		18E4BC242BCFFD3100BBC06F /* ForMain */ = {
+		18E4BC242BCFFD3100BBC06F /* AuxiliaryForMain */ = {
 			isa = PBXGroup;
 			children = (
 				18548AAF2A610F6D007E9AE6 /* CategoryView.swift */,
@@ -271,7 +239,7 @@
 				188868DF2A66EB3C0048548F /* FavoritesList.swift */,
 				187BE2CF2BE348E6002F3D8C /* ChatButtonView.swift */,
 			);
-			path = ForMain;
+			path = AuxiliaryForMain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
