@@ -18,7 +18,6 @@ struct GenreListViewMenu: View {
         .fullScreenCover(isPresented: $showGenreSelection) {
             GenreSelectionView(selectedGenres: $appState.selectedGenres, isGenreSelectionCompleted: $appState.isGenreSelectionCompleted, appState: appState)
         }
-        .padding()
     }
 }
 
