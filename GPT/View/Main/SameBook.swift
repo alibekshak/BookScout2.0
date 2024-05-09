@@ -14,7 +14,6 @@ struct SameBookFiction: View {
                 .ignoresSafeArea()
             VStack {
                 navigationBar
-                Spacer()
                 VStack(spacing: 60) {
                     textFields
                     textWarning
@@ -37,24 +36,22 @@ struct SameBookFiction: View {
                 .font(.title)
             Spacer()
         }
-        .padding(.bottom, 10)
+        .padding(.bottom, 30)
     }
     
     var textFields: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 30) {
             WordField(word: $author, placeholder: "Харуки Мураками")
             WordField(word: $book, placeholder: "Норвежский лес")
         }
-        .padding(.bottom)
     }
     
     var textWarning: some View {
         VStack {
             Text("Иногда искусственный интеллект неправильно переводит книги на русский язык, поэтому рекомендуется использовать англоязычное название книги")
                 .foregroundColor(Color.black.opacity(0.6))
-                .font(.system(size: 17))
+                .font(.system(size: 18))
                 .multilineTextAlignment(.leading)
-                .fixedSize(horizontal: false, vertical: true)
         }
     }
 }

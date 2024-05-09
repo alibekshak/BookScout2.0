@@ -70,24 +70,21 @@ struct MainPage: View {
             }) {
                 Image(systemName: "bookmark")
                     .foregroundColor(.black)
-                    .font(.largeTitle)
+                    .font(.title)
             }
         }
         .padding(.horizontal, 30)
     }
     
     var mainFunctions: some View {
-        VStack {
-            HStack {
-                Text("Жанры и темы")
-                    .font(.system(size: 22))
-                    .foregroundColor(Color.black)
-                Spacer()
-            }
-            .padding(.horizontal, 30)
+        VStack(alignment: .leading) {
+            Text("Жанры и темы")
+                .font(.system(size: 22))
+                .foregroundColor(Color.black)
+                .padding(.horizontal, 30)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: -13) {
+                LazyHStack(spacing: -12) {
                     ButtonsForTransition(destination: CategoriesView(API: API, categoryName: .fiction), image: "choice_fiction", title: "Художественная литература")
                     ButtonsForTransition(destination: CategoriesView(API: API, categoryName: .nonFiction), image: "choice_nonfic1", title: "Нон-фикшн литература")
                     ButtonsForTransition(destination: SelectAuthorFiction(vm: chatBookViewModel), image: "authors", title: "Найти по автору")
@@ -100,15 +97,12 @@ struct MainPage: View {
     }
     
     var blogs: some View {
-        VStack {
-            HStack {
-                Text("Блог о книгах")
-                    .font(.system(size: 22))
-            .foregroundColor(Color.black)
-                Spacer()
-            }
-            .padding(.horizontal, 30)
-
+        VStack(alignment: .leading) {
+            Text("Блог о книгах")
+                .font(.system(size: 22))
+                .foregroundColor(Color.black)
+                .padding(.horizontal, 30)
+            
             LazyVStack(spacing: 1) {
                 Blog(vm: vm, isActive: $isActiveBlog, image: "blog", text2: "Топ 3 книг которые,", text3: "стоит прочитать", text_send: "Рекомендуй 3 книг которые, стоит прочитать, напищи интерестный факт об авторах данных книг. Так же расскажи подробно почему ты выбрал эти книги")
                     .navigationDestination(isPresented: $isActiveBlog) {

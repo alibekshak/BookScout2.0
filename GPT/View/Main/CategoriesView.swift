@@ -40,8 +40,8 @@ struct CategoriesView: View {
     var categoriesScroll: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(spacing: -3) {
-                    imageChose
-                    categories
+                imageChose
+                categories
             }
             .padding(.horizontal, 10)
             .padding(.bottom)
@@ -96,37 +96,39 @@ struct CategoriesView: View {
     }
     
     var navigationBar: some View {
-        VStack{
-            HStack {
-                Chevron()
-                Spacer()
-                Text(categoryName == .nonFiction ? "Выбери категорию:" : "Выбери жанр:")
-                    .foregroundColor(Color.black)
-                    .font(.title)
-                Spacer()
-            }
-            .padding(.horizontal, 28)
+        HStack {
+            Chevron()
+            Spacer()
+            Text(categoryName == .nonFiction ? "Выбери категорию:" : "Выбери жанр:")
+                .foregroundColor(Color.black)
+                .font(.title)
+            Spacer()
         }
-        .padding(.bottom, 10)
+        .padding(.horizontal, 28)
+        .padding(.bottom, 20)
     }
     
     var tabView: some View {
         VStack(spacing: .zero) {
             Divider()
             HStack(spacing: 120) {
-                Button(action: {
-                    self.showingSheet = true
-                }) {
-                    Image(systemName: "exclamationmark.shield.fill")
-                        .foregroundColor(Color.black)
-                        .font(.title)
-                }
-                .actionSheet(isPresented: $showingSheet) {
-                    ActionSheet(title: Text("Небольшая ремарка"), message: Text("Иногда искусственный интеллект неправильно переводит книги на русский язык, поэтому рекомендуется использовать англоязычное название книги"), buttons: [.default(Text("Ок"))])
-                }
+                exclamationButton
                 ButtonHouse()
             }
-            .padding(.top)
+        }
+        .padding(.top)
+    }
+    
+    var exclamationButton: some View {
+        Button(action: {
+            self.showingSheet = true
+        }) {
+            Image(systemName: "exclamationmark.shield.fill")
+                .foregroundColor(Color.black)
+                .font(.title)
+        }
+        .actionSheet(isPresented: $showingSheet) {
+            ActionSheet(title: Text("Небольшая ремарка"), message: Text("Иногда искусственный интеллект неправильно переводит книги на русский язык, поэтому рекомендуется использовать англоязычное название книги"), buttons: [.default(Text("Ок"))])
         }
     }
 }
