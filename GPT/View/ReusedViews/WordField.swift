@@ -14,7 +14,7 @@ struct WordField: View {
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
         }
         .frame(height: 44)
-        .background(Color(red: 240/255, green: 240/255, blue: 240/255))
+        .background(CustomColors.backgroundColor)
     }
 }
 

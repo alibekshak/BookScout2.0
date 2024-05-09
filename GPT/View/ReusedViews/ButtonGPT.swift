@@ -21,7 +21,7 @@ struct ButtonFind: View {
         NavigationLink(destination: ChatBookView(vm: vm)) {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(Color(red: 30/255, green: 30/255, blue: 30/255))
+                    .foregroundColor(CustomColors.customBlack)
                 Text(title)
                     .foregroundColor(Color.white)
                     .font(.system(size: 22))

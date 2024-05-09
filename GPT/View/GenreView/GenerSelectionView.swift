@@ -11,7 +11,7 @@ struct GenreSelectionView: View {
     
     var body: some View {
         ZStack {
-            Color(red: 240/255, green: 240/255, blue: 240/255)
+            CustomColors.backgroundColor
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 dismissButton
@@ -112,7 +112,7 @@ struct GenreSelectionView: View {
                 .frame(width: 307, height: 44)
                 .foregroundColor(Color.white)
                 .font(.system(size: 22))
-                .background(Color(red: 30/255, green: 30/255, blue: 30/255))
+                .background(CustomColors.customBlack)
                 .cornerRadius(10)
                 .padding()
         }

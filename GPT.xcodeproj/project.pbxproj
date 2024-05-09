@@ -18,6 +18,7 @@
 		186EEE892BCD7C5B007A6F5F /* ChatBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186EEE882BCD7C5B007A6F5F /* ChatBookViewModel.swift */; };
 		186EEE8C2BCD7D3F007A6F5F /* ChatBlogsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186EEE8B2BCD7D3F007A6F5F /* ChatBlogsViewModel.swift */; };
 		187BE2D02BE348E6002F3D8C /* ChatButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BE2CF2BE348E6002F3D8C /* ChatButtonView.swift */; };
+		187BE2F22BEC8607002F3D8C /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BE2F12BEC8607002F3D8C /* CustomColors.swift */; };
 		1885B2382A5FA54A00FE7861 /* Blogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885B2372A5FA54A00FE7861 /* Blogs.swift */; };
 		1885B23A2A5FA62C00FE7861 /* ChatBlogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885B2392A5FA62C00FE7861 /* ChatBlogs.swift */; };
 		188868E02A66EB3C0048548F /* FavoritesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188868DF2A66EB3C0048548F /* FavoritesList.swift */; };
@@ -56,6 +57,7 @@
 		186EEE882BCD7C5B007A6F5F /* ChatBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBookViewModel.swift; sourceTree = "<group>"; };
 		186EEE8B2BCD7D3F007A6F5F /* ChatBlogsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBlogsViewModel.swift; sourceTree = "<group>"; };
 		187BE2CF2BE348E6002F3D8C /* ChatButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatButtonView.swift; sourceTree = "<group>"; };
+		187BE2F12BEC8607002F3D8C /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		1885B2372A5FA54A00FE7861 /* Blogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blogs.swift; sourceTree = "<group>"; };
 		1885B2392A5FA62C00FE7861 /* ChatBlogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBlogs.swift; sourceTree = "<group>"; };
 		188868DF2A66EB3C0048548F /* FavoritesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesList.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				188AE86B2A52C8330094A212 /* Assets.xcassets */,
+				187BE2F12BEC8607002F3D8C /* CustomColors.swift */,
 			);
 			path = auxiliary;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				188AE87F2A53266F0094A212 /* LoadingView.swift in Sources */,
 				188AE8682A52C8310094A212 /* GPTApp.swift in Sources */,
 				1858B83C2A724ED000CF9FC3 /* ChatView.swift in Sources */,
+				187BE2F22BEC8607002F3D8C /* CustomColors.swift in Sources */,
 				186EEE8C2BCD7D3F007A6F5F /* ChatBlogsViewModel.swift in Sources */,
 				18E4BC222BCFFA0600BBC06F /* FavoriteItem.swift in Sources */,
 				187BE2D02BE348E6002F3D8C /* ChatButtonView.swift in Sources */,

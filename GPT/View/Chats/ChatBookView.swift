@@ -48,7 +48,7 @@ struct ChatBookView: View {
             }
             .onChange(of: vm.messages.last?.responseText) { _ in scrollToBottom(proxy: proxy) }
         }
-        .background(Color(red: 240/255, green: 240/255, blue: 240/255))
+        .background(CustomColors.backgroundColor)
     }
     
     func bottomView(image: String, proxy: ScrollViewProxy) -> some View {
@@ -77,7 +77,7 @@ struct ChatBookView: View {
             vm.addToFavorites(text: generatedText)
         }) {
             Image(systemName: "bookmark.fill")
-                .foregroundColor(Color(red: 240/255, green: 240/255, blue: 240/255))
+                .foregroundColor(CustomColors.backgroundColor)
                 .frame(width: 30, height: 30)
                 .background(Color.black)
                 .cornerRadius(10)

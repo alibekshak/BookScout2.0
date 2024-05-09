@@ -26,7 +26,7 @@ struct ChatView: View {
                 scrollToBottom(proxy: proxy)
             }
         }
-        .background(Color(red: 240/255, green: 240/255, blue: 240/255))
+        .background(CustomColors.backgroundColor)
     }
     
     var messages: some View {

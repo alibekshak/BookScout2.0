@@ -26,7 +26,7 @@ struct CategoriesView: View {
     
     var body: some View {
         ZStack {
-            Color(red: 240/255, green: 240/255, blue: 240/255)
+            CustomColors.backgroundColor
                 .ignoresSafeArea()
             VStack(spacing: .zero) {
                 navigationBar

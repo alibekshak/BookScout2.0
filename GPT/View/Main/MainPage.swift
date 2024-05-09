@@ -43,7 +43,7 @@ struct MainPage: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .leading) {
-                Color(red: 240/255, green: 240/255, blue: 240/255)
+                CustomColors.backgroundColor
                     .ignoresSafeArea()
                 VStack(spacing: .zero) {
                     appTitle
