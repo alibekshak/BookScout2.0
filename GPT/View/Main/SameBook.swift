@@ -52,7 +52,7 @@ struct SameBookFiction: View {
         VStack {
             Text("Иногда искусственный интеллект неправильно переводит книги на русский язык, поэтому рекомендуется использовать англоязычное название книги")
                 .foregroundColor(Color.black.opacity(0.6))
-                .font(.custom("SanFrancisco", size: 17))
+                .font(.system(size: 17))
                 .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)
         }

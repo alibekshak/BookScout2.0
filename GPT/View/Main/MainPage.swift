@@ -31,7 +31,6 @@ struct MainPage: View {
     @StateObject var vm: ChatBlogsViewModel
     @StateObject var vmfavorite: ChatCategoryViewModel
     @StateObject var favoritesListViewModel: FavoritesListViewModel
-    
     @StateObject var appState: AppStateViewModel
     @StateObject var chatViewModel: ChatViewModel
     @StateObject var chatBookViewModel: ChatBookViewModel
@@ -63,7 +62,7 @@ struct MainPage: View {
     var appTitle: some View {
         HStack {
             Text("BookScout")
-                .font(.custom("SanFranciscoPro", size: 36))
+                .font(.system(size: 36))
                 .foregroundColor(Color.black)
             Spacer()
             Button(action: {
@@ -81,7 +80,7 @@ struct MainPage: View {
         VStack {
             HStack {
                 Text("Жанры и темы")
-                    .font(.custom("SanFranciscoPro", size: 22))
+                    .font(.system(size: 22))
                     .foregroundColor(Color.black)
                 Spacer()
             }
@@ -104,7 +103,7 @@ struct MainPage: View {
         VStack {
             HStack {
                 Text("Блог о книгах")
-                    .font(.custom("SanFranciscoPro", size: 22))
+                    .font(.system(size: 22))
             .foregroundColor(Color.black)
                 Spacer()
             }
