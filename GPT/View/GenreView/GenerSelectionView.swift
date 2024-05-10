@@ -1,18 +1,15 @@
 import SwiftUI
 
 struct GenreSelectionView: View {
-    @Binding var selectedGenres: Set<BookGenre>
-    @Binding var isGenreSelectionCompleted: Bool
     
-    @StateObject var appState: AppStateViewModel
+    @StateObject var viewModel: GenreSelectionViewModel
     
-    @State private var temporarySelectedGenres: Set<BookGenre> = []
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
             CustomColors.backgroundColor
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea()
             VStack {
                 dismissButton
                 textInfo
@@ -21,16 +18,10 @@ struct GenreSelectionView: View {
             }
             .navigationBarHidden(true)
             .onAppear {
-                temporarySelectedGenres = selectedGenres
-                if let selectedGenresData = UserDefaults.standard.data(forKey: "selectedGenres") {
-                    if let selectedGenres = try? JSONDecoder().decode(Set<BookGenre>.self, from: selectedGenresData) {
-                        temporarySelectedGenres = selectedGenres
-                    }
-                }
+                viewModel.loadGenresFromUserDefaults()
             }
-            .onChange(of: temporarySelectedGenres) { newGenres in
-                let genresData = try? JSONEncoder().encode(newGenres)
-                UserDefaults.standard.set(genresData, forKey: "selectedGenres")
+            .onChange(of: viewModel.selectedGenres) { newGenres in
+                viewModel.addNewGenres(newGenres: newGenres)
             }
         }
     }
@@ -47,7 +38,7 @@ struct GenreSelectionView: View {
                     .font(Font.system(size: 24, weight: .semibold))
                     .foregroundColor(.black)
             }
-            .disabled(temporarySelectedGenres.isEmpty)
+            .disabled(viewModel.selectedGenres.isEmpty)
         }
         .padding(.trailing, 30)
         .padding(.bottom)
@@ -62,31 +53,24 @@ struct GenreSelectionView: View {
         }
         .font(.headline)
         .foregroundColor(.black)
-
     }
     
     var scrollView: some View {
         ScrollView {
             ForEach(BookGenre.allCases, id: \.self) { genre in
                 Button(action: {
-                    if temporarySelectedGenres.contains(genre) {
-                        temporarySelectedGenres.remove(genre)
+                    if viewModel.selectedGenres.contains(genre) {
+                        viewModel.selectedGenres.remove(genre)
                     } else {
-                        temporarySelectedGenres.insert(genre)
+                        viewModel.selectedGenres.insert(genre)
                     }
                 }) {
                     HStack {
                         Text(genre.rawValue)
                             .foregroundColor(.black)
-                        if temporarySelectedGenres.contains(genre) {
-                            Spacer()
-                            Image(systemName: "checkmark.square.fill")
-                                .foregroundColor(.gray)
-                        } else {
-                            Spacer()
-                            Image(systemName: "square")
-                                .foregroundColor(.gray)
-                        }
+                        Spacer()
+                        Image(systemName: viewModel.selectedGenres.contains(genre) ? "checkmark.square.fill" : "square")
+                            .foregroundColor(.gray)
                     }
                     .padding(.horizontal, 80)
                     .padding(.vertical, 4)
@@ -98,12 +82,6 @@ struct GenreSelectionView: View {
     
     var buttonNext: some View {
         Button(action: {
-            selectedGenres = temporarySelectedGenres
-            isGenreSelectionCompleted = true
-            appState.isGenreSelectionCompleted = true
-            
-            let genresData = try? JSONEncoder().encode(selectedGenres)
-            UserDefaults.standard.set(genresData, forKey: "selectedGenres")
             withAnimation {
                 dismiss()
             }
@@ -116,7 +94,7 @@ struct GenreSelectionView: View {
                 .cornerRadius(10)
                 .padding()
         }
-        .disabled(temporarySelectedGenres.isEmpty)
+        .disabled(viewModel.selectedGenres.isEmpty)
     }
 }
 

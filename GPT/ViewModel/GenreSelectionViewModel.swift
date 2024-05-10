@@ -1,5 +1,5 @@
 //
-//  AppStateViewModel.swift
+//  GenreSelectionViewModel.swift
 //  GPT
 //
 //  Created by Alibek Shakirov on 17.04.2024.
@@ -7,9 +7,7 @@
 
 import Foundation
 
-class AppStateViewModel: ObservableObject {
-    @Published var isFirstLaunch = true
-    @Published var isGenreSelectionCompleted = false
+class GenreSelectionViewModel: ObservableObject {
     @Published var selectedGenres: Set<BookGenre> = []
 
     init() {
@@ -22,6 +20,10 @@ class AppStateViewModel: ObservableObject {
                 selectedGenres = genres
             }
         }
-        isGenreSelectionCompleted = UserDefaults.standard.bool(forKey: "isGenreSelectionCompleted")
+    }
+    
+    func addNewGenres(newGenres: Set<BookGenre>) {
+        let genresData = try? JSONEncoder().encode(newGenres)
+        UserDefaults.standard.set(genresData, forKey: "selectedGenres")
     }
 }

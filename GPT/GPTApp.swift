@@ -3,12 +3,12 @@ import SwiftUI
 @main
 struct GPTApp: App {
     
-    @StateObject private var appState = AppStateViewModel()
+    @StateObject private var appState = GenreSelectionViewModel()
     
     var body: some Scene {
         WindowGroup {
             if appState.selectedGenres.isEmpty {
-                GenreSelectionView(selectedGenres: $appState.selectedGenres, isGenreSelectionCompleted: $appState.isGenreSelectionCompleted, appState: appState)
+                GenreSelectionView(viewModel: appState)
             } else {
                 MainPages(appState: appState)
             }

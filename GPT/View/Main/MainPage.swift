@@ -8,15 +8,13 @@ struct MainPages: View {
     @StateObject private var vmfavorite = ChatCategoryViewModel(api:  ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE")
     @StateObject var vm = ChatBlogsViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
     @StateObject var favoritesListViewMode = FavoritesListViewModel(vm: FavoritesViewModel())
-    @StateObject var appState: AppStateViewModel
+    @StateObject var appState: GenreSelectionViewModel
     @StateObject var chatViewModel = ChatViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
     @StateObject var chatBookViewModel = ChatBookViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
     
-    @State private var selectedGenres: Set<BookGenre> = []
-    
     var body: some View {
         NavigationView {
-            MainPage(API: API, selectedGenres: $selectedGenres, favoritesViewModel: favoritesViewModel, vm: vm, vmfavorite: vmfavorite, favoritesListViewModel: favoritesListViewMode, appState: appState, chatViewModel: chatViewModel, chatBookViewModel: chatBookViewModel)
+            MainPage(API: API, favoritesViewModel: favoritesViewModel, vm: vm, vmfavorite: vmfavorite, favoritesListViewModel: favoritesListViewMode, appState: appState, chatViewModel: chatViewModel, chatBookViewModel: chatBookViewModel)
         }
     }
 }
@@ -25,13 +23,11 @@ struct MainPage: View {
     
     var API: ChatGPTAPI
     
-    @Binding var selectedGenres: Set<BookGenre>
-    
     @StateObject var favoritesViewModel: FavoritesViewModel
     @StateObject var vm: ChatBlogsViewModel
     @StateObject var vmfavorite: ChatCategoryViewModel
     @StateObject var favoritesListViewModel: FavoritesListViewModel
-    @StateObject var appState: AppStateViewModel
+    @StateObject var appState: GenreSelectionViewModel
     @StateObject var chatViewModel: ChatViewModel
     @StateObject var chatBookViewModel: ChatBookViewModel
     
@@ -133,7 +129,7 @@ struct MainPage: View {
 
 struct MainPage_Previews: PreviewProvider {
     static var previews: some View {
-        MainPages(appState: AppStateViewModel())
+        MainPages(appState: GenreSelectionViewModel())
     }
 }
 

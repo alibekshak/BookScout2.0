@@ -2,7 +2,7 @@ import SwiftUI
 
 
 struct GenreListViewMenu: View {
-    @StateObject var appState: AppStateViewModel
+    @StateObject var appState: GenreSelectionViewModel
     @State private var showGenreSelection = false
     
     var body: some View {
@@ -16,14 +16,14 @@ struct GenreListViewMenu: View {
             
         }
         .fullScreenCover(isPresented: $showGenreSelection) {
-            GenreSelectionView(selectedGenres: $appState.selectedGenres, isGenreSelectionCompleted: $appState.isGenreSelectionCompleted, appState: appState)
+            GenreSelectionView(viewModel: appState)
         }
     }
 }
 
 struct GenreListViewMenu_Previews: PreviewProvider {
     static var previews: some View {
-        GenreListViewMenu(appState: AppStateViewModel())
+        GenreListViewMenu(appState: GenreSelectionViewModel())
     }
 }
 
