@@ -1,19 +1,19 @@
 import SwiftUI
 
 
-struct GenreListViewMenu: View {
+struct GenreListButton: View {
     @StateObject var appState: GenreSelectionViewModel
     @State private var showGenreSelection = false
     
     var body: some View {
-        VStack {
-            Image(systemName: "books.vertical")
-                .foregroundColor(showGenreSelection ? .gray : .black)
-                .font(.title)
-        }
-        .onTapGesture {
+        Button {
             showGenreSelection = true
-            
+        } label: {
+            VStack {
+                Image(systemName: "books.vertical")
+                    .foregroundColor(showGenreSelection ? .gray : .black)
+                    .font(.title)
+            }
         }
         .fullScreenCover(isPresented: $showGenreSelection) {
             GenreSelectionView(viewModel: appState)
@@ -21,9 +21,9 @@ struct GenreListViewMenu: View {
     }
 }
 
-struct GenreListViewMenu_Previews: PreviewProvider {
+struct GenreListButton_Previews: PreviewProvider {
     static var previews: some View {
-        GenreListViewMenu(appState: GenreSelectionViewModel())
+        GenreListButton(appState: GenreSelectionViewModel())
     }
 }
 

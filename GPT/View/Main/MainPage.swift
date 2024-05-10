@@ -120,7 +120,7 @@ struct MainPage: View {
             Divider()
             HStack(spacing: 90) {
                 ChatButtonView(viewModel: chatViewModel)
-                GenreListViewMenu(appState: appState)
+                GenreListButton(appState: appState)
             }
         }
     }
