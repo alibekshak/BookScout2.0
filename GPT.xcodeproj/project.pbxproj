@@ -19,6 +19,7 @@
 		186EEE8C2BCD7D3F007A6F5F /* ChatBlogsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186EEE8B2BCD7D3F007A6F5F /* ChatBlogsViewModel.swift */; };
 		187BE2D02BE348E6002F3D8C /* ChatButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BE2CF2BE348E6002F3D8C /* ChatButtonView.swift */; };
 		187BE2F22BEC8607002F3D8C /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BE2F12BEC8607002F3D8C /* CustomColors.swift */; };
+		187BE3042BF1D922002F3D8C /* DarkButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BE3032BF1D922002F3D8C /* DarkButtonStyle.swift */; };
 		1885B2382A5FA54A00FE7861 /* Blogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885B2372A5FA54A00FE7861 /* Blogs.swift */; };
 		1885B23A2A5FA62C00FE7861 /* ChatBlogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885B2392A5FA62C00FE7861 /* ChatBlogs.swift */; };
 		188868E02A66EB3C0048548F /* FavoritesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188868DF2A66EB3C0048548F /* FavoritesList.swift */; };
@@ -58,6 +59,7 @@
 		186EEE8B2BCD7D3F007A6F5F /* ChatBlogsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBlogsViewModel.swift; sourceTree = "<group>"; };
 		187BE2CF2BE348E6002F3D8C /* ChatButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatButtonView.swift; sourceTree = "<group>"; };
 		187BE2F12BEC8607002F3D8C /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		187BE3032BF1D922002F3D8C /* DarkButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkButtonStyle.swift; sourceTree = "<group>"; };
 		1885B2372A5FA54A00FE7861 /* Blogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blogs.swift; sourceTree = "<group>"; };
 		1885B2392A5FA62C00FE7861 /* ChatBlogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBlogs.swift; sourceTree = "<group>"; };
 		188868DF2A66EB3C0048548F /* FavoritesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesList.swift; sourceTree = "<group>"; };
@@ -167,6 +169,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		187BE3022BF1D8BB002F3D8C /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				187BE3032BF1D922002F3D8C /* DarkButtonStyle.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
 		188AE85B2A52C8310094A212 = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +196,7 @@
 		188AE8662A52C8310094A212 /* GPT */ = {
 			isa = PBXGroup;
 			children = (
+				187BE3022BF1D8BB002F3D8C /* Design */,
 				187BE2E92BE8A71C002F3D8C /* View */,
 				187BE2E82BE8A6C2002F3D8C /* ViewModel */,
 				18E4BC1A2BCFF18800BBC06F /* Model */,
@@ -315,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187BE3042BF1D922002F3D8C /* DarkButtonStyle.swift in Sources */,
 				1821957C2A56868B00093BA4 /* ChatBookView.swift in Sources */,
 				18E4BC5E2BDBCDD500BBC06F /* FavoritesListViewModel.swift in Sources */,
 				188AE8812A53D1E20094A212 /* MessageView.swift in Sources */,
