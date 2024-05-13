@@ -10,10 +10,13 @@ struct GenreSelectionView: View {
         ZStack {
             CustomColors.backgroundColor
                 .ignoresSafeArea()
-            VStack {
-                dismissButton
-                textInfo
-                scrollView
+            ZStack(alignment: .bottom) {
+                VStack {
+                    dismissButton
+                    textInfo
+                    scrollView
+                }
+                .padding(.bottom, 70)
                 buttonNext
             }
             .navigationBarHidden(true)
@@ -47,7 +50,7 @@ struct GenreSelectionView: View {
     var textInfo: some View {
         VStack {
             Text("Выбор жанров повлияет на ход диалога о книгах или авторе")
-                .padding(.horizontal, 40)
+                .padding(.horizontal, 30)
             Text("Выберите жанры:")
                 .padding(.top, 20)
         }
@@ -56,7 +59,7 @@ struct GenreSelectionView: View {
     }
     
     var scrollView: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             ForEach(BookGenre.allCases, id: \.self) { genre in
                 Button(action: {
                     if viewModel.selectedGenres.contains(genre) {
@@ -72,12 +75,13 @@ struct GenreSelectionView: View {
                         Image(systemName: viewModel.selectedGenres.contains(genre) ? "checkmark.square.fill" : "square")
                             .foregroundColor(.gray)
                     }
-                    .padding(.horizontal, 80)
+                    .font(.system(size: 18, weight: .semibold))
                     .padding(.vertical, 4)
                 }
             }
         }
-        .padding(.vertical, 35)
+        .padding(.top, 20)
+        .padding(.horizontal, 30)
     }
     
     var buttonNext: some View {
@@ -89,10 +93,9 @@ struct GenreSelectionView: View {
             Text("Далее")
                 .frame(width: 307, height: 44)
                 .foregroundColor(Color.white)
-                .font(.system(size: 22))
+                .font(.system(size: 22, weight: .semibold))
                 .background(CustomColors.customBlack)
                 .cornerRadius(10)
-                .padding()
         }
         .disabled(viewModel.selectedGenres.isEmpty)
     }
