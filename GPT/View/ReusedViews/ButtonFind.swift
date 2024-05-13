@@ -1,6 +1,6 @@
 import SwiftUI
 
-enum ChangeView {
+enum SendType {
     case sameBook
     case selectAutor
 }
@@ -11,31 +11,34 @@ struct ButtonFind: View {
     
     @Binding var isActive: Bool
     
-    @State var changeView: ChangeView
+    @State var sendType: SendType
+    @State var isChatBookViewPresent = false
     
     var title: String = "Найти"
     var selectedAuthor: String
     var selectedBook: String = ""
-
+    
     var body: some View {
-        NavigationLink(destination: ChatBookView(vm: vm)) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(CustomColors.customBlack)
-                Text(title)
-                    .foregroundColor(Color.white)
-                    .font(.system(size: 22))
+        Button {
+            withAnimation {
+                isChatBookViewPresent =  true
             }
-            .frame(height: 44)
+        } label: {
+            Text(title)
+                .frame(maxWidth: .infinity)
         }
+        .buttonStyle(DarkButtonStyle())
         .simultaneousGesture(TapGesture().onEnded {
             sendSelectedCategory()
         })
+        .navigationDestination(isPresented: $isChatBookViewPresent) {
+            ChatBookView(vm: vm)
+        }
     }
-
+    
     private func sendSelectedCategory() {
         var text = ""
-        switch changeView {
+        switch sendType {
         case .sameBook:
             text = "Хочу прочитать \(selectedAuthor), дай рецензию как минимум на 4 книги, с которых стоит начать читать данного автора,  так же обоснуй почему ты выбрал эти книги и еще расскажи один интерестный факт об \(selectedAuthor)"
         case .selectAutor:

@@ -91,13 +91,11 @@ struct GenreSelectionView: View {
             }
         }) {
             Text("Далее")
-                .frame(width: 307, height: 44)
-                .foregroundColor(Color.white)
-                .font(.system(size: 22, weight: .semibold))
-                .background(CustomColors.customBlack)
-                .cornerRadius(10)
+                .frame(maxWidth: .infinity)
         }
+        .buttonStyle(DarkButtonStyle())
         .disabled(viewModel.selectedGenres.isEmpty)
+        .padding(.horizontal, 30)
     }
 }
 

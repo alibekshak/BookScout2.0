@@ -19,7 +19,7 @@ struct SameBookFiction: View {
                     textWarning
                 }
                 Spacer()
-                ButtonFind(vm: vm, isActive: $isActive, changeView: .sameBook, selectedAuthor: author, selectedBook: book)
+                ButtonFind(vm: vm, isActive: $isActive, sendType: .sameBook, selectedAuthor: author, selectedBook: book)
                     .padding(.bottom)
             }
             .padding(.horizontal, 28)
