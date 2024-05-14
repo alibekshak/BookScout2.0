@@ -17,22 +17,22 @@ struct LaunchScreen: View {
                 .ignoresSafeArea()
             VStack(spacing: 20) {
                 Text("BookScout")
-                    .font(.system(size: 46, weight: .bold))
+                    .font(.system(size: 38, weight: .semibold))
                     .foregroundColor(Color.black)
                 Image(systemName: "book.closed")
                     .font(
                         .system(
                             size: 100,
-                            weight: .bold,
+                            weight: .semibold,
                             design: .serif
                         )
                     )
                     .rotationEffect(.degrees(15), anchor: .center)
             }
-            .scaleEffect(isAnimating ? 1 : 0.5)
+            .scaleEffect(isAnimating ? 1.2 : 0.5)
             .animation(.easeInOut(duration: 1.3), value: isAnimating)
             ProgressView()
-                .padding(.top, 280)
+                .padding(.top, 300)
         }
         .onAppear {
             self.isAnimating = true

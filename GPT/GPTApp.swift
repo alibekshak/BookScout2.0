@@ -5,12 +5,25 @@ struct GPTApp: App {
     
     @StateObject private var appState = GenreSelectionViewModel()
     
+    @State var isAppLoaded: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            if appState.selectedGenres.isEmpty {
-                GenreSelectionView(viewModel: appState)
+            if isAppLoaded {
+                if appState.selectedGenres.isEmpty {
+                    GenreSelectionView(viewModel: appState)
+                } else {
+                    MainPages(appState: appState)
+                }
             } else {
-                MainPages(appState: appState)
+                LaunchScreen()
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        withAnimation {
+                            self.isAppLoaded = true
+                        }
+                    }
+                }
             }
         }
     }
