@@ -20,6 +20,7 @@
 		187BE2D02BE348E6002F3D8C /* ChatButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BE2CF2BE348E6002F3D8C /* ChatButtonView.swift */; };
 		187BE2F22BEC8607002F3D8C /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BE2F12BEC8607002F3D8C /* CustomColors.swift */; };
 		187BE3042BF1D922002F3D8C /* DarkButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BE3032BF1D922002F3D8C /* DarkButtonStyle.swift */; };
+		187BE3072BF3168C002F3D8C /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BE3062BF3168C002F3D8C /* LaunchScreen.swift */; };
 		1885B2382A5FA54A00FE7861 /* Blogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885B2372A5FA54A00FE7861 /* Blogs.swift */; };
 		1885B23A2A5FA62C00FE7861 /* ChatBlogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885B2392A5FA62C00FE7861 /* ChatBlogs.swift */; };
 		188868E02A66EB3C0048548F /* FavoritesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188868DF2A66EB3C0048548F /* FavoritesList.swift */; };
@@ -60,6 +61,7 @@
 		187BE2CF2BE348E6002F3D8C /* ChatButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatButtonView.swift; sourceTree = "<group>"; };
 		187BE2F12BEC8607002F3D8C /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		187BE3032BF1D922002F3D8C /* DarkButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkButtonStyle.swift; sourceTree = "<group>"; };
+		187BE3062BF3168C002F3D8C /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		1885B2372A5FA54A00FE7861 /* Blogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blogs.swift; sourceTree = "<group>"; };
 		1885B2392A5FA62C00FE7861 /* ChatBlogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBlogs.swift; sourceTree = "<group>"; };
 		188868DF2A66EB3C0048548F /* FavoritesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesList.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		187BE2E92BE8A71C002F3D8C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				187BE3052BF31660002F3D8C /* LaunchScreen */,
 				1821957A2A567E5700093BA4 /* Main */,
 				18E4BC232BCFFC7600BBC06F /* GenreView */,
 				18E4BC242BCFFD3100BBC06F /* AuxiliaryForMain */,
@@ -175,6 +178,14 @@
 				187BE3032BF1D922002F3D8C /* DarkButtonStyle.swift */,
 			);
 			path = Design;
+			sourceTree = "<group>";
+		};
+		187BE3052BF31660002F3D8C /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				187BE3062BF3168C002F3D8C /* LaunchScreen.swift */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		188AE85B2A52C8310094A212 = {
@@ -346,6 +357,7 @@
 				188AE8872A53E28A0094A212 /* ButtonFind.swift in Sources */,
 				188AE8992A545CEC0094A212 /* SelectAuthor.swift in Sources */,
 				188AE8832A53D2100094A212 /* MessageRow.swift in Sources */,
+				187BE3072BF3168C002F3D8C /* LaunchScreen.swift in Sources */,
 				182195862A5D64C700093BA4 /* ChatCategoriesView.swift in Sources */,
 				1858B83E2A72503F00CF9FC3 /* GenerSelectionView.swift in Sources */,
 				188AE89D2A545D400094A212 /* SameBook.swift in Sources */,
