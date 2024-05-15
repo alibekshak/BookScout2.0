@@ -21,6 +21,9 @@
 		187BE2F22BEC8607002F3D8C /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BE2F12BEC8607002F3D8C /* CustomColors.swift */; };
 		187BE3042BF1D922002F3D8C /* DarkButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BE3032BF1D922002F3D8C /* DarkButtonStyle.swift */; };
 		187BE3072BF3168C002F3D8C /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BE3062BF3168C002F3D8C /* LaunchScreen.swift */; };
+		187BE3102BF46B42002F3D8C /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BE30F2BF46B42002F3D8C /* TabView.swift */; };
+		187BE3122BF46C24002F3D8C /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BE3112BF46C24002F3D8C /* Tab.swift */; };
+		187BE3142BF46D07002F3D8C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BE3132BF46D07002F3D8C /* CustomView.swift */; };
 		1885B2382A5FA54A00FE7861 /* Blogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885B2372A5FA54A00FE7861 /* Blogs.swift */; };
 		1885B23A2A5FA62C00FE7861 /* ChatBlogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885B2392A5FA62C00FE7861 /* ChatBlogs.swift */; };
 		188868E02A66EB3C0048548F /* FavoritesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188868DF2A66EB3C0048548F /* FavoritesList.swift */; };
@@ -62,6 +65,9 @@
 		187BE2F12BEC8607002F3D8C /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		187BE3032BF1D922002F3D8C /* DarkButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkButtonStyle.swift; sourceTree = "<group>"; };
 		187BE3062BF3168C002F3D8C /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		187BE30F2BF46B42002F3D8C /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		187BE3112BF46C24002F3D8C /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		187BE3132BF46D07002F3D8C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		1885B2372A5FA54A00FE7861 /* Blogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blogs.swift; sourceTree = "<group>"; };
 		1885B2392A5FA62C00FE7861 /* ChatBlogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBlogs.swift; sourceTree = "<group>"; };
 		188868DF2A66EB3C0048548F /* FavoritesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesList.swift; sourceTree = "<group>"; };
@@ -106,6 +112,7 @@
 			children = (
 				188AE86B2A52C8330094A212 /* Assets.xcassets */,
 				187BE2F12BEC8607002F3D8C /* CustomColors.swift */,
+				187BE3112BF46C24002F3D8C /* Tab.swift */,
 			);
 			path = auxiliary;
 			sourceTree = "<group>";
@@ -162,6 +169,7 @@
 		187BE2E92BE8A71C002F3D8C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				187BE30E2BF46B31002F3D8C /* TabView */,
 				187BE3052BF31660002F3D8C /* LaunchScreen */,
 				1821957A2A567E5700093BA4 /* Main */,
 				18E4BC232BCFFC7600BBC06F /* GenreView */,
@@ -186,6 +194,15 @@
 				187BE3062BF3168C002F3D8C /* LaunchScreen.swift */,
 			);
 			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		187BE30E2BF46B31002F3D8C /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				187BE30F2BF46B42002F3D8C /* TabView.swift */,
+				187BE3132BF46D07002F3D8C /* CustomView.swift */,
+			);
+			path = TabView;
 			sourceTree = "<group>";
 		};
 		188AE85B2A52C8310094A212 = {
@@ -343,16 +360,19 @@
 				188AE8812A53D1E20094A212 /* MessageView.swift in Sources */,
 				18548AB02A610F6D007E9AE6 /* CategoryView.swift in Sources */,
 				188AE87B2A531CF60094A212 /* GPTModels.swift in Sources */,
+				187BE3142BF46D07002F3D8C /* CustomView.swift in Sources */,
 				1858B8402A72506700CF9FC3 /* GenreListButton.swift in Sources */,
 				1858B83A2A724E8300CF9FC3 /* ChatViewModel.swift in Sources */,
 				18E4BC1F2BCFF42400BBC06F /* GenreSelectionViewModel.swift in Sources */,
 				188868E22A67CBA20048548F /* ButtonsForTransition.swift in Sources */,
 				18E4BC2A2BD11BA000BBC06F /* CategoriesView.swift in Sources */,
+				187BE3122BF46C24002F3D8C /* Tab.swift in Sources */,
 				1885B23A2A5FA62C00FE7861 /* ChatBlogs.swift in Sources */,
 				188AE89F2A545D740094A212 /* ButtonHouse.swift in Sources */,
 				188AE8792A531C510094A212 /* ChatGPTAPI.swift in Sources */,
 				188AE8A12A545DA30094A212 /* WordField.swift in Sources */,
 				186EEE852BCD7B01007A6F5F /* ChatCategoryViewModel.swift in Sources */,
+				187BE3102BF46B42002F3D8C /* TabView.swift in Sources */,
 				1885B2382A5FA54A00FE7861 /* Blogs.swift in Sources */,
 				188AE8872A53E28A0094A212 /* ButtonFind.swift in Sources */,
 				188AE8992A545CEC0094A212 /* SelectAuthor.swift in Sources */,
