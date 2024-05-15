@@ -9,21 +9,23 @@ import SwiftUI
 
 struct TabView: View {
     
-    @StateObject private var appState = GenreSelectionViewModel()
+    @StateObject var appState: GenreSelectionViewModel
+    @StateObject var chatViewModel = ChatViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
+    
     
     @State var selectedTab: Tab = .main
     
     var body: some View {
         NavigationStack {
             VStack(spacing: .zero) {
-//                switch selectedTab {
-//                case .main:
-//                    MainPages(appState: appState)
-//                case .chat:
-//                    <#code#>
-//                case .genre:
-//                    <#code#>
-//                }
+                switch selectedTab {
+                case .main:
+                    MainPages()
+                case .chat:
+                    ChatView(vm: chatViewModel)
+                case .genre:
+                    GenreSelectionView(viewModel: appState)
+                }
                 CustomView(selectedTab: $selectedTab)
             }
         }
@@ -31,5 +33,5 @@ struct TabView: View {
 }
 
 #Preview {
-    TabView()
+    TabView(appState: GenreSelectionViewModel())
 }

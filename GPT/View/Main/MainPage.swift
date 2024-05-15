@@ -8,13 +8,12 @@ struct MainPages: View {
     @StateObject private var vmfavorite = ChatCategoryViewModel(api:  ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE")
     @StateObject var vm = ChatBlogsViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
     @StateObject var favoritesListViewMode = FavoritesListViewModel(vm: FavoritesViewModel())
-    @StateObject var appState: GenreSelectionViewModel
     @StateObject var chatViewModel = ChatViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
     @StateObject var chatBookViewModel = ChatBookViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
     
     var body: some View {
         NavigationView {
-            MainPage(API: API, favoritesViewModel: favoritesViewModel, vm: vm, vmfavorite: vmfavorite, favoritesListViewModel: favoritesListViewMode, appState: appState, chatViewModel: chatViewModel, chatBookViewModel: chatBookViewModel)
+            MainPage(API: API, favoritesViewModel: favoritesViewModel, vm: vm, vmfavorite: vmfavorite, favoritesListViewModel: favoritesListViewMode, chatViewModel: chatViewModel, chatBookViewModel: chatBookViewModel)
         }
     }
 }
@@ -27,7 +26,6 @@ struct MainPage: View {
     @StateObject var vm: ChatBlogsViewModel
     @StateObject var vmfavorite: ChatCategoryViewModel
     @StateObject var favoritesListViewModel: FavoritesListViewModel
-    @StateObject var appState: GenreSelectionViewModel
     @StateObject var chatViewModel: ChatViewModel
     @StateObject var chatBookViewModel: ChatBookViewModel
     
@@ -36,17 +34,14 @@ struct MainPage: View {
     @State var isFavoritesListPresented = false
     
     var body: some View {
-        NavigationStack {
-            ZStack(alignment: .leading) {
-                CustomColors.backgroundColor
-                    .ignoresSafeArea()
-                VStack(spacing: .zero) {
-                    appTitle
-                    ScrollView(.vertical, showsIndicators: false) {
-                        mainFunctions
-                        blogs
-                    }
-                    tabView
+        ZStack(alignment: .leading) {
+            CustomColors.backgroundColor
+                .ignoresSafeArea()
+            VStack(spacing: .zero) {
+                appTitle
+                ScrollView(.vertical, showsIndicators: false) {
+                    mainFunctions
+                    blogs
                 }
             }
         }
@@ -114,22 +109,12 @@ struct MainPage: View {
         }
         .padding(.top)
     }
-    
-    var tabView: some View {
-        VStack(spacing: 6) {
-            Divider()
-            HStack(spacing: 90) {
-                ChatButtonView(viewModel: chatViewModel)
-                GenreListButton(appState: appState)
-            }
-        }
-    }
 }
 
 
 struct MainPage_Previews: PreviewProvider {
     static var previews: some View {
-        MainPages(appState: GenreSelectionViewModel())
+        MainPages()
     }
 }
 

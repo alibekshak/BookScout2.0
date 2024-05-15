@@ -76,6 +76,7 @@ struct ChatView: View {
                 .disabled(vm.inputMessage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || vm.isInteractingWithChatGPT)
         }
         .padding(.horizontal, 16)
+        .padding(.bottom, 4)
         .padding(.top, 12)
     }
     

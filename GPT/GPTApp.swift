@@ -13,7 +13,7 @@ struct GPTApp: App {
                 if appState.selectedGenres.isEmpty {
                     GenreSelectionView(viewModel: appState)
                 } else {
-                    MainPages(appState: appState)
+                    TabView(appState: appState)
                 }
             } else {
                 LaunchScreen()
