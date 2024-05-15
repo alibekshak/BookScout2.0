@@ -21,7 +21,7 @@ struct CustomView: View {
                     } label: {
                         Image(systemName: tab.image)
                             .frame(maxWidth: .infinity)
-                            .font(.system(size: 22, weight: .semibold))
+                            .font(.system(size: 26, weight: .semibold))
                             .foregroundColor(selectedTab == tab ? .gray : .black)
                     }
                 }

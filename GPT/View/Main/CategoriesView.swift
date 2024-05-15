@@ -115,8 +115,8 @@ struct CategoriesView: View {
                 exclamationButton
                 ButtonHouse()
             }
+            .padding(.top, 8)
         }
-        .padding(.top)
     }
     
     var exclamationButton: some View {
