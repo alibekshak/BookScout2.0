@@ -7,13 +7,25 @@ struct ChatView: View {
     @FocusState var isTextFieldFocused: Bool
     
     var body: some View {
-        chatListView
-            .navigationTitle("Чат AI")
-            .navigationBarItems(
-                leading: Chevron().imageScale(.small),
-                trailing: refreshButton.imageScale(.small)
-            )
-            .navigationBarBackButtonHidden(true)
+        VStack(spacing: .zero) {
+            navigationBar
+            chatListView
+        }
+        .navigationBarBackButtonHidden(true)
+    }
+    
+    var navigationBar: some View {
+        HStack {
+            Chevron()
+            Spacer()
+            Text("Чат AI")
+                .foregroundColor(.black)
+                .font(.system(size: 26, weight: .semibold))
+            Spacer()
+            refreshButton
+        }
+        .padding(.horizontal, 30)
+        .padding(.bottom, 32)
     }
     
     var chatListView: some View {
@@ -48,17 +60,14 @@ struct ChatView: View {
     
     func bottomView(image: String, proxy: ScrollViewProxy) -> some View {
         HStack(alignment: .top, spacing: 8) {
-            
             Image(image)
                 .resizable()
                 .frame(width: 30, height: 30)
                 .cornerRadius(10)
-            
             TextField("Send message", text: $vm.inputMessage, axis: .vertical)
                 .textFieldStyle(.roundedBorder)
                 .focused($isTextFieldFocused)
                 .disabled(vm.isInteractingWithChatGPT)
-            
                 Button {
                     Task { @MainActor in
                         isTextFieldFocused = false

@@ -8,10 +8,24 @@ struct ChatBlogsView: View {
     @State private var showingSheet = false
     
     var body: some View {
-        chatListView
-            .navigationTitle("Blog")
-            .navigationBarItems(leading: vm.isGeneratingText ? nil : Chevron().imageScale(.small))
-            .navigationBarBackButtonHidden(true)
+        VStack(spacing: .zero) {
+            navigationBar
+            chatListView
+        }
+        .navigationBarBackButtonHidden(true)
+    }
+    
+    var navigationBar: some View {
+        HStack {
+            Chevron()
+            Spacer()
+            Text("Blog")
+                .foregroundColor(.black)
+                .font(.system(size: 26, weight: .semibold))
+            Spacer()
+        }
+        .padding(.horizontal, 30)
+        .padding(.bottom, 32)
     }
     
     var chatListView: some View {
