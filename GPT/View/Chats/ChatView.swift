@@ -7,25 +7,30 @@ struct ChatView: View {
     @FocusState var isTextFieldFocused: Bool
     
     var body: some View {
-        VStack(spacing: .zero) {
-            navigationBar
-            chatListView
+        ZStack {
+            CustomColors.backgroundColor
+                .ignoresSafeArea()
+            VStack(spacing: .zero) {
+                navigationBar
+                chatListView
+            }
         }
         .navigationBarBackButtonHidden(true)
+
     }
     
     var navigationBar: some View {
         HStack {
-            Chevron()
             Spacer()
             Text("Чат AI")
                 .foregroundColor(.black)
                 .font(.system(size: 26, weight: .semibold))
+                .padding(.leading)
             Spacer()
             refreshButton
         }
         .padding(.horizontal, 30)
-        .padding(.bottom, 32)
+        .padding(.bottom, 24)
     }
     
     var chatListView: some View {
@@ -38,7 +43,6 @@ struct ChatView: View {
                 scrollToBottom(proxy: proxy)
             }
         }
-        .background(CustomColors.backgroundColor)
     }
     
     var messages: some View {
@@ -99,7 +103,7 @@ struct ChatView: View {
             vm.refreshChat()
         }) {
             Image(systemName: "arrow.clockwise")  .foregroundColor(.black)
-                .font(.title)
+                .imageScale(.large)
                 .opacity(vm.isInteractingWithChatGPT ? 0 : 1)
                 .disabled(vm.isInteractingWithChatGPT)
         }

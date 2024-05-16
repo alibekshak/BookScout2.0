@@ -8,9 +8,13 @@ struct ChatBlogsView: View {
     @State private var showingSheet = false
     
     var body: some View {
-        VStack(spacing: .zero) {
-            navigationBar
-            chatListView
+        ZStack {
+            CustomColors.backgroundColor
+                .ignoresSafeArea()
+            VStack(spacing: .zero) {
+                navigationBar
+                chatListView
+            }
         }
         .navigationBarBackButtonHidden(true)
     }
@@ -38,7 +42,6 @@ struct ChatBlogsView: View {
                 scrollToBottom(proxy: proxy)
             }
         }
-        .background(CustomColors.backgroundColor)
     }
     
     var message: some View {
