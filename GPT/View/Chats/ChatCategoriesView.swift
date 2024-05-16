@@ -13,20 +13,37 @@ struct ChatCategoryView: View {
     @State private var isFavoritesListPresented = false
     
     var body: some View {
-        chatListView
-            .navigationTitle("Категория")
-            .navigationBarItems(leading: vm.isGeneratingText ? nil : Chevron().imageScale(.small))
-            .navigationBarBackButtonHidden(true)
-            .onAppear {
-                // Load favorites from UserDefaults
-                let decoder = JSONDecoder()
-                if let data = UserDefaults.standard.data(forKey: "FavoriteItems"),
-                   let decodedData = try? decoder.decode([FavoriteItem].self, from: data) {
-                    vm.favoritesViewModel.favoriteItems = decodedData
-                }
+        ZStack {
+            CustomColors.backgroundColor
+                .ignoresSafeArea()
+            VStack(spacing: .zero) {
+                navigationBar
+                chatListView
             }
+        }
+        .navigationBarBackButtonHidden(true)
+        .onAppear {
+            // Load favorites from UserDefaults
+            let decoder = JSONDecoder()
+            if let data = UserDefaults.standard.data(forKey: "FavoriteItems"),
+               let decodedData = try? decoder.decode([FavoriteItem].self, from: data) {
+                vm.favoritesViewModel.favoriteItems = decodedData
+            }
+        }
     }
     
+    var navigationBar: some View {
+        HStack {
+            Chevron()
+            Spacer()
+            Text("Категория")
+                .foregroundColor(.black)
+                .font(.system(size: 26, weight: .semibold))
+            Spacer()
+        }
+        .padding(.horizontal, 30)
+        .padding(.bottom, 32)
+    }
     
     var chatListView: some View {
         ScrollViewReader { proxy in
@@ -49,7 +66,6 @@ struct ChatCategoryView: View {
             }
             .onChange(of: vm.messages.last?.responseText) { _ in scrollToBottom(proxy: proxy) }
         }
-        .background(CustomColors.backgroundColor)
     }
     
     func bottomView(image: String, proxy: ScrollViewProxy) -> some View {
