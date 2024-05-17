@@ -1,33 +1,12 @@
 import SwiftUI
 
-struct MainPages: View {
+struct MainPage: View {
     
     var API = ChatGPTAPI(apiKey: "PROVIDE_API_KEY")
     
-    @StateObject private var favoritesViewModel = FavoritesViewModel()
-    @StateObject private var vmfavorite = ChatCategoryViewModel(api:  ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE")
     @StateObject var vm = ChatBlogsViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
-    @StateObject var favoritesListViewMode = FavoritesListViewModel(vm: FavoritesViewModel())
-    @StateObject var chatViewModel = ChatViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
+    @StateObject var favoritesListViewModel = FavoritesListViewModel()
     @StateObject var chatBookViewModel = ChatBookViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
-    
-    var body: some View {
-        NavigationView {
-            MainPage(API: API, favoritesViewModel: favoritesViewModel, vm: vm, vmfavorite: vmfavorite, favoritesListViewModel: favoritesListViewMode, chatViewModel: chatViewModel, chatBookViewModel: chatBookViewModel)
-        }
-    }
-}
-
-struct MainPage: View {
-    
-    var API: ChatGPTAPI
-    
-    @StateObject var favoritesViewModel: FavoritesViewModel
-    @StateObject var vm: ChatBlogsViewModel
-    @StateObject var vmfavorite: ChatCategoryViewModel
-    @StateObject var favoritesListViewModel: FavoritesListViewModel
-    @StateObject var chatViewModel: ChatViewModel
-    @StateObject var chatBookViewModel: ChatBookViewModel
     
     @State var isActiveBlog: Bool = false
     @State var isActiveBlog2: Bool = false
@@ -114,7 +93,7 @@ struct MainPage: View {
 
 struct MainPage_Previews: PreviewProvider {
     static var previews: some View {
-        MainPages()
+        MainPage()
     }
 }
 

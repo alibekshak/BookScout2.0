@@ -20,7 +20,7 @@ struct TabView: View {
             VStack(spacing: .zero) {
                 switch selectedTab {
                 case .main:
-                    MainPages()
+                    MainPage()
                 case .chat:
                     ChatView(vm: chatViewModel)
                 case .genre:

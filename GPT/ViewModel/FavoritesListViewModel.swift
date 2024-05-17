@@ -10,14 +10,13 @@ import SwiftUI
 
 class FavoritesListViewModel: ObservableObject {
     
-    var vm: FavoritesViewModel
+    var vm = FavoritesViewModel()
     
     @Published var favoriteItems: [FavoriteItem]
     @Published var isRefreshing = false
     @Published var refreshID = UUID()
     
-    init(vm: FavoritesViewModel) {
-        self.vm = vm
+    init() {
         self.favoriteItems = vm.favoriteItems
     }
     
