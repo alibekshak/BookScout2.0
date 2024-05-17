@@ -20,7 +20,7 @@ struct CategoryView: View{
                         Text(title)
                             .font(.title2)
                             .fontWeight(.black)
-                            .foregroundColor(.primary)
+                            .foregroundColor(.black)
                         VStack(alignment: .leading) {
                             Text(text)
                             Text(text2)

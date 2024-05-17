@@ -18,7 +18,6 @@ struct LaunchScreen: View {
             VStack(spacing: 20) {
                 Text("BookScout")
                     .font(.system(size: 38, weight: .semibold))
-                    .foregroundColor(Color.black)
                 Image(systemName: "book.closed")
                     .font(
                         .system(
@@ -29,9 +28,12 @@ struct LaunchScreen: View {
                     )
                     .rotationEffect(.degrees(15), anchor: .center)
             }
+            .foregroundColor(.black)
             .scaleEffect(isAnimating ? 1.2 : 0.5)
             .animation(.easeInOut(duration: 1.3), value: isAnimating)
             ProgressView()
+                .progressViewStyle(CircularProgressViewStyle())
+                .tint(.black)
                 .padding(.top, 300)
         }
         .onAppear {

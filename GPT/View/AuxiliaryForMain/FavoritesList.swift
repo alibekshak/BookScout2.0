@@ -9,19 +9,21 @@ struct FavoritesListView: View {
     @State private var isEditing = false
     
     var body: some View {
-        NavigationView {
-            VStack {
-                navigationBar
-                List {
-                    ForEach(viewModel.favoriteItems) { item in
-                        Text(item.title)
+            ZStack {
+                CustomColors.backgroundColor
+                VStack {
+                    navigationBar
+                    List {
+                        ForEach(viewModel.favoriteItems) { item in
+                            Text(item.title)
+                        }
+                        .onDelete(perform: viewModel.deleteFavoriteItem)
+                        .onMove(perform: viewModel.moveFavoriteItem)
                     }
-                    .onDelete(perform: viewModel.deleteFavoriteItem)
-                    .onMove(perform: viewModel.moveFavoriteItem)
+                    .background(CustomColors.backgroundColor)
+                    .environment(\.editMode, isEditing ? .constant(.active) : .constant(.inactive))
                 }
-                .environment(\.editMode, isEditing ? .constant(.active) : .constant(.inactive))
             }
-        }
         .onAppear {
             viewModel.refreshFavoriteItems()
         }

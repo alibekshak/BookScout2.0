@@ -16,7 +16,7 @@ struct MessageRowView: View {
         VStack(spacing: .zero) {
             if let text = message.responseText {
                 Divider()
-                messageRowContent(text: text, bgColor: colorScheme == .light ? .gray.opacity(0.1) : CustomColors.darkGray, responseError: message.responseError, showDotLoading: message.isInteractingWithChatGPT)
+                messageRowContent(text: text, bgColor:  CustomColors.backgroundColor, responseError: message.responseError, showDotLoading: message.isInteractingWithChatGPT)
                 Divider()
             }
         }
