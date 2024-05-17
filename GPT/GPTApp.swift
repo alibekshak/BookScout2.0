@@ -11,7 +11,7 @@ struct GPTApp: App {
         WindowGroup {
             if isAppLoaded {
                 if appState.selectedGenres.isEmpty {
-                    GenreSelectionView(viewModel: appState)
+                    GenreSelectionView(viewModel: appState, states: .firstOpen)
                 } else {
                     TabView(appState: appState)
                 }

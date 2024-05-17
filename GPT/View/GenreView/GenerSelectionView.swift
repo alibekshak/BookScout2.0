@@ -1,8 +1,15 @@
 import SwiftUI
 
+enum States {
+    case firstOpen
+    case genreTab
+}
+
 struct GenreSelectionView: View {
     
     @StateObject var viewModel: GenreSelectionViewModel
+    
+    @State var states: States
     
     @Environment(\.dismiss) var dismiss
     
@@ -12,7 +19,9 @@ struct GenreSelectionView: View {
                 .ignoresSafeArea()
             ZStack(alignment: .bottom) {
                 VStack {
-                    dismissButton
+                    if states == .firstOpen {
+                        dismissButton
+                    }
                     textInfo
                     scrollView
                 }
@@ -90,7 +99,7 @@ struct GenreSelectionView: View {
                 dismiss()
             }
         }) {
-            Text("Далее")
+            Text(states == .firstOpen ? "Далее" : "Принять")
                 .frame(maxWidth: .infinity)
         }
         .buttonStyle(DarkButtonStyle())
