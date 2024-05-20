@@ -30,23 +30,23 @@ struct FavoritesListView: View {
     }
     
     var navigationBar: some View {
-        HStack(spacing: 50) {
+        HStack {
             Button(action: {
                 isEditing.toggle()
             }, label: {
                 Image(systemName: isEditing ? "line.3.horizontal.decrease" : "line.horizontal.3")
                     .font(.title2)
             })
+            Spacer()
             Text("Избранное")
                 .font(.title)
                 .foregroundColor(.black)
                 .padding(.leading)
-            Button("Закрыть") {
-                dismiss()
-            }
+            Spacer()
+            XmarkButton()
         }
         .padding(.top)
-        .padding(.horizontal)
+        .padding(.horizontal, 30)
     }
 }
 
