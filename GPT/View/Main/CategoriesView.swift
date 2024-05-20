@@ -101,7 +101,7 @@ struct CategoriesView: View {
             Spacer()
             Text(categoryName == .nonFiction ? "Выбери категорию:" : "Выбери жанр:")
                 .foregroundColor(Color.black)
-                .font(.title)
+                .font(.system(size: 24, weight: .semibold))
             Spacer()
         }
         .padding(.horizontal, 28)

@@ -32,7 +32,7 @@ struct MainPage: View {
     var appTitle: some View {
         HStack {
             Text("BookScout")
-                .font(.system(size: 36))
+                .font(.system(size: 36, weight: .bold))
                 .foregroundColor(Color.black)
             Spacer()
             Button(action: {
@@ -49,7 +49,7 @@ struct MainPage: View {
     var mainFunctions: some View {
         VStack(alignment: .leading) {
             Text("Жанры и темы")
-                .font(.system(size: 22))
+                .font(.system(size: 22, weight: .semibold))
                 .foregroundColor(Color.black)
                 .padding(.horizontal, 30)
             
@@ -69,7 +69,7 @@ struct MainPage: View {
     var blogs: some View {
         VStack(alignment: .leading) {
             Text("Блог о книгах")
-                .font(.system(size: 22))
+                .font(.system(size: 22, weight: .semibold))
                 .foregroundColor(Color.black)
                 .padding(.horizontal, 30)
             
