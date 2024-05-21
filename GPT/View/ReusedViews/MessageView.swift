@@ -15,9 +15,7 @@ struct MessageRowView: View {
     var body: some View {
         VStack(spacing: .zero) {
             if let text = message.responseText {
-                Divider()
                 messageRowContent(text: text, bgColor:  CustomColors.backgroundColor, responseError: message.responseError, showDotLoading: message.isInteractingWithChatGPT)
-                Divider()
             }
         }
     }
@@ -32,7 +30,6 @@ struct MessageRowView: View {
                 Text("We cannot load info right now. Please try again.")
                     .foregroundColor(.red)
                     .multilineTextAlignment(.leading)
-
                 Button("Regenerate response") {
                     retryCallback(message)
                 }
@@ -44,7 +41,7 @@ struct MessageRowView: View {
                     .frame(width: 60, height: 30)
             }
         }
-        .padding(16)
+        .padding(.horizontal, 16)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(bgColor)
     }

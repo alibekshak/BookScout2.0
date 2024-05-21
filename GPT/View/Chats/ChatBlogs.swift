@@ -13,6 +13,7 @@ struct ChatBlogsView: View {
                 .ignoresSafeArea()
             VStack(spacing: .zero) {
                 navigationBar
+                Divider()
                 chatListView
             }
         }
@@ -29,7 +30,7 @@ struct ChatBlogsView: View {
             Spacer()
         }
         .padding(.horizontal, 30)
-        .padding(.bottom, 32)
+        .padding(.bottom, 22)
     }
     
     var chatListView: some View {

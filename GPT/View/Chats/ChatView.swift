@@ -12,6 +12,7 @@ struct ChatView: View {
                 .ignoresSafeArea()
             VStack(spacing: .zero) {
                 navigationBar
+                Divider()
                 chatListView
             }
         }
@@ -30,7 +31,7 @@ struct ChatView: View {
             refreshButton
         }
         .padding(.horizontal, 30)
-        .padding(.bottom, 24)
+        .padding(.bottom, 22)
     }
     
     var chatListView: some View {
