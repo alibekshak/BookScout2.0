@@ -2,6 +2,8 @@ import SwiftUI
 
 class FavoritesViewModel: ObservableObject {
     private let userDefaultsKey = "FavoriteItems"
+    
+    static let shared = FavoritesViewModel()
 
     @Published var favoriteItems: [FavoriteItem] {
             didSet {

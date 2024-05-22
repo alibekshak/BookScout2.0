@@ -23,12 +23,7 @@ struct ChatBookView: View {
         }
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            // Load favorites from UserDefaults
-            let decoder = JSONDecoder()
-            if let data = UserDefaults.standard.data(forKey: "FavoriteItems"),
-               let decodedData = try? decoder.decode([FavoriteItem].self, from: data) {
-                vm.favoritesViewModel.favoriteItems = decodedData
-            }
+            vm.loadFavorites()
         }
     }
     
@@ -47,7 +42,7 @@ struct ChatBookView: View {
     
     var chatListView: some View {
         ScrollViewReader { proxy in
-            VStack(spacing: .zero) {
+//            VStack(spacing: .zero) {
                 ScrollView {
                     LazyVStack(spacing: 0) {
                         ForEach(vm.messages) { message in
@@ -63,7 +58,7 @@ struct ChatBookView: View {
                     }
                 }
                 bottomView(image: "profile", proxy: proxy)
-            }
+//            }
             .onChange(of: vm.messages.last?.responseText) { _ in scrollToBottom(proxy: proxy) }
         }
     }
@@ -107,7 +102,7 @@ struct ChatBookView: View {
     var buttonSheet: some View {
         Button(action: {
             self.showingSheet = true
-        }){
+        }) {
             Image(systemName: "exclamationmark.octagon")
                 .foregroundColor(Color.black)
                 .font(.title)

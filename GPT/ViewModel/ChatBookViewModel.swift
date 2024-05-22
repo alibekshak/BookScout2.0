@@ -11,28 +11,21 @@ import SwiftUI
 class ChatBookViewModel: ObservableObject {
     @Published var isInteractingWithChatGPT = false
     @Published var messages: [MessageRow] = []
-    @Published var inputMessage: String = ""
-    @Published var isSending = false
-    @Published var favoritesViewModel = FavoritesViewModel()
+    @Published var favoritesViewModel = FavoritesViewModel.shared
     @Published var isGeneratingText = false
     
     private let userDefaults = UserDefaults.standard
     private let api: ChatGPTAPI
     
-    init(api: ChatGPTAPI, enableSpeech: Bool = false) {
+    init(api: ChatGPTAPI) {
         self.api = api
         
-        let decoder = JSONDecoder()
-        if let data = userDefaults.data(forKey: "FavoriteItems"),
-           let decodedData = try? decoder.decode([FavoriteItem].self, from: data) {
-            favoritesViewModel.favoriteItems = decodedData
-        }
+        loadFavorites()
     }
     
     @MainActor
     func sendTapped() async {
         let text = ""
-        inputMessage = ""
         await send(text: text)
     }
     
@@ -93,6 +86,15 @@ class ChatBookViewModel: ObservableObject {
         let encoder = JSONEncoder()
         if let encodedData = try? encoder.encode(favoritesViewModel.favoriteItems) {
             UserDefaults.standard.set(encodedData, forKey: "FavoriteItems")
+        }
+    }
+    
+    func loadFavorites() {
+        // Load favorites from UserDefaults
+        let decoder = JSONDecoder()
+        if let data = UserDefaults.standard.data(forKey: "FavoriteItems"),
+           let decodedData = try? decoder.decode([FavoriteItem].self, from: data) {
+            favoritesViewModel.favoriteItems = decodedData
         }
     }
 }
