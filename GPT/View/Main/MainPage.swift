@@ -74,11 +74,11 @@ struct MainPage: View {
                 .padding(.horizontal, 30)
             
             LazyVStack(spacing: 1) {
-                Blog(vm: vm, isActive: $isActiveBlog, image: "blog", text2: "Топ 3 книг которые,", text3: "стоит прочитать", text_send: "Рекомендуй 3 книг которые, стоит прочитать, напищи интерестный факт об авторах данных книг. Так же расскажи подробно почему ты выбрал эти книги")
+                Blog(vm: vm, isActive: $isActiveBlog, image: "blog", text: "Топ 3 книг которые стоит прочитать", text_send: "Рекомендуй 3 книг которые, стоит прочитать, напищи интерестный факт об авторах данных книг. Так же расскажи подробно почему ты выбрал эти книги")
                     .navigationDestination(isPresented: $isActiveBlog) {
                         ChatBlogsView(vm: vm)
                     }
-                Blog(vm: vm, isActive: $isActiveBlog2, image: "blog2", text2: "Книги о жизни", text3: nil, text_send: "Рекамендуй 3 книги о жизнe, кратко дай интерестную информацию об авторе. Так же расскажи подробно почему ты выбрал эти книги")
+                Blog(vm: vm, isActive: $isActiveBlog2, image: "blog2", text: "Книги о жизни", text_send: "Рекамендуй 3 книги о жизнe, кратко дай интерестную информацию об авторе. Так же расскажи подробно почему ты выбрал эти книги")
                     .navigationDestination(isPresented: $isActiveBlog2) {
                         ChatBlogsView(vm: vm)
                     }
