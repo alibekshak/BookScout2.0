@@ -40,24 +40,11 @@ struct CategoriesView: View {
     var categoriesScroll: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(spacing: -3) {
-                imageChose
                 categories
             }
             .padding(.horizontal, 10)
             .padding(.bottom)
         }
-    }
-    
-    var imageChose: some View {
-        VStack{
-            Image(categoryName == .nonFiction ? "search_nonfic_cat" : "select_category")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 335, height: 184)
-                .clipped()
-                .cornerRadius(10)
-        }
-        .padding()
     }
     
     var categories: some View {
@@ -111,10 +98,12 @@ struct CategoriesView: View {
     var tabView: some View {
         VStack(spacing: .zero) {
             Divider()
-            HStack(spacing: 120) {
+            HStack {
                 exclamationButton
+                Spacer()
                 ButtonHouse()
             }
+            .padding(.horizontal, 110)
             .padding(.top, 8)
         }
     }

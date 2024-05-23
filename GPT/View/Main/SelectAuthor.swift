@@ -15,7 +15,7 @@ struct SelectAuthorFiction: View {
             VStack {
                 navigationBar
                 VStack(spacing: 60) {
-                    wordField
+                    WordField(word: $author, placeholder: "Харуки Мураками")
                     textWarning
                 }
                 Spacer()
@@ -37,12 +37,6 @@ struct SelectAuthorFiction: View {
             Spacer()
         }
         .padding(.bottom, 30)
-    }
-    
-    var wordField: some View {
-        VStack {
-            WordField(word: $author, placeholder: "Харуки Мураками")
-        }
     }
     
     var textWarning: some View {
