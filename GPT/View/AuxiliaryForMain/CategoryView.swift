@@ -7,39 +7,33 @@ struct CategoryView: View{
     
     var title: String
     var text: String
-    var text2: String
-    var text3: String
     var text_send: String
     
     var body: some View{
-        ZStack {
-            Color.white
-            NavigationLink(destination: ChatCategoryView(vm: vm)){
-                HStack {
-                    VStack(alignment: .leading) {
+        NavigationLink(destination: ChatCategoryView(vm: vm)){
+            ZStack {
+                Color.white
+                    VStack(alignment: .leading, spacing: 12) {
                         Text(title)
                             .font(.title2)
                             .fontWeight(.black)
                             .foregroundColor(.black)
-                        VStack(alignment: .leading) {
-                            Text(text)
-                            Text(text2)
-                            Text(text3)
-                        }
-                        .font(.headline)
-                        .foregroundColor(.black.opacity(0.6))
+                        Text(text)
+                            .font(.headline)
+                            .foregroundColor(.black.opacity(0.6))
+                            .multilineTextAlignment(.leading)
                     }
-                    Spacer()
-                }
-                .padding()
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
             }
             .simultaneousGesture(TapGesture().onEnded {
                 sendCategory()
             })
         }
-        .cornerRadius(10)
+        .cornerRadius(20)
         .overlay(
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 20)
                 .stroke(CustomColors.strokeColor, lineWidth: 1)
         )
         .padding([.top, .horizontal])
