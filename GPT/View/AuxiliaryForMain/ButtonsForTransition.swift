@@ -18,9 +18,9 @@ struct ButtonsForTransition<Destination: View>: View {
                     .foregroundColor(Color.black.opacity(0.8))
                     .padding(.bottom)
             }
-            .cornerRadius(10)
+            .cornerRadius(20)
             .overlay(
-                RoundedRectangle(cornerRadius: 10)
+                RoundedRectangle(cornerRadius: 20)
                     .stroke(CustomColors.strokeColor, lineWidth: 1)
             )
             .padding()

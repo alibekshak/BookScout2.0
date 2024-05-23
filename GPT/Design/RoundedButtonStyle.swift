@@ -26,7 +26,7 @@ struct RoundedButtonStyle: ButtonStyle {
             .padding(15)
             .foregroundStyle(Color(.label))
             .background(
-                RoundedRectangle(cornerRadius: 15)
+                RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(backgroundColor)
             )
             .opacity(configuration.isPressed ? 0.6 : 1)

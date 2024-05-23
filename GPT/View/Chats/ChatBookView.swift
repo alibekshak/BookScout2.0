@@ -92,7 +92,7 @@ struct ChatBookView: View {
                 .foregroundColor(CustomColors.backgroundColor)
                 .frame(width: 30, height: 30)
                 .background(Color.black)
-                .cornerRadius(10)
+                .cornerRadius(20)
         }
         .alert(isPresented: $addToFavoritesTapped) {
             Alert(title: Text("Избранное"), message: Text("Текст добавлен в избранное"), dismissButton: .default(Text("Ок")))

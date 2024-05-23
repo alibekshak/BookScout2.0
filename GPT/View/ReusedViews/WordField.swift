@@ -6,7 +6,7 @@ struct WordField: View {
     
     var body: some View {
         ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: 40)
+            RoundedRectangle(cornerRadius: 20)
                 .stroke(Color.gray, lineWidth: 2)
             
             TextField(placeholder, text: $word)

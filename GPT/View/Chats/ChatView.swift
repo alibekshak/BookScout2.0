@@ -68,7 +68,7 @@ struct ChatView: View {
             Image(image)
                 .resizable()
                 .frame(width: 30, height: 30)
-                .cornerRadius(10)
+                .cornerRadius(20)
             TextField("Send message", text: $vm.inputMessage, axis: .vertical)
                 .textFieldStyle(.roundedBorder)
                 .focused($isTextFieldFocused)

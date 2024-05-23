@@ -83,7 +83,7 @@ struct ChatCategoryView: View {
                         }
                     }) {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 10)
+                            RoundedRectangle(cornerRadius: 20)
                                 .frame(width: 307, height: 44)
                                 .foregroundColor(CustomColors.customBlack)
                             
@@ -94,7 +94,7 @@ struct ChatCategoryView: View {
                         }
                         .padding(.top, 6)
                     }
-                    .cornerRadius(10)
+                    .cornerRadius(20)
                 }
             }
             VStack {
@@ -119,7 +119,7 @@ struct ChatCategoryView: View {
                 .foregroundColor(CustomColors.backgroundColor)
                 .frame(width: 30, height: 30)
                 .background(Color.black)
-                .cornerRadius(10)
+                .cornerRadius(20)
         }
         .alert(isPresented: $addToFavoritesTapped) {
             Alert(title: Text("Избранное"), message: Text("Текст добавлен в избранное"), dismissButton: .default(Text("Ок")))

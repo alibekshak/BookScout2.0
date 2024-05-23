@@ -19,7 +19,7 @@ struct DarkButtonStyle: ButtonStyle {
         backgroundColor: Color = CustomColors.customBlack,
         textColor: Color = Color.white,
         padding: CGFloat = 16,
-        cornerRadius: CGFloat = 40
+        cornerRadius: CGFloat = 20
     ) {
         self.feedbackGenerator = feedbackGenerator
         self.backgroundColor = backgroundColor
