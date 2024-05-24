@@ -21,7 +21,7 @@ struct ChatBlogsView: View {
     
     var navigationBar: some View {
         HStack {
-            Chevron()
+            Chevron(isDisabled: vm.isInteractingWithChatGPT)
             Spacer()
             Text("Blog")
                 .foregroundColor(.black)

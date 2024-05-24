@@ -28,7 +28,7 @@ struct ChatCategoryView: View {
     
     var navigationBar: some View {
         HStack {
-            Chevron()
+            Chevron(isDisabled: vm.isInteractingWithChatGPT)
             Spacer()
             Text("Категория")
                 .foregroundColor(.black)

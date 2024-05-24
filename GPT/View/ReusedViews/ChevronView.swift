@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct Chevron: View {
-    @State private var showModal = false
+    
+    var isDisabled: Bool = false
     
     @Environment(\.dismiss) var dismiss
     
@@ -22,6 +23,7 @@ struct Chevron: View {
                 .imageScale(.large)
                 .foregroundColor(.black)
         }
+        .disabled(isDisabled)
     }
 }
 
