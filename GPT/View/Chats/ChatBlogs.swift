@@ -4,7 +4,6 @@ import SwiftUI
 struct ChatBlogsView: View {
     
     @StateObject var vm: ChatBlogsViewModel
-    @FocusState var isTextFieldFocused: Bool
     @State private var showingSheet = false
     
     var body: some View {
@@ -56,20 +55,17 @@ struct ChatBlogsView: View {
                     }
                 }
             }
-            .onTapGesture {
-                isTextFieldFocused = false
-            }
         }
     }
     
     func bottomView(image: String, proxy: ScrollViewProxy) -> some View {
-        VStack {
+        VStack(spacing: .zero) {
             Divider()
             HStack(alignment: .center, spacing: 110) {
                 buttonSheet
                 ButtonHouse()
             }
-            .padding(.top)
+            .padding(.top, 8)
             .disabled( vm.isInteractingWithChatGPT)
         }
     }

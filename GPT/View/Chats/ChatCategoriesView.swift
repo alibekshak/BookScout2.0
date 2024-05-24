@@ -87,7 +87,7 @@ struct ChatCategoryView: View {
     }
     
     var tabView: some View {
-        VStack {
+        VStack(spacing: .zero) {
             Divider()
             HStack(alignment: .center, spacing: 120) {
                 buttonSheet
@@ -95,7 +95,7 @@ struct ChatCategoryView: View {
                     bookmark(generatedText: generatedText)
                 }
             }
-            .padding(.top)
+            .padding(.top, 8)
         }
     }
     

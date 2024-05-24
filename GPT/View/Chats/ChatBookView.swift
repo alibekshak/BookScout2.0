@@ -4,12 +4,11 @@ import SwiftUI
 struct ChatBookView: View {
     
     @StateObject var vm: ChatBookViewModel
+    
     @FocusState var isTextFieldFocused: Bool
+    
     @State private var showingSheet = false
-    @Environment(\.presentationMode) var presentationMode
-    @State private var shouldPopToRoot = false
     @State private var addToFavoritesTapped = false
-    @State private var isFavoritesListPresented = false
     
     var body: some View {
         ZStack {
@@ -17,7 +16,7 @@ struct ChatBookView: View {
                 .ignoresSafeArea()
             VStack(spacing: .zero) {
                 navigationBar
-                    Divider()
+                Divider()
                 chatListView
             }
         }
@@ -42,7 +41,7 @@ struct ChatBookView: View {
     
     var chatListView: some View {
         ScrollViewReader { proxy in
-//            VStack(spacing: .zero) {
+            VStack(spacing: .zero) {
                 ScrollView {
                     LazyVStack(spacing: 0) {
                         ForEach(vm.messages) { message in
@@ -58,27 +57,25 @@ struct ChatBookView: View {
                     }
                 }
                 bottomView(image: "profile", proxy: proxy)
-//            }
+            }
             .onChange(of: vm.messages.last?.responseText) { _ in scrollToBottom(proxy: proxy) }
         }
     }
     
     func bottomView(image: String, proxy: ScrollViewProxy) -> some View {
-        VStack {
+        VStack(spacing: .zero) {
             Divider()
-            Group {
-                if vm.isGeneratingText {
-                    DotLoadingView()
-                        .frame(width: 100, height: 50)
-                } else {
-                    HStack(alignment: .center, spacing: 120) {
-                        buttonSheet
-                        if let generatedText = vm.messages.last?.responseText {
-                            bookmark(generatedText: generatedText)
-                        }
+            if vm.isGeneratingText {
+                DotLoadingView()
+                    .frame(width: 100, height: 50)
+            } else {
+                HStack(alignment: .center, spacing: 120) {
+                    buttonSheet
+                    if let generatedText = vm.messages.last?.responseText {
+                        bookmark(generatedText: generatedText)
                     }
-                    .padding(.top)
                 }
+                .padding(.top, 8)
             }
         }
     }
@@ -107,7 +104,7 @@ struct ChatBookView: View {
                 .foregroundColor(Color.black)
                 .font(.title)
         }
-        .actionSheet(isPresented: $showingSheet){
+        .actionSheet(isPresented: $showingSheet) {
             ActionSheet(title: Text("Рекомендация"),
                         message: Text("Иногда искусственный интеллект неправильно переводит книги на русский язык, поэтому рекомендуется использовать англоязычное название книги"),
                         buttons: [.default(Text("Ок"))])

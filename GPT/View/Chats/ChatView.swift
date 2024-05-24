@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ChatView: View {
     
-    @Environment(\.colorScheme) var colorScheme
     @StateObject var vm: ChatViewModel
     @FocusState var isTextFieldFocused: Bool
     
@@ -17,7 +16,6 @@ struct ChatView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
-
     }
     
     var navigationBar: some View {
