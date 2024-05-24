@@ -13,10 +13,11 @@ struct MessageRowView: View {
     }
 
     var body: some View {
-        VStack(spacing: .zero) {
+        VStack(spacing: 8) {
             if let text = message.responseText {
                 messageRowContent(text: text, bgColor:  CustomColors.backgroundColor, responseError: message.responseError, showDotLoading: message.isInteractingWithChatGPT)
             }
+            Divider()
         }
     }
 

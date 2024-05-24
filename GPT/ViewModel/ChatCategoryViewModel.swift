@@ -14,7 +14,7 @@ class ChatCategoryViewModel: ObservableObject {
     @Published var messages: [MessageRow] = []
     @Published var inputMessage: String = ""
     @Published var isSending = false
-    @Published var favoritesViewModel = FavoritesViewModel()
+    @Published var favoritesViewModel = FavoritesViewModel.shared
     @Published var isGeneratingText = false
     
     private let userDefaults = UserDefaults.standard
@@ -25,11 +25,7 @@ class ChatCategoryViewModel: ObservableObject {
         self.api = api
         self.category = category
         
-        let decoder = JSONDecoder()
-        if let data = userDefaults.data(forKey: "FavoriteItems"),
-           let decodedData = try? decoder.decode([FavoriteItem].self, from: data) {
-            favoritesViewModel.favoriteItems = decodedData
-        }
+        loadFavorites()
     }
     
     @MainActor
@@ -98,6 +94,15 @@ class ChatCategoryViewModel: ObservableObject {
         let encoder = JSONEncoder()
         if let encodedData = try? encoder.encode(favoritesViewModel.favoriteItems) {
             UserDefaults.standard.set(encodedData, forKey: "FavoriteItems")
+        }
+    }
+    
+    func loadFavorites() {
+        // Load favorites from UserDefaults
+        let decoder = JSONDecoder()
+        if let data = UserDefaults.standard.data(forKey: "FavoriteItems"),
+           let decodedData = try? decoder.decode([FavoriteItem].self, from: data) {
+            favoritesViewModel.favoriteItems = decodedData
         }
     }
 }

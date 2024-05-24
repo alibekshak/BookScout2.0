@@ -4,13 +4,11 @@ import SwiftUI
 struct ChatCategoryView: View {
     
     @StateObject var vm: ChatCategoryViewModel
+    
     @FocusState var isTextFieldFocused: Bool
+    
     @State private var showingSheet = false
-    @State private var isLoading = false
-    @Environment(\.presentationMode) var presentationMode
-    @State private var shouldPopToRoot = false
     @State private var addToFavoritesTapped = false
-    @State private var isFavoritesListPresented = false
     
     var body: some View {
         ZStack {
@@ -24,12 +22,7 @@ struct ChatCategoryView: View {
         }
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            // Load favorites from UserDefaults
-            let decoder = JSONDecoder()
-            if let data = UserDefaults.standard.data(forKey: "FavoriteItems"),
-               let decodedData = try? decoder.decode([FavoriteItem].self, from: data) {
-                vm.favoritesViewModel.favoriteItems = decodedData
-            }
+            vm.loadFavorites()
         }
     }
     
@@ -50,7 +43,7 @@ struct ChatCategoryView: View {
         ScrollViewReader { proxy in
             VStack(spacing: .zero) {
                 ScrollView {
-                    LazyVStack(spacing: 0) {
+                    LazyVStack(spacing: 4) {
                         ForEach(vm.messages) { message in
                             MessageRowView(message: message) { message in
                                 Task { @MainActor in
@@ -71,42 +64,38 @@ struct ChatCategoryView: View {
     
     func bottomView(image: String, proxy: ScrollViewProxy) -> some View {
         VStack {
-            if isLoading {
-                DotLoadingView()
-            } else {
-                if !vm.isSending && !vm.isInteractingWithChatGPT {
-                    Button(action: {
-                        Task {
-                            isTextFieldFocused = false
-                            scrollToBottom(proxy: proxy)
-                            await vm.sendTapped()
-                        }
-                    }) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .frame(width: 307, height: 44)
-                                .foregroundColor(CustomColors.customBlack)
-                            
-                            Text("Предложить еще книгу")
-                                .frame(width: 307, height: 44)
-                                .foregroundColor(Color.white)
-                                .font(.system(size: 22))
-                        }
-                        .padding(.top, 6)
-                    }
-                    .cornerRadius(20)
+            if !vm.isSending && !vm.isInteractingWithChatGPT {
+                suggestButton(proxy: proxy)
+            }
+            tabView
+        }
+    }
+    
+    func suggestButton(proxy: ScrollViewProxy) -> some View {
+        Button(action: {
+            Task {
+                isTextFieldFocused = false
+                scrollToBottom(proxy: proxy)
+                await vm.sendTapped()
+            }
+        }) {
+            Text("Предложить еще книгу")
+                .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(DarkButtonStyle())
+        .padding(.horizontal, 30)
+    }
+    
+    var tabView: some View {
+        VStack {
+            Divider()
+            HStack(alignment: .center, spacing: 120) {
+                buttonSheet
+                if let generatedText = vm.messages.last?.responseText {
+                    bookmark(generatedText: generatedText)
                 }
             }
-            VStack {
-                Divider()
-                HStack(alignment: .center, spacing: 120) {
-                    buttonSheet
-                    if let generatedText = vm.messages.last?.responseText {
-                        bookmark(generatedText: generatedText)
-                    }
-                }
-                .padding(.top)
-            }
+            .padding(.top)
         }
     }
     

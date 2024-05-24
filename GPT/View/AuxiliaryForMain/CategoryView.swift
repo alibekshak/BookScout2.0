@@ -10,9 +10,10 @@ struct CategoryView: View{
     var text_send: String
     
     var body: some View{
-        NavigationLink(destination: ChatCategoryView(vm: vm)){
+     
             ZStack {
                 Color.white
+                NavigationLink(destination: ChatCategoryView(vm: vm)){
                     VStack(alignment: .leading, spacing: 12) {
                         Text(title)
                             .font(.title2)
