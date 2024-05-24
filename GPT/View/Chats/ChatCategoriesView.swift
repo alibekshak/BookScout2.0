@@ -96,6 +96,7 @@ struct ChatCategoryView: View {
                 }
             }
             .padding(.top, 8)
+            .disabled(vm.isInteractingWithChatGPT)
         }
     }
     

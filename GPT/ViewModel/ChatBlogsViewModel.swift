@@ -12,8 +12,6 @@ class ChatBlogsViewModel: ObservableObject {
     @Published var isInteractingWithChatGPT = false
     @Published var messages: [MessageRow] = []
     @Published var inputMessage: String = ""
-    @Published var isSending = false
-    @Published var isGeneratingText = false
     
     private let api: ChatGPTAPI
     
@@ -50,7 +48,6 @@ class ChatBlogsViewModel: ObservableObject {
     @MainActor
     internal func send(text: String) async {
         isInteractingWithChatGPT = true
-        isGeneratingText = true
         var streamText = ""
         var messageRow = MessageRow(
             isInteractingWithChatGPT: true,
@@ -76,6 +73,5 @@ class ChatBlogsViewModel: ObservableObject {
         messageRow.isInteractingWithChatGPT = false
         self.messages[self.messages.count - 1] = messageRow
         isInteractingWithChatGPT = false
-        isGeneratingText = false
     }
 }

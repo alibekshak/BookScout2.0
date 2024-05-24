@@ -12,7 +12,6 @@ class ChatBookViewModel: ObservableObject {
     @Published var isInteractingWithChatGPT = false
     @Published var messages: [MessageRow] = []
     @Published var favoritesViewModel = FavoritesViewModel.shared
-    @Published var isGeneratingText = false
     
     private let userDefaults = UserDefaults.standard
     private let api: ChatGPTAPI
@@ -49,7 +48,6 @@ class ChatBookViewModel: ObservableObject {
     @MainActor
     internal func send(text: String) async {
         isInteractingWithChatGPT = true
-        isGeneratingText = true
         var streamText = ""
         var messageRow = MessageRow(
             isInteractingWithChatGPT: true,
@@ -75,7 +73,6 @@ class ChatBookViewModel: ObservableObject {
         messageRow.isInteractingWithChatGPT = false
         self.messages[self.messages.count - 1] = messageRow
         isInteractingWithChatGPT = false
-        isGeneratingText = false
     }
     
     func addToFavorites(text: String) {

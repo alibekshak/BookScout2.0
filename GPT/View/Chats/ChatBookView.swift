@@ -65,7 +65,7 @@ struct ChatBookView: View {
     func bottomView(image: String, proxy: ScrollViewProxy) -> some View {
         VStack(spacing: .zero) {
             Divider()
-            if vm.isGeneratingText {
+            if vm.isInteractingWithChatGPT {
                 DotLoadingView()
                     .frame(width: 100, height: 50)
             } else {
@@ -76,6 +76,7 @@ struct ChatBookView: View {
                     }
                 }
                 .padding(.top, 8)
+                .disabled(vm.isInteractingWithChatGPT)
             }
         }
     }

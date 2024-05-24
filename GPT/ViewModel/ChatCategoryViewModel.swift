@@ -15,13 +15,12 @@ class ChatCategoryViewModel: ObservableObject {
     @Published var inputMessage: String = ""
     @Published var isSending = false
     @Published var favoritesViewModel = FavoritesViewModel.shared
-    @Published var isGeneratingText = false
     
     private let userDefaults = UserDefaults.standard
     private let api: ChatGPTAPI
     private let category: String
     
-    init(api: ChatGPTAPI, category: String, enableSpeech: Bool = false) {
+    init(api: ChatGPTAPI, category: String) {
         self.api = api
         self.category = category
         
@@ -56,7 +55,6 @@ class ChatCategoryViewModel: ObservableObject {
     @MainActor
     internal func send(text: String) async {
         isInteractingWithChatGPT = true
-        isGeneratingText = true
         var streamText = ""
         var messageRow = MessageRow(
             isInteractingWithChatGPT: true,
@@ -83,7 +81,6 @@ class ChatCategoryViewModel: ObservableObject {
         self.messages[self.messages.count - 1] = messageRow
         isInteractingWithChatGPT = false
         isSending = false
-        isGeneratingText = false
     }
     
     func addToFavorites(text: String) {
