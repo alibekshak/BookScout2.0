@@ -1,5 +1,5 @@
 //
-//  TabView.swift
+//  TabViewMain.swift
 //  GPT
 //
 //  Created by Alibek Shakirov on 15.05.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TabView: View {
+struct TabViewMain: View {
     
     @StateObject var appState: GenreSelectionViewModel
     @StateObject var chatViewModel = ChatViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
@@ -33,5 +33,5 @@ struct TabView: View {
 }
 
 #Preview {
-    TabView(appState: GenreSelectionViewModel())
+    TabViewMain(appState: GenreSelectionViewModel())
 }
