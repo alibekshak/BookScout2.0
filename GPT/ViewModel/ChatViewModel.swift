@@ -11,14 +11,8 @@ class ChatViewModel: ObservableObject {
     
     init(api: ChatGPTAPI, enableSpeech: Bool = false) {
         self.api = api
-        Task {
-            if let selectedGenresData = UserDefaults.standard.data(forKey: "selectedGenres") {
-                if let selectedGenres = try? JSONDecoder().decode(Set<BookGenre>.self, from: selectedGenresData) {
-                    let genresString = selectedGenres.map { $0.rawValue }.joined(separator: ", ")
-                    let initialMessage = "Жанры которые мне нравятся \(genresString), дублируй мне названия этих жанров и кратко опеши мне их, потом напиши - 'Какую книгу или автора вы хотите обсудить?'"
-                    await send(text: initialMessage)
-                }
-            }
+        DispatchQueue.main.async {
+            self.appearChat()
         }
     }
     
@@ -79,6 +73,12 @@ class ChatViewModel: ObservableObject {
     
     @MainActor func refreshChat() {
         clearMessages()
+        DispatchQueue.main.async {
+            self.appearChat()
+        }
+    }
+    
+    @MainActor func appearChat() {
         Task {
             if let selectedGenresData = UserDefaults.standard.data(forKey: "selectedGenres") {
                 if let selectedGenres = try? JSONDecoder().decode(Set<BookGenre>.self, from: selectedGenresData) {
