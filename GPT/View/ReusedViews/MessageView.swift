@@ -7,10 +7,6 @@ struct MessageRowView: View {
     
     let message: MessageRow
     let retryCallback: (MessageRow) -> Void
-    
-    var imageSize: CGSize {
-        CGSize(width: 25, height: 25)
-    }
 
     var body: some View {
         VStack(spacing: 8) {

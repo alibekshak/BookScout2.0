@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct WordField: View {
+    
     @Binding var word: String
+    
     var placeholder: String
     
     var body: some View {

@@ -2,7 +2,9 @@ import SwiftUI
 
 struct ButtonHouse: View {
     @Environment(\.dismiss) var dismiss
+    
     @State private var isTapped = false
+    
     private let originalColor = Color.black
     
     var body: some View {

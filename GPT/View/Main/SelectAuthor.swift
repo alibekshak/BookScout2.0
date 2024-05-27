@@ -4,7 +4,6 @@ struct SelectAuthorFiction: View {
     
     @State private var isActive: Bool = false
     @State private var author = ""
-    @State private var book = ""
     
     @StateObject var vm: ChatBookViewModel
     
