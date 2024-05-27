@@ -27,8 +27,7 @@ class FavoritesViewModel: ObservableObject {
         guard let data = UserDefaults.standard.data(forKey: userDefaultsKey) else {
             return []
         }
-        let decoder = JSONDecoder()
-        if let decodedData = try? decoder.decode([FavoriteItem].self, from: data) {
+        if let decodedData = try? JSONDecoder().decode([FavoriteItem].self, from: data) {
             return decodedData
         }
         return []

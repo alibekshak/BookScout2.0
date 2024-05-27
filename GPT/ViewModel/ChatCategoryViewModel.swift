@@ -13,7 +13,6 @@ class ChatCategoryViewModel: ObservableObject {
     @Published var isInteractingWithChatGPT = false
     @Published var messages: [MessageRow] = []
     @Published var inputMessage: String = ""
-    @Published var isSending = false
     @Published var favoritesViewModel = FavoritesViewModel.shared
     
     private let userDefaults = UserDefaults.standard
@@ -31,7 +30,7 @@ class ChatCategoryViewModel: ObservableObject {
     func sendTapped() async {
         let text = "Рекомендуй книгу в жанре \(category) ?"
         inputMessage = ""
-        isSending = true
+        isInteractingWithChatGPT = true
         await send(text: text)
     }
     
@@ -80,7 +79,6 @@ class ChatCategoryViewModel: ObservableObject {
         messageRow.isInteractingWithChatGPT = false
         self.messages[self.messages.count - 1] = messageRow
         isInteractingWithChatGPT = false
-        isSending = false
     }
     
     func addToFavorites(text: String) {
@@ -90,14 +88,14 @@ class ChatCategoryViewModel: ObservableObject {
         // Save the updated favoriteItems array to UserDefaults
         let encoder = JSONEncoder()
         if let encodedData = try? encoder.encode(favoritesViewModel.favoriteItems) {
-            UserDefaults.standard.set(encodedData, forKey: "FavoriteItems")
+            userDefaults.set(encodedData, forKey: "FavoriteItems")
         }
     }
     
     func loadFavorites() {
         // Load favorites from UserDefaults
         let decoder = JSONDecoder()
-        if let data = UserDefaults.standard.data(forKey: "FavoriteItems"),
+        if let data = userDefaults.data(forKey: "FavoriteItems"),
            let decodedData = try? decoder.decode([FavoriteItem].self, from: data) {
             favoritesViewModel.favoriteItems = decodedData
         }

@@ -13,7 +13,6 @@ class FavoritesListViewModel: ObservableObject {
     var vm = FavoritesViewModel()
     
     @Published var favoriteItems: [FavoriteItem]
-    @Published var isRefreshing = false
     @Published var refreshID = UUID()
     
     init() {
@@ -21,12 +20,9 @@ class FavoritesListViewModel: ObservableObject {
     }
     
     func refreshFavoriteItems() {
-        isRefreshing = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.favoriteItems = self.loadFavoriteItems()
-            // Trigger list refresh by updating the refreshID
             self.refreshID = UUID()
-            self.isRefreshing = false
         }
     }
 

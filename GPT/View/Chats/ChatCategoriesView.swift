@@ -64,7 +64,7 @@ struct ChatCategoryView: View {
     
     func bottomView(image: String, proxy: ScrollViewProxy) -> some View {
         VStack {
-            if !vm.isSending && !vm.isInteractingWithChatGPT {
+            if !vm.isInteractingWithChatGPT {
                 suggestButton(proxy: proxy)
             }
             tabView
