@@ -45,7 +45,7 @@ struct MainPage: View {
             }) {
                 Image(systemName: "bookmark")
                     .foregroundColor(.black)
-                    .font(.title)
+                    .font(.system(size: 32, weight: .semibold))
             }
         }
         .padding(.bottom, 24)
@@ -59,10 +59,10 @@ struct MainPage: View {
             HStack {
                 fictionButton
                 Spacer()
-                nonfictionButton
+                nonFictionButton
             }
             HStack {
-                avtorButton
+                authorButton
                 Spacer()
                 findBookButton
             }
@@ -73,29 +73,29 @@ struct MainPage: View {
         Button {
             isFictionPresentend = true
         } label: {
-            NewIconView(image: "books.vertical", title: "Литература", backgroundColor: CustomColors.customBlue)
+            NewIconView(image: "books.vertical", title: "Литература", backgroundColor: CustomColors.darkGray, viewState: .standard)
         }
         .navigationDestination(isPresented: $isFictionPresentend) {
             CategoriesView(API: API, categoryName: .fiction)
         }
     }
     
-    var nonfictionButton: some View {
+    var nonFictionButton: some View {
         Button {
             isNonFictionPresented = true
         } label: {
-            NewIconView(image: "books.vertical.fill", title: "Нон-фикшн", backgroundColor: CustomColors.customBlue)
+            NewIconView(image: "books.vertical.fill", title: "Нон-фикшн", backgroundColor: CustomColors.darkGray, viewState: .standard)
         }
         .navigationDestination(isPresented: $isNonFictionPresented) {
             CategoriesView(API: API, categoryName: .nonFiction)
         }
     }
     
-    var avtorButton: some View {
+    var authorButton: some View {
         Button {
             isAuthorPresented = true
         } label: {
-            NewIconView(image: "character.book.closed.fill", title: "Автор книги", backgroundColor: CustomColors.customBlue)
+            NewIconView(image: "character.book.closed.fill", title: "Автор книги", backgroundColor: CustomColors.darkGray, viewState: .standard)
         }
         .navigationDestination(isPresented: $isAuthorPresented) {
             SelectAuthorFiction(vm: chatBookViewModel)
@@ -106,7 +106,7 @@ struct MainPage: View {
         Button {
             isSameBookPresented = true
         } label: {
-            NewIconView(image: "text.book.closed.fill", title: "Похожие книги", backgroundColor: CustomColors.customBlue)
+            NewIconView(image: "text.book.closed.fill", title: "Похожие книги", backgroundColor: CustomColors.darkGray, viewState: .standard)
         }
         .navigationDestination(isPresented: $isSameBookPresented) {
             SameBookFiction(vm: chatBookViewModel)
@@ -133,7 +133,7 @@ struct MainPage: View {
                 }
             }
         } label: {
-            NewIconView(image: "text.bubble.fill", title: "Топ 3 книг которые стоит прочитать", backgroundColor: CustomColors.customPurple)
+            NewIconView(image: "text.bubble.fill", title: "Топ 3 книг которые стоит прочитать", backgroundColor: CustomColors.customBlue, viewState: .alternative)
         }
         .navigationDestination(isPresented: $isActiveBlog) {
             ChatBlogsView(vm: vm)
@@ -149,31 +149,11 @@ struct MainPage: View {
                 }
             }
         } label: {
-            NewIconView(image: "text.quote", title: "Книги о жизни", backgroundColor: CustomColors.customPurple)
+            NewIconView(image: "text.quote", title: "Книги о жизни", backgroundColor: CustomColors.customBlue, viewState: .alternative)
         }
         .navigationDestination(isPresented: $isActiveBlog2) {
             ChatBlogsView(vm: vm)
         }
-    }
-    
-    var mainFunctions: some View {
-        VStack(alignment: .leading) {
-            Text("Жанры и темы")
-                .font(.system(size: 22, weight: .semibold))
-                .foregroundColor(Color.black)
-                .padding(.horizontal, 30)
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: -12) {
-                    ButtonsForTransition(destination: CategoriesView(API: API, categoryName: .fiction), image: "choice_fiction", title: "Художественная литература")
-                    ButtonsForTransition(destination: CategoriesView(API: API, categoryName: .nonFiction), image: "choice_nonfic1", title: "Нон-фикшн литература")
-                    ButtonsForTransition(destination: SelectAuthorFiction(vm: chatBookViewModel), image: "authors", title: "Найти по автору")
-                    ButtonsForTransition(destination: SameBookFiction(vm: chatBookViewModel), image: "same_book", title: "Похожие книги")
-                }
-                .padding(.horizontal, 15)
-            }
-        }
-        .padding(.top)
     }
 }
 
