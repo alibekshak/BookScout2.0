@@ -11,6 +11,10 @@ struct MainPage: View {
     @State var isActiveBlog: Bool = false
     @State var isActiveBlog2: Bool = false
     @State var isFavoritesListPresented = false
+    @State var isFictionPresentend: Bool = false
+    @State var isNonFictionPresented: Bool = false
+    @State var isAuthorPresented: Bool = false
+    @State var isSameBookPresented: Bool = false
     
     var body: some View {
         ZStack(alignment: .leading) {
@@ -67,33 +71,45 @@ struct MainPage: View {
     
     var fictionButton: some View {
         Button {
-            
+            isFictionPresentend = true
         } label: {
             NewIconView(image: "books.vertical", title: "Литература")
+        }
+        .navigationDestination(isPresented: $isFictionPresentend) {
+            CategoriesView(API: API, categoryName: .fiction)
         }
     }
     
     var nonfictionButton: some View {
         Button {
-            
+            isNonFictionPresented = true
         } label: {
             NewIconView(image: "books.vertical.fill", title: "Нон-фикшн")
+        }
+        .navigationDestination(isPresented: $isNonFictionPresented) {
+            CategoriesView(API: API, categoryName: .nonFiction)
         }
     }
     
     var avtorButton: some View {
         Button {
-            
+            isAuthorPresented = true
         } label: {
             NewIconView(image: "character.book.closed.fill", title: "Автор книги")
+        }
+        .navigationDestination(isPresented: $isAuthorPresented) {
+            SelectAuthorFiction(vm: chatBookViewModel)
         }
     }
     
     var findBookButton: some View {
         Button {
-            
+            isSameBookPresented = true
         } label: {
             NewIconView(image: "text.book.closed.fill", title: "Похожие книги")
+        }
+        .navigationDestination(isPresented: $isSameBookPresented) {
+            SameBookFiction(vm: chatBookViewModel)
         }
     }
     
@@ -110,17 +126,33 @@ struct MainPage: View {
     
     var blogButton1: some View {
         Button {
-            
+            withAnimation {
+                isActiveBlog = true
+                Task {
+                    await vm.send(text: "Рекомендуй 3 книг которые, стоит прочитать, напищи интерестный факт об авторах данных книг. Так же расскажи подробно почему ты выбрал эти книги")
+                }
+            }
         } label: {
             NewIconView(image: "text.bubble.fill", title: "Топ 3 книг которые стоит прочитать")
+        }
+        .navigationDestination(isPresented: $isActiveBlog) {
+            ChatBlogsView(vm: vm)
         }
     }
     
     var blogButton2: some View {
         Button {
-            
+            withAnimation {
+                isActiveBlog2 = true
+                Task {
+                    await vm.send(text: "Рекамендуй 3 книги о жизнe, кратко дай интерестную информацию об авторе. Так же расскажи подробно почему ты выбрал эти книги")
+                }
+            }
         } label: {
             NewIconView(image: "text.quote", title: "Книги о жизни")
+        }
+        .navigationDestination(isPresented: $isActiveBlog2) {
+            ChatBlogsView(vm: vm)
         }
     }
     
@@ -140,29 +172,6 @@ struct MainPage: View {
                 }
                 .padding(.horizontal, 15)
             }
-        }
-        .padding(.top)
-    }
-    
-    var blogs: some View {
-        VStack(alignment: .leading) {
-            Text("Блог о книгах")
-                .font(.system(size: 22, weight: .semibold))
-                .foregroundColor(Color.black)
-                .padding(.horizontal, 30)
-            
-            LazyVStack(spacing: 1) {
-                Blog(vm: vm, isActive: $isActiveBlog, image: "blog", text: "Топ 3 книг которые стоит прочитать", text_send: "Рекомендуй 3 книг которые, стоит прочитать, напищи интерестный факт об авторах данных книг. Так же расскажи подробно почему ты выбрал эти книги")
-                    .navigationDestination(isPresented: $isActiveBlog) {
-                        ChatBlogsView(vm: vm)
-                    }
-                Blog(vm: vm, isActive: $isActiveBlog2, image: "blog2", text: "Книги о жизни", text_send: "Рекамендуй 3 книги о жизнe, кратко дай интерестную информацию об авторе. Так же расскажи подробно почему ты выбрал эти книги")
-                    .navigationDestination(isPresented: $isActiveBlog2) {
-                        ChatBlogsView(vm: vm)
-                    }
-            }
-            .padding(.bottom)
-            .padding(.horizontal, 15)
         }
         .padding(.top)
     }

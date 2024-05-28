@@ -89,6 +89,8 @@ struct ChatBlogsView: View {
         guard let id = vm.messages.last?.id else { return }
         proxy.scrollTo(id, anchor: .bottomTrailing)
     }
+    
+    
 }
 
 struct ChatBlogsView_Previews: PreviewProvider {
