@@ -35,14 +35,6 @@ class ChatCategoryViewModel: ObservableObject {
     }
     
     @MainActor
-    func clearMessages() {
-        api.deleteHistoryList()
-        withAnimation { [weak self] in
-            self?.messages = []
-        }
-    }
-    
-    @MainActor
     func retry(message: MessageRow) async {
         guard let index = messages.firstIndex(where: { $0.id == message.id }) else {
             return

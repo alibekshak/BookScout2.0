@@ -5,11 +5,7 @@ class FavoritesViewModel: ObservableObject {
     
     static let shared = FavoritesViewModel()
 
-    @Published var favoriteItems: [FavoriteItem] {
-            didSet {
-                saveFavoriteItems()
-            }
-        }
+    @Published var favoriteItems: [FavoriteItem]
 
     init() {
             self.favoriteItems = []
@@ -36,12 +32,14 @@ class FavoritesViewModel: ObservableObject {
     func addToFavorites(item: FavoriteItem) {
         if !favoriteItems.contains(item) {
             favoriteItems.append(item)
+            saveFavoriteItems()
         }
     }
 
     func removeFromFavorites(item: FavoriteItem) {
         if let index = favoriteItems.firstIndex(of: item) {
             favoriteItems.remove(at: index)
+            saveFavoriteItems()
         }
     }
 }

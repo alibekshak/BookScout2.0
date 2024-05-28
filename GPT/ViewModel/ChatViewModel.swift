@@ -28,7 +28,7 @@ class ChatViewModel: ObservableObject {
     func clearMessages() {
         api.deleteHistoryList()
         withAnimation { [weak self] in
-            self?.messages = []
+            self?.messages.removeAll()
         }
     }
     
