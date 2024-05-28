@@ -18,11 +18,12 @@ struct MainPage: View {
                 .ignoresSafeArea()
             VStack(spacing: .zero) {
                 appTitle
-                ScrollView(.vertical, showsIndicators: false) {
-                    mainFunctions
-                    blogs
+                ScrollView(showsIndicators: false) {
+                    mainFanction
+                    blogsPart
                 }
             }
+            .padding(.horizontal, 30)
         }
         .sheet(isPresented: $isFavoritesListPresented) {
             FavoritesListView(viewModel: favoritesListViewModel)
@@ -43,7 +44,84 @@ struct MainPage: View {
                     .font(.title)
             }
         }
-        .padding(.horizontal, 30)
+        .padding(.bottom, 24)
+    }
+    
+    var mainFanction: some View {
+        VStack(spacing: 12) {
+            Text("Жанры и темы")
+                .font(.system(size: 22, weight: .semibold))
+                .foregroundColor(Color.black)
+            HStack {
+                fictionButton
+                Spacer()
+                nonfictionButton
+            }
+            HStack {
+                avtorButton
+                Spacer()
+                findBookButton
+            }
+        }
+    }
+    
+    var fictionButton: some View {
+        Button {
+            
+        } label: {
+            NewIconView(image: "books.vertical", title: "Литература")
+        }
+    }
+    
+    var nonfictionButton: some View {
+        Button {
+            
+        } label: {
+            NewIconView(image: "books.vertical.fill", title: "Нон-фикшн")
+        }
+    }
+    
+    var avtorButton: some View {
+        Button {
+            
+        } label: {
+            NewIconView(image: "character.book.closed.fill", title: "Автор книги")
+        }
+    }
+    
+    var findBookButton: some View {
+        Button {
+            
+        } label: {
+            NewIconView(image: "text.book.closed.fill", title: "Похожие книги")
+        }
+    }
+    
+    var blogsPart: some View {
+        VStack(spacing: 12) {
+            Text("Блог о книгах")
+                .font(.system(size: 22, weight: .semibold))
+                .foregroundColor(Color.black)
+            blogButton1
+            blogButton2
+        }
+        .padding(.top)
+    }
+    
+    var blogButton1: some View {
+        Button {
+            
+        } label: {
+            NewIconView(image: "text.bubble.fill", title: "Топ 3 книг которые стоит прочитать")
+        }
+    }
+    
+    var blogButton2: some View {
+        Button {
+            
+        } label: {
+            NewIconView(image: "text.quote", title: "Книги о жизни")
+        }
     }
     
     var mainFunctions: some View {
