@@ -11,6 +11,7 @@ struct NewIconView: View {
     
     var image: String
     var title: String
+    var backgroundColor: Color
     
     var body: some View {
 
@@ -21,20 +22,20 @@ struct NewIconView: View {
                                   design: .rounded)
                     )
                 Text(title)
-                    .font(.system(size: 16, weight: .semibold, design: .monospaced))
+                    .font(.system(size: 16, 
+                                  weight: .semibold,
+                                  design: .monospaced))
                     .multilineTextAlignment(.center)
             }
             .padding(.vertical, 20)
             .padding(.horizontal)
             .frame(maxWidth: .infinity, alignment: .center)
-            .background(CustomColors.darkGray)
+            .background(backgroundColor)
             .foregroundColor(.white)
             .cornerRadius(20)
-          
-            
     }
 }
 
 #Preview {
-    NewIconView(image: "book.pages", title: "Художественная литература")
+    NewIconView(image: "book.pages", title: "Художественная литература", backgroundColor: Color(red: 173/255, green: 216/255, blue: 230/255))
 }

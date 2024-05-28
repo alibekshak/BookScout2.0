@@ -73,7 +73,7 @@ struct MainPage: View {
         Button {
             isFictionPresentend = true
         } label: {
-            NewIconView(image: "books.vertical", title: "Литература")
+            NewIconView(image: "books.vertical", title: "Литература", backgroundColor: CustomColors.customBlue)
         }
         .navigationDestination(isPresented: $isFictionPresentend) {
             CategoriesView(API: API, categoryName: .fiction)
@@ -84,7 +84,7 @@ struct MainPage: View {
         Button {
             isNonFictionPresented = true
         } label: {
-            NewIconView(image: "books.vertical.fill", title: "Нон-фикшн")
+            NewIconView(image: "books.vertical.fill", title: "Нон-фикшн", backgroundColor: CustomColors.customBlue)
         }
         .navigationDestination(isPresented: $isNonFictionPresented) {
             CategoriesView(API: API, categoryName: .nonFiction)
@@ -95,7 +95,7 @@ struct MainPage: View {
         Button {
             isAuthorPresented = true
         } label: {
-            NewIconView(image: "character.book.closed.fill", title: "Автор книги")
+            NewIconView(image: "character.book.closed.fill", title: "Автор книги", backgroundColor: CustomColors.customBlue)
         }
         .navigationDestination(isPresented: $isAuthorPresented) {
             SelectAuthorFiction(vm: chatBookViewModel)
@@ -106,7 +106,7 @@ struct MainPage: View {
         Button {
             isSameBookPresented = true
         } label: {
-            NewIconView(image: "text.book.closed.fill", title: "Похожие книги")
+            NewIconView(image: "text.book.closed.fill", title: "Похожие книги", backgroundColor: CustomColors.customBlue)
         }
         .navigationDestination(isPresented: $isSameBookPresented) {
             SameBookFiction(vm: chatBookViewModel)
@@ -133,7 +133,7 @@ struct MainPage: View {
                 }
             }
         } label: {
-            NewIconView(image: "text.bubble.fill", title: "Топ 3 книг которые стоит прочитать")
+            NewIconView(image: "text.bubble.fill", title: "Топ 3 книг которые стоит прочитать", backgroundColor: CustomColors.customPurple)
         }
         .navigationDestination(isPresented: $isActiveBlog) {
             ChatBlogsView(vm: vm)
@@ -149,7 +149,7 @@ struct MainPage: View {
                 }
             }
         } label: {
-            NewIconView(image: "text.quote", title: "Книги о жизни")
+            NewIconView(image: "text.quote", title: "Книги о жизни", backgroundColor: CustomColors.customPurple)
         }
         .navigationDestination(isPresented: $isActiveBlog2) {
             ChatBlogsView(vm: vm)
