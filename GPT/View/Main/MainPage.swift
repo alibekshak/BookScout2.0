@@ -51,8 +51,10 @@ struct MainPage: View {
         .padding(.bottom, 24)
     }
     
+    // MARK: mainFanction
+    
     var mainFanction: some View {
-        VStack(spacing: 12) {
+        VStack(alignment: . leading, spacing: 12) {
             Text("Жанры и темы")
                 .font(.system(size: 22, weight: .semibold))
                 .foregroundColor(Color.black)
@@ -113,8 +115,10 @@ struct MainPage: View {
         }
     }
     
+    // MARK: blogsPart
+    
     var blogsPart: some View {
-        VStack(spacing: 12) {
+        VStack(alignment: .leading, spacing: 12) {
             Text("Блог о книгах")
                 .font(.system(size: 22, weight: .semibold))
                 .foregroundColor(Color.black)
