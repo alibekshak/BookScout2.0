@@ -10,7 +10,6 @@ struct CategoryView: View{
     var text_send: String
     
     var body: some View{
-     
             ZStack {
                 Color.white
                 NavigationLink(destination: ChatCategoryView(vm: vm)){
