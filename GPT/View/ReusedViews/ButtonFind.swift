@@ -34,6 +34,7 @@ struct ButtonFind: View {
         .navigationDestination(isPresented: $isChatBookViewPresent) {
             ChatBookView(vm: vm)
         }
+        .disabled(selectedAuthor == "")
     }
     
     private func sendSelectedCategory() {
