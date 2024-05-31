@@ -10,7 +10,7 @@ struct GPTApp: App {
     var body: some Scene {
         WindowGroup {
             if isAppLoaded {
-                if appState.selectedGenres.isEmpty {
+                if appState.userDefaultsEmpty {
                     GenreSelectionView(viewModel: appState, states: .firstOpen)
                 } else {
                     TabViewMain(appState: appState)
@@ -21,6 +21,7 @@ struct GPTApp: App {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         withAnimation {
                             self.isAppLoaded = true
+                            
                         }
                     }
                 }

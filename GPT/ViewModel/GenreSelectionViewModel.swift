@@ -9,9 +9,11 @@ import Foundation
 
 class GenreSelectionViewModel: ObservableObject {
     @Published var selectedGenres: Set<BookGenre> = []
+    @Published var userDefaultsEmpty: Bool = false
 
     init() {
         loadGenresFromUserDefaults()
+        userDefaultsEmpty = isUserDefaultsEmpty()
     }
 
     func loadGenresFromUserDefaults() {
@@ -25,5 +27,10 @@ class GenreSelectionViewModel: ObservableObject {
     func addNewGenres(newGenres: Set<BookGenre>) {
         let genresData = try? JSONEncoder().encode(newGenres)
         UserDefaults.standard.set(genresData, forKey: "selectedGenres")
+        userDefaultsEmpty = isUserDefaultsEmpty()
+    }
+    
+    func isUserDefaultsEmpty() -> Bool {
+        return UserDefaults.standard.object(forKey: "selectedGenres") == nil
     }
 }

@@ -11,6 +11,8 @@ struct GenreSelectionView: View {
     
     @State var states: States
     
+    @State var selectGenres: Bool = false
+    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -19,9 +21,6 @@ struct GenreSelectionView: View {
                 .ignoresSafeArea()
             ZStack(alignment: .bottom) {
                 VStack {
-                    if states == .firstOpen {
-                        dismissButton
-                    }
                     textInfo
                     scrollView
                 }
@@ -32,28 +31,7 @@ struct GenreSelectionView: View {
             .onAppear {
                 viewModel.loadGenresFromUserDefaults()
             }
-            .onChange(of: viewModel.selectedGenres) { newGenres in
-                viewModel.addNewGenres(newGenres: newGenres)
-            }
         }
-    }
-    
-    var dismissButton: some View {
-        HStack {
-            Spacer()
-            Button {
-                withAnimation {
-                    dismiss()
-                }
-            } label: {
-                Image(systemName: "xmark")
-                    .font(Font.system(size: 24, weight: .semibold))
-                    .foregroundColor(.black)
-            }
-            .disabled(viewModel.selectedGenres.isEmpty)
-        }
-        .padding(.trailing, 30)
-        .padding(.bottom)
     }
     
     var textInfo: some View {
@@ -65,6 +43,7 @@ struct GenreSelectionView: View {
         }
         .font(.headline)
         .foregroundColor(.black)
+        .padding(.top)
     }
     
     var scrollView: some View {
@@ -96,7 +75,9 @@ struct GenreSelectionView: View {
     var buttonNext: some View {
         Button(action: {
             withAnimation {
+                selectGenres = true
                 dismiss()
+                viewModel.addNewGenres(newGenres: viewModel.selectedGenres)
             }
         }) {
             Text(states == .firstOpen ? "Далее" : "Принять")
