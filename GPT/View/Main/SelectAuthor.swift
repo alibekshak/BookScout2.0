@@ -5,6 +5,8 @@ struct SelectAuthorFiction: View {
     @State private var isActive: Bool = false
     @State private var author = ""
     
+    @FocusState var isWordFieldFocused: Bool
+    
     @StateObject var vm: ChatBookViewModel
     
     var body: some View {
@@ -14,7 +16,7 @@ struct SelectAuthorFiction: View {
             VStack {
                 navigationBar
                 VStack(spacing: 60) {
-                    WordField(word: $author, placeholder: "Харуки Мураками")
+                    WordField(word: $author, placeholder: "Харуки Мураками", isFocused: _isWordFieldFocused)
                     textWarning
                 }
                 Spacer()
@@ -24,6 +26,9 @@ struct SelectAuthorFiction: View {
             .padding(.horizontal, 28)
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            isWordFieldFocused = true
+        }
     }
     
     var navigationBar: some View {

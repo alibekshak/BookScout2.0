@@ -6,6 +6,8 @@ struct SameBookFiction: View {
     @State private var book = ""
     @State private var isActive: Bool = false
     
+    @FocusState var isWordFieldFocused: Bool
+    
     @StateObject var vm: ChatBookViewModel
     
     var body: some View {
@@ -25,6 +27,9 @@ struct SameBookFiction: View {
             .padding(.horizontal, 28)
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            isWordFieldFocused = true
+        }
     }
     
     var navigationBar: some View {
@@ -41,7 +46,7 @@ struct SameBookFiction: View {
     
     var textFields: some View {
         VStack(spacing: 30) {
-            WordField(word: $author, placeholder: "Харуки Мураками")
+            WordField(word: $author, placeholder: "Харуки Мураками", isFocused: _isWordFieldFocused)
             WordField(word: $book, placeholder: "Норвежский лес")
         }
     }
