@@ -22,11 +22,11 @@ struct RoundedButtonStyle: ButtonStyle {
     public func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .font(.system(size: 16, weight: .semibold))
-            .frame(width: 16, height: 16)
-            .padding(15)
+            .padding(.vertical, 15)
+            .padding(.horizontal, 16)
             .foregroundStyle(Color(.label))
             .background(
-                RoundedRectangle(cornerRadius: 20)
+                RoundedRectangle(cornerRadius: 16)
                     .foregroundColor(backgroundColor)
             )
             .opacity(configuration.isPressed ? 0.6 : 1)

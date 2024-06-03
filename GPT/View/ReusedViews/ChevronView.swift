@@ -20,7 +20,7 @@ struct Chevron: View {
             }
         }) {
             Image(systemName: "chevron.left")
-                .imageScale(.large)
+                .font(.system(size: 22, weight: .semibold))
                 .foregroundColor(.black)
         }
         .disabled(isDisabled)
