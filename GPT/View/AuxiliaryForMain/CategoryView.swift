@@ -12,7 +12,7 @@ struct CategoryView: View{
     var body: some View{
             ZStack {
                 Color.white
-                NavigationLink(destination: ChatCategoryView(vm: vm)){
+                NavigationLink(destination: ChatCategoryView(vm: vm, title: title)) {
                     VStack(alignment: .leading, spacing: 12) {
                         Text(title)
                             .font(.title2)

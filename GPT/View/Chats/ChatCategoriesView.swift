@@ -10,6 +10,8 @@ struct ChatCategoryView: View {
     @State private var showingSheet = false
     @State private var addToFavoritesTapped = false
     
+    var title: String
+    
     var body: some View {
         ZStack {
             CustomColors.backgroundColor
@@ -30,9 +32,10 @@ struct ChatCategoryView: View {
         HStack {
             Chevron(isDisabled: vm.isInteractingWithChatGPT)
             Spacer()
-            Text("Категория")
+            Text(title)
                 .foregroundColor(.black)
                 .font(.system(size: 26, weight: .semibold))
+                .padding(.trailing)
             Spacer()
         }
         .padding(.horizontal, 30)
@@ -125,8 +128,8 @@ struct ChatCategoryView: View {
                 .font(.title)
         }
         .actionSheet(isPresented: $showingSheet) {
-            ActionSheet(title: Text("Рекомендация"),
-                        message: Text("Иногда искусственный интеллект неправильно переводит книги на русский язык, поэтому рекомендуется использовать англоязычное название книги"),
+            ActionSheet(title: Text("Пожалуйста, обратите внимание"),
+                        message: Text("Искусственного интеллекта может допускать ошибки в распознавании и упоминании названий книг или имен авторов"),
                         buttons: [.default(Text("Ок"))])
         }
     }
@@ -142,7 +145,7 @@ struct ChatCategoryView: View {
 struct ChatCategoryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ChatCategoryView(vm: ChatCategoryViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE"))
+            ChatCategoryView(vm: ChatCategoryViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE"), title: "Роман")
         }
     }
 }
