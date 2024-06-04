@@ -17,13 +17,12 @@ struct MessageRowView: View {
         }
     }
 
-    @ViewBuilder
     func messageRowContent(text: String, bgColor: Color, responseError: String? = nil, showDotLoading: Bool = false) -> some View {
         VStack(alignment: .leading) {
             Text(text)
                 .multilineTextAlignment(.leading)
                 .textSelection(.enabled)
-            if let error = responseError {
+            if responseError != nil {
                 Text("We cannot load info right now. Please try again.")
                     .foregroundColor(.red)
                     .multilineTextAlignment(.leading)

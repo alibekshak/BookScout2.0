@@ -11,9 +11,15 @@ struct ButtonHouse: View {
         VStack {
             Image(systemName: "house")
                 .foregroundColor(isTapped ? .gray : originalColor)
-                .font(.title)
+                .font(
+                    .system(
+                        size: 26,
+                        weight: .bold,
+                        design: .serif
+                    )
+                )
                 .onTapGesture {
-                    withAnimation(.spring()) {
+                    withAnimation() {
                         isTapped = true
                         dismiss()
                     }

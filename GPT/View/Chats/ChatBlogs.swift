@@ -76,7 +76,13 @@ struct ChatBlogsView: View {
         }) {
             Image(systemName: "exclamationmark.octagon")
                 .foregroundColor(Color.black)
-                .font(.title)
+                .font(
+                    .system(
+                        size: 26,
+                        weight: .bold,
+                        design: .serif
+                    )
+                )
         }
         .actionSheet(isPresented: $showingSheet) {
             ActionSheet(title: Text("Рекомендация"),
