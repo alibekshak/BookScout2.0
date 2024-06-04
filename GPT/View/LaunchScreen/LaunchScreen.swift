@@ -31,10 +31,8 @@ struct LaunchScreen: View {
             .foregroundColor(.black)
             .scaleEffect(isAnimating ? 1.2 : 0.5)
             .animation(.easeInOut(duration: 1.3), value: isAnimating)
-            ProgressView()
-                .progressViewStyle(CircularProgressViewStyle())
-                .tint(.black)
-                .padding(.top, 300)
+            LoaderView()
+                .padding(.top, 340)
         }
         .onAppear {
             self.isAnimating = true
