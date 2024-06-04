@@ -32,7 +32,8 @@ struct NewIconView: View {
                     Text(title)
                         .font(.system(size: 16,
                                       weight: .semibold,
-                                      design: .monospaced))
+                                      design: .monospaced)
+                        )
                         .multilineTextAlignment(.center)
                 }
             } else {

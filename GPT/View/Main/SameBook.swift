@@ -4,7 +4,6 @@ struct SameBookFiction: View {
     
     @State private var author = ""
     @State private var book = ""
-    @State private var isActive: Bool = false
     
     @FocusState var isWordFieldFocused: Bool
     
@@ -21,7 +20,7 @@ struct SameBookFiction: View {
                     textWarning
                 }
                 Spacer()
-                ButtonFind(vm: vm, isActive: $isActive, sendType: .sameBook, selectedAuthor: author, selectedBook: book)
+                ButtonFind(vm: vm, sendType: .sameBook, selectedAuthor: author, selectedBook: book)
                     .padding(.bottom)
             }
             .padding(.horizontal, 28)

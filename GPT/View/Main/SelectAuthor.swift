@@ -2,7 +2,6 @@ import SwiftUI
 
 struct SelectAuthorFiction: View {
     
-    @State private var isActive: Bool = false
     @State private var author = ""
     
     @FocusState var isWordFieldFocused: Bool
@@ -20,7 +19,7 @@ struct SelectAuthorFiction: View {
                     textWarning
                 }
                 Spacer()
-                ButtonFind(vm: vm, isActive: $isActive, sendType: .selectAutor, selectedAuthor: author)
+                ButtonFind(vm: vm, sendType: .selectAutor, selectedAuthor: author)
                     .padding(.bottom)
             }
             .padding(.horizontal, 28)

@@ -9,8 +9,6 @@ struct ButtonFind: View {
     
     @StateObject var vm: ChatBookViewModel
     
-    @Binding var isActive: Bool
-    
     @State var sendType: SendType
     @State var isChatBookViewPresent = false
     
@@ -48,7 +46,6 @@ struct ButtonFind: View {
         
         Task {
             await vm.send(text: text)
-            isActive = true
         }
     }
 }
