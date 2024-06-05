@@ -51,12 +51,10 @@ struct SameBookFiction: View {
     }
     
     var textWarning: some View {
-        VStack {
-            Text("Иногда искусственный интеллект неправильно переводит книги на русский язык, поэтому рекомендуется использовать англоязычное название книги")
-                .foregroundColor(Color.black.opacity(0.6))
-                .font(.system(size: 18))
-                .multilineTextAlignment(.leading)
-        }
+        Text("Иногда искусственный интеллект неправильно переводит книги на русский язык, поэтому рекомендуется использовать англоязычное название книги")
+            .foregroundColor(Color.black.opacity(0.6))
+            .font(.system(size: 18))
+            .multilineTextAlignment(.leading)
     }
 }
 
