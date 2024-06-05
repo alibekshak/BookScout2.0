@@ -33,4 +33,12 @@ class GenreSelectionViewModel: ObservableObject {
     func isUserDefaultsEmpty() -> Bool {
         return UserDefaults.standard.object(forKey: "selectedGenres") == nil
     }
+    
+    func removeOrInsert(genre: BookGenre) {
+        if selectedGenres.contains(genre) {
+            selectedGenres.remove(genre)
+        } else {
+           selectedGenres.insert(genre)
+        }
+    }
 }

@@ -50,11 +50,7 @@ struct GenreSelectionView: View {
         ScrollView(showsIndicators: false) {
             ForEach(BookGenre.allCases, id: \.self) { genre in
                 Button {
-                    if viewModel.selectedGenres.contains(genre) {
-                        viewModel.selectedGenres.remove(genre)
-                    } else {
-                        viewModel.selectedGenres.insert(genre)
-                    }
+                    viewModel.removeOrInsert(genre: genre)
                 } label: {
                     HStack {
                         Text(genre.rawValue)
