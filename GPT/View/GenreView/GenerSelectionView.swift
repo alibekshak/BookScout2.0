@@ -10,10 +10,7 @@ struct GenreSelectionView: View {
     @StateObject var viewModel: GenreSelectionViewModel
     
     @State var states: States
-    
     @State var selectGenres: Bool = false
-    
-    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
@@ -56,8 +53,11 @@ struct GenreSelectionView: View {
                         Text(genre.rawValue)
                             .foregroundColor(.black)
                         Spacer()
-                        Image(systemName: viewModel.selectedGenres.contains(genre) ? "checkmark.square.fill" : "square")
-                            .foregroundColor(.gray)
+                        Image(systemName:
+                                viewModel.selectedGenres.contains(genre) ?
+                              "checkmark.square.fill" : "square"
+                        )
+                        .foregroundColor(.gray)
                     }
                     .font(.system(size: 18, weight: .semibold))
                     .padding(.vertical, 4)
@@ -72,7 +72,6 @@ struct GenreSelectionView: View {
         Button {
             withAnimation {
                 selectGenres = true
-                dismiss()
                 viewModel.addNewGenres(newGenres: viewModel.selectedGenres)
             }
         } label: {
