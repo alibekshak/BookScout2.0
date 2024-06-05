@@ -35,11 +35,11 @@ struct GenreSelectionView: View {
     }
     
     var textInfo: some View {
-        VStack {
+        VStack(spacing: 20) {
             Text("Выбор жанров повлияет на ход диалога о книгах или авторе")
+                .multilineTextAlignment(.center)
                 .padding(.horizontal, 30)
             Text("Выберите жанры:")
-                .padding(.top, 20)
         }
         .font(.headline)
         .foregroundColor(.black)
@@ -49,13 +49,13 @@ struct GenreSelectionView: View {
     var scrollView: some View {
         ScrollView(showsIndicators: false) {
             ForEach(BookGenre.allCases, id: \.self) { genre in
-                Button(action: {
+                Button {
                     if viewModel.selectedGenres.contains(genre) {
                         viewModel.selectedGenres.remove(genre)
                     } else {
                         viewModel.selectedGenres.insert(genre)
                     }
-                }) {
+                } label: {
                     HStack {
                         Text(genre.rawValue)
                             .foregroundColor(.black)
@@ -73,13 +73,13 @@ struct GenreSelectionView: View {
     }
     
     var buttonNext: some View {
-        Button(action: {
+        Button {
             withAnimation {
                 selectGenres = true
                 dismiss()
                 viewModel.addNewGenres(newGenres: viewModel.selectedGenres)
             }
-        }) {
+        } label: {
             Text(states == .firstOpen ? "Далее" : "Принять")
                 .frame(maxWidth: .infinity)
         }
@@ -88,26 +88,4 @@ struct GenreSelectionView: View {
         .padding(.horizontal, 30)
         .padding(.bottom, 4)
     }
-}
-
-enum BookGenre: String, CaseIterable, Codable {
-    case fantasy = "Фэнтези"
-    case mystery = "Мистика"
-    case romance = "Романы"
-    case poetry = "Поэзия"
-    case plays = "Пьесы"
-    case stories = "Рассказы"
-    case detective = "Детектив"
-    case fantastic = "Фантастика"
-    case horror = "Хоррор"
-    case story = "Повесть"
-    case novel = "Новеллы"
-    case finance = "Финансы"
-    case biography = "Биография"
-    case memuar = "Мемуары"
-    case philosophy = "Философия"
-    case business = "Бизнес"
-    case psychology = "Психология"
-    case culture = "Искусство"
-    case sport = "Спорт"
 }
