@@ -39,11 +39,7 @@ struct CategoriesView: View {
     
     var categoriesScroll: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            LazyVStack(spacing: -3) {
                 categories
-            }
-            .padding(.horizontal, 10)
-            .padding(.bottom)
         }
     }
     
