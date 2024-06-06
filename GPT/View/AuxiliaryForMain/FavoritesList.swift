@@ -2,7 +2,7 @@ import SwiftUI
 
 struct FavoritesListView: View {
     
-    @StateObject var viewModel: FavoritesListViewModel
+    @StateObject var viewModel: FavoritesViewModel
     
     @Environment(\.dismiss) var dismiss
     

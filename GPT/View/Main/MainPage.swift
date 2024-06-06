@@ -5,7 +5,7 @@ struct MainPage: View {
     var API = ChatGPTAPI(apiKey: "PROVIDE_API_KEY")
     
     @StateObject var vm = ChatBlogsViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
-    @StateObject var favoritesListViewModel = FavoritesListViewModel()
+    @StateObject var favoritesViewModel = FavoritesViewModel()
     @StateObject var chatBookViewModel = ChatBookViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
     
     @State var isActiveBlog: Bool = false
@@ -30,7 +30,7 @@ struct MainPage: View {
             .padding(.horizontal, 30)
         }
         .sheet(isPresented: $isFavoritesListPresented) {
-            FavoritesListView(viewModel: favoritesListViewModel)
+            FavoritesListView(viewModel: favoritesViewModel)
         }
     }
     

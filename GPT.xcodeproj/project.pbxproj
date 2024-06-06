@@ -48,7 +48,6 @@
 		18E4BC222BCFFA0600BBC06F /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4BC212BCFFA0600BBC06F /* FavoriteItem.swift */; };
 		18E4BC2A2BD11BA000BBC06F /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4BC292BD11BA000BBC06F /* CategoriesView.swift */; };
 		18E4BC5A2BDAB08800BBC06F /* ChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4BC592BDAB08800BBC06F /* ChevronView.swift */; };
-		18E4BC5E2BDBCDD500BBC06F /* FavoritesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4BC5D2BDBCDD500BBC06F /* FavoritesListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,7 +94,6 @@
 		18E4BC212BCFFA0600BBC06F /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		18E4BC292BD11BA000BBC06F /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		18E4BC592BDAB08800BBC06F /* ChevronView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronView.swift; sourceTree = "<group>"; };
-		18E4BC5D2BDBCDD500BBC06F /* FavoritesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +163,6 @@
 				186EEE882BCD7C5B007A6F5F /* ChatBookViewModel.swift */,
 				18E4BC1E2BCFF42400BBC06F /* GenreSelectionViewModel.swift */,
 				189454D12A6A6F3700FCDD88 /* FavoritesViewModel.swift */,
-				18E4BC5D2BDBCDD500BBC06F /* FavoritesListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -359,7 +356,6 @@
 			files = (
 				187BE3042BF1D922002F3D8C /* DarkButtonStyle.swift in Sources */,
 				1821957C2A56868B00093BA4 /* ChatBookView.swift in Sources */,
-				18E4BC5E2BDBCDD500BBC06F /* FavoritesListViewModel.swift in Sources */,
 				188AE8812A53D1E20094A212 /* MessageView.swift in Sources */,
 				18548AB02A610F6D007E9AE6 /* CategoryView.swift in Sources */,
 				188AE87B2A531CF60094A212 /* GPTModels.swift in Sources */,

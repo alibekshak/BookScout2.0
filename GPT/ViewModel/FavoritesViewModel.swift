@@ -5,10 +5,9 @@ class FavoritesViewModel: ObservableObject {
     
     static let shared = FavoritesViewModel()
 
-    @Published var favoriteItems: [FavoriteItem]
+    @Published var favoriteItems: [FavoriteItem] = []
 
     init() {
-            self.favoriteItems = []
             self.favoriteItems = loadFavoriteItems()
         }
 
@@ -41,5 +40,21 @@ class FavoritesViewModel: ObservableObject {
             favoriteItems.remove(at: index)
             saveFavoriteItems()
         }
+    }
+    
+    func refreshFavoriteItems() {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.favoriteItems = self.loadFavoriteItems()
+        }
+    }
+
+    func deleteFavoriteItem(at offsets: IndexSet) {
+        favoriteItems.remove(atOffsets: offsets)
+        saveFavoriteItems()
+    }
+
+    func moveFavoriteItem(from source: IndexSet, to destination: Int) {
+        favoriteItems.move(fromOffsets: source, toOffset: destination)
+        saveFavoriteItems()
     }
 }
