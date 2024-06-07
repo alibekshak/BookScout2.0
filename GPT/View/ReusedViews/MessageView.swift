@@ -37,7 +37,7 @@ struct MessageRowView: View {
                     .frame(width: 60, height: 30)
             }
         }
-        .padding(.horizontal, 16)
+        .padding(.horizontal, 20)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(bgColor)
     }

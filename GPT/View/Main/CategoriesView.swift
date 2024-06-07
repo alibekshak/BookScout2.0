@@ -56,7 +56,7 @@ struct CategoriesView: View {
                 .font(.system(size: 24, weight: .semibold))
             Spacer()
         }
-        .padding(.horizontal, 30)
+        .padding(.horizontal, 20)
         .padding(.bottom, 20)
     }
     

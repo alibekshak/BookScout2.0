@@ -27,7 +27,7 @@ struct MainPage: View {
                     blogsPart
                 }
             }
-            .padding(.horizontal, 30)
+            .padding(.horizontal, 20)
         }
         .sheet(isPresented: $isFavoritesListPresented) {
             FavoritesListView(viewModel: favoritesViewModel)
@@ -48,6 +48,7 @@ struct MainPage: View {
                     .font(.system(size: 32, weight: .semibold))
             }
         }
+        .padding(.top)
         .padding(.bottom, 24)
     }
     

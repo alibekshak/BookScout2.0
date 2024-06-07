@@ -28,7 +28,7 @@ struct ChatBlogsView: View {
                 .font(.system(size: 26, weight: .semibold))
             Spacer()
         }
-        .padding(.horizontal, 30)
+        .padding(.horizontal, 20)
         .padding(.bottom, 22)
     }
     

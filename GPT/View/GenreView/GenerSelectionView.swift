@@ -35,7 +35,7 @@ struct GenreSelectionView: View {
         VStack(spacing: 20) {
             Text("Выбор жанров повлияет на ход диалога о книгах или авторе")
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 30)
+                .padding(.horizontal, 20)
             Text("Выберите жанры:")
         }
         .font(.headline)
@@ -65,7 +65,7 @@ struct GenreSelectionView: View {
             }
         }
         .padding(.top, 20)
-        .padding(.horizontal, 30)
+        .padding(.horizontal, 20)
     }
     
     var buttonNext: some View {
@@ -80,7 +80,7 @@ struct GenreSelectionView: View {
         }
         .buttonStyle(DarkButtonStyle())
         .disabled(viewModel.selectedGenres.isEmpty)
-        .padding(.horizontal, 30)
+        .padding(.horizontal, 20)
         .padding(.bottom, 4)
     }
 }

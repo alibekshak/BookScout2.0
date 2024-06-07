@@ -38,7 +38,7 @@ struct ChatCategoryView: View {
                 .padding(.trailing)
             Spacer()
         }
-        .padding(.horizontal, 30)
+        .padding(.horizontal, 20)
         .padding(.bottom, 22)
     }
     
@@ -86,7 +86,7 @@ struct ChatCategoryView: View {
                 .frame(maxWidth: .infinity)
         }
         .buttonStyle(DarkButtonStyle())
-        .padding(.horizontal, 30)
+        .padding(.horizontal, 20)
     }
     
     var tabView: some View {

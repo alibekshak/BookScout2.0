@@ -46,7 +46,7 @@ struct FavoritesListView: View {
             XmarkButton()
         }
         .padding(.top)
-        .padding(.horizontal, 30)
+        .padding(.horizontal, 20)
     }
 }
 

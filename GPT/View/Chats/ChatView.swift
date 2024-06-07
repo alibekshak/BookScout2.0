@@ -28,7 +28,7 @@ struct ChatView: View {
             Spacer()
             refreshButton
         }
-        .padding(.horizontal, 30)
+        .padding(.horizontal, 20)
         .padding(.bottom, 22)
     }
     
@@ -102,9 +102,14 @@ struct ChatView: View {
             vm.refreshChat()
         }) {
             Image(systemName: "arrow.clockwise")  .foregroundColor(.black)
-                .imageScale(.large)
+                .font(
+                    .system(
+                        size: 24,
+                        weight: .semibold,
+                        design: .serif
+                    )
+                )
                 .opacity(vm.isInteractingWithChatGPT ? 0 : 1)
-                .disabled(vm.isInteractingWithChatGPT)
         }
     }
 }
