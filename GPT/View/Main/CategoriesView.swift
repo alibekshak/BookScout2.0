@@ -43,7 +43,7 @@ struct CategoriesView: View {
                     )
                 }
             }
-            .padding(.bottom, 10)
+            .padding(.vertical, 10)
         }
     }
     
@@ -56,7 +56,7 @@ struct CategoriesView: View {
                 .font(.system(size: 24, weight: .semibold))
             Spacer()
         }
-        .padding(.horizontal, 28)
+        .padding(.horizontal, 30)
         .padding(.bottom, 20)
     }
     

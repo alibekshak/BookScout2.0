@@ -39,7 +39,7 @@ struct CategoryView: View{
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(CustomColors.strokeColor, lineWidth: 1)
             )
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 30)
         }
         .navigationDestination(isPresented: $isChatPresented) {
             ChatCategoryView(vm: vm, title: title)
