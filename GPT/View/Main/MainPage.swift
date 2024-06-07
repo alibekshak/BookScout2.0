@@ -73,29 +73,51 @@ struct MainPage: View {
     
     var fictionButton: some View {
         Button {
-            isFictionPresentend = true
+            withAnimation {
+                isFictionPresentend = true
+            }
         } label: {
-            NewIconView(image: "books.vertical", title: "Литература", backgroundColor: CustomColors.darkGray, viewState: .standard)
+            NewIconView(
+                image: "books.vertical",
+                title: "Литература",
+                backgroundColor: CustomColors.darkGray,
+                viewState: .standard
+            )
         }
         .navigationDestination(isPresented: $isFictionPresentend) {
-            CategoriesView(API: API, categoryName: .fiction)
+            CategoriesView(
+                viewModel: CategoriesViewModel(categoryName: .fiction),
+                API: API
+            )
         }
     }
     
     var nonFictionButton: some View {
         Button {
-            isNonFictionPresented = true
+            withAnimation {
+                isNonFictionPresented = true
+            }
         } label: {
-            NewIconView(image: "books.vertical.fill", title: "Нон-фикшн", backgroundColor: CustomColors.darkGray, viewState: .standard)
+            NewIconView(
+                image: "books.vertical.fill",
+                title: "Нон-фикшн",
+                backgroundColor: CustomColors.darkGray,
+                viewState: .standard
+            )
         }
         .navigationDestination(isPresented: $isNonFictionPresented) {
-            CategoriesView(API: API, categoryName: .nonFiction)
+            CategoriesView(
+                viewModel: CategoriesViewModel(categoryName: .nonFiction),
+                API: API)
+            
         }
     }
     
     var authorButton: some View {
         Button {
-            isAuthorPresented = true
+            withAnimation {
+                isAuthorPresented = true
+            }
         } label: {
             NewIconView(image: "character.book.closed.fill", title: "Автор книги", backgroundColor: CustomColors.darkGray, viewState: .standard)
         }

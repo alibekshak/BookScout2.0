@@ -39,10 +39,16 @@ struct NewIconView: View {
             } else {
                 HStack(alignment: .center, spacing: 16) {
                     Image(systemName: image)
-                        .font(.system(size: 36, weight: .semibold, design: .rounded))
+                        .font(.system(size: 36, 
+                                      weight: .semibold,
+                                      design: .rounded)
+                        )
                         .padding(.leading)
                     Text(title)
-                        .font(.system(size: 18, weight: .semibold, design: .monospaced))
+                        .font(.system(size: 18, 
+                                      weight: .semibold,
+                                      design: .monospaced)
+                        )
                         .frame(maxWidth: .infinity)
                 }
             }
