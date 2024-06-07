@@ -15,21 +15,20 @@ struct LaunchScreen: View {
         ZStack {
             CustomColors.backgroundColor
                 .ignoresSafeArea()
-            VStack(spacing: 20) {
+            VStack(spacing: 16) {
                 Text("BookScout")
                     .font(.system(size: 38, weight: .semibold))
                 Image(systemName: "book.closed")
                     .font(
                         .system(
                             size: 100,
-                            weight: .semibold,
-                            design: .serif
+                            weight: .semibold
                         )
                     )
                     .rotationEffect(.degrees(15), anchor: .center)
             }
             .foregroundColor(.black)
-            .scaleEffect(isAnimating ? 1.2 : 0.5)
+            .scaleEffect(isAnimating ? 1 : 0.5)
             .animation(.easeInOut(duration: 1.3), value: isAnimating)
             LoaderView()
                 .padding(.top, 340)

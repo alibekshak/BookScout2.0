@@ -12,7 +12,6 @@ struct TabViewMain: View {
     @StateObject var appState: GenreSelectionViewModel
     @StateObject var chatViewModel = ChatViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
     
-    
     @State var selectedTab: Tab = .main
     
     var body: some View {
