@@ -23,7 +23,6 @@ struct CategoriesView: View {
             VStack(spacing: .zero) {
                 navigationBar
                 categoriesScroll
-                tabView
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -58,32 +57,6 @@ struct CategoriesView: View {
         }
         .padding(.horizontal, 20)
         .padding(.bottom, 20)
-    }
-    
-    var tabView: some View {
-        VStack(spacing: .zero) {
-            Divider()
-            HStack {
-                exclamationButton
-                Spacer()
-                ButtonHouse()
-            }
-            .padding(.horizontal, 110)
-            .padding(.top, 8)
-        }
-    }
-    
-    var exclamationButton: some View {
-        Button(action: {
-            self.showingSheet = true
-        }) {
-            Image(systemName: "exclamationmark.shield.fill")
-                .foregroundColor(Color.black)
-                .font(.title)
-        }
-        .actionSheet(isPresented: $showingSheet) {
-            ActionSheet(title: Text("Небольшая ремарка"), message: Text("Иногда искусственный интеллект неправильно переводит книги на русский язык, поэтому рекомендуется использовать англоязычное название книги"), buttons: [.default(Text("Ок"))])
-        }
     }
 }
 
