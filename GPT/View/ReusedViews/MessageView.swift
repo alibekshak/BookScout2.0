@@ -23,10 +23,10 @@ struct MessageRowView: View {
                 .multilineTextAlignment(.leading)
                 .textSelection(.enabled)
             if responseError != nil {
-                Text("We cannot load info right now. Please try again.")
+                Text("Мы не можем загрузить информацию прямо сейчас. Пожалуйста, попробуйте еще раз.")
                     .foregroundColor(.red)
                     .multilineTextAlignment(.leading)
-                Button("Regenerate response") {
+                Button("Попробовать еще раз") {
                     retryCallback(message)
                 }
                 .foregroundColor(.accentColor)
