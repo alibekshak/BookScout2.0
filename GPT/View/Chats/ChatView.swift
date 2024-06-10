@@ -67,34 +67,36 @@ struct ChatView: View {
                 .resizable()
                 .frame(width: 30, height: 30)
                 .cornerRadius(20)
-            TextField("Send message", text: $vm.inputMessage, axis: .vertical)
-                .textFieldStyle(.roundedBorder)
-                .focused($isTextFieldFocused)
-                .disabled(vm.isInteractingWithChatGPT)
-                Button {
-                    Task { @MainActor in
-                        isTextFieldFocused = false
-                        scrollToBottom(proxy: proxy)
-                        await vm.sendTapped()
-                    }
-                } label: {
-                    Image(systemName: "paperplane.circle.fill")
-                        .rotationEffect(.degrees(45))
-                        .font(.system(size: 30))
-                }
-                .buttonStyle(.borderless)
-                .keyboardShortcut(.defaultAction)
-                .foregroundColor(.accentColor)
-                .disabled(vm.inputMessage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || vm.isInteractingWithChatGPT)
+            textField
+            buttonSend(proxy: proxy)
         }
         .padding(.horizontal, 16)
         .padding(.bottom, 4)
         .padding(.top, 12)
     }
     
-    func scrollToBottom(proxy: ScrollViewProxy) {
-        guard let id = vm.messages.last?.id else { return }
-        proxy.scrollTo(id, anchor: .bottomTrailing)
+    func buttonSend(proxy: ScrollViewProxy) -> some View {
+        Button {
+            Task { @MainActor in
+                isTextFieldFocused = false
+                scrollToBottom(proxy: proxy)
+                await vm.sendTapped()
+            }
+        } label: {
+            Image(systemName: "paperplane.circle.fill")
+                .rotationEffect(.degrees(45))
+                .font(.system(size: 30))
+        }
+        .buttonStyle(.borderless)
+        .foregroundColor(.accentColor)
+        .disabled(vm.inputMessage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || vm.isInteractingWithChatGPT)
+    }
+    
+    var textField: some View {
+        TextField("Отправить сообщение", text: $vm.inputMessage, axis: .vertical)
+            .textFieldStyle(.roundedBorder)
+            .focused($isTextFieldFocused)
+            .disabled(vm.isInteractingWithChatGPT)
     }
     
     var refreshButton: some View {
@@ -111,6 +113,11 @@ struct ChatView: View {
                 )
                 .opacity(vm.isInteractingWithChatGPT ? 0 : 1)
         }
+    }
+    
+    func scrollToBottom(proxy: ScrollViewProxy) {
+        guard let id = vm.messages.last?.id else { return }
+        proxy.scrollTo(id, anchor: .bottomTrailing)
     }
 }
 
