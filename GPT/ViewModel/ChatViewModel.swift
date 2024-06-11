@@ -1,21 +1,16 @@
 import Foundation
 import SwiftUI
 
-class ChatViewModel: ObservableObject {
+class ChatViewModel: BaseChatViewModel {
     
-    @Published var isInteractingWithChatGPT = false
-    @Published var messages: [MessageRow] = []
     @Published var inputMessage: String = ""
     
-    private let api: ChatGPTAPI
-    
     init(api: ChatGPTAPI, enableSpeech: Bool = false) {
-        self.api = api
+        super.init(api: api)
         DispatchQueue.main.async {
             self.appearChat()
         }
     }
-    
     
     @MainActor
     func sendTapped() async {
@@ -39,36 +34,6 @@ class ChatViewModel: ObservableObject {
         }
         self.messages.remove(at: index)
         await send(text: message.sendText)
-    }
-    
-    @MainActor
-    private func send(text: String) async {
-        isInteractingWithChatGPT = true
-        var streamText = ""
-        var messageRow = MessageRow(
-            isInteractingWithChatGPT: true,
-            sendImage: "profile",
-            sendText: text,
-            responseImage: "openai",
-            responseText: streamText,
-            responseError: nil)
-        
-        self.messages.append(messageRow)
-        
-        do {
-            let stream = try await api.sendMessageStream(text: text)
-            for try await text in stream {
-                streamText += text
-                messageRow.responseText = streamText.trimmingCharacters(in: .whitespacesAndNewlines)
-                self.messages[self.messages.count - 1] = messageRow
-            }
-        } catch {
-            messageRow.responseError = error.localizedDescription
-        }
-        
-        messageRow.isInteractingWithChatGPT = false
-        self.messages[self.messages.count - 1] = messageRow
-        isInteractingWithChatGPT = false
     }
     
     @MainActor func refreshChat() {
