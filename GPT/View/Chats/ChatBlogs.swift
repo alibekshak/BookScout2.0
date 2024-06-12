@@ -27,6 +27,7 @@ struct ChatBlogsView: View {
                 .foregroundColor(.black)
                 .font(.system(size: 26, weight: .semibold))
             Spacer()
+            buttonSheet
         }
         .padding(.horizontal, 20)
         .padding(.bottom, 22)
@@ -36,7 +37,6 @@ struct ChatBlogsView: View {
         ScrollViewReader { proxy in
             VStack(spacing: .zero) {
                 message
-                bottomView(image: "profile", proxy: proxy)
             }
             .onChange(of: vm.messages.last?.responseText) { _ in
                 scrollToBottom(proxy: proxy)
@@ -58,18 +58,6 @@ struct ChatBlogsView: View {
         }
     }
     
-    func bottomView(image: String, proxy: ScrollViewProxy) -> some View {
-        VStack(spacing: .zero) {
-            Divider()
-            HStack(alignment: .center, spacing: 110) {
-                buttonSheet
-                ButtonHouse()
-            }
-            .padding(.top, 8)
-            .disabled( vm.isInteractingWithChatGPT)
-        }
-    }
-    
     var buttonSheet: some View {
         Button(action: {
             self.showingSheet = true
@@ -79,8 +67,8 @@ struct ChatBlogsView: View {
                 .font(
                     .system(
                         size: 26,
-                        weight: .bold,
-                        design: .serif
+                        weight: .semibold,
+                        design: .rounded
                     )
                 )
         }
@@ -95,8 +83,6 @@ struct ChatBlogsView: View {
         guard let id = vm.messages.last?.id else { return }
         proxy.scrollTo(id, anchor: .bottomTrailing)
     }
-    
-    
 }
 
 struct ChatBlogsView_Previews: PreviewProvider {
