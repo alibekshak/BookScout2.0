@@ -19,7 +19,6 @@ class ChatCategoryViewModel: BaseChatViewModel {
     @MainActor
     func sendTapped() async {
         let text = "Рекомендуй книгу в жанре \(category) ?"
-//        inputMessage = ""
         isInteractingWithChatGPT = true
         await send(text: text)
     }
