@@ -21,6 +21,13 @@ struct NotificationSheetView: View {
                             isShowing = false
                         }
                     }
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            withAnimation {
+                                isShowing = false
+                            }
+                        }
+                    }
                 VStack(spacing: 12) {
                     Image(systemName: "books.vertical.circle")
                         .font(.system(
@@ -28,7 +35,7 @@ struct NotificationSheetView: View {
                             weight: .semibold,
                             design: .rounded)
                         )
-                    Text("Жанр успешно добавлен")
+                    Text("Изменения добавлены")
                         .font(.system(
                             size: 22,
                             weight: .semibold,
@@ -37,11 +44,14 @@ struct NotificationSheetView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .frame(maxHeight: 250)
+                .cornerRadius(14, corners: [.topLeft, .topRight])
+                .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
         .ignoresSafeArea()
         .animation(.easeInOut, value: isShowing)
+
     }
 }
 

@@ -11,9 +11,10 @@ struct GenreSelectionView: View {
     
     @State var states: States
     @State var selectGenres: Bool = false
+    @State var isShowingNotificationSheet: Bool = false
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             CustomColors.backgroundColor
                 .ignoresSafeArea()
             ZStack(alignment: .bottom) {
@@ -23,11 +24,14 @@ struct GenreSelectionView: View {
                 }
                 .padding(.bottom, 70)
                 buttonNext
+               
             }
             .navigationBarHidden(true)
             .onAppear {
                 viewModel.loadGenresFromUserDefaults()
             }
+            NotificationSheetView(isShowing: $isShowingNotificationSheet)
+                .frame(maxHeight: 250)
         }
     }
     
@@ -73,6 +77,9 @@ struct GenreSelectionView: View {
             withAnimation {
                 selectGenres = true
                 viewModel.addNewGenres(newGenres: viewModel.selectedGenres)
+                if states == .genreTab {
+                    isShowingNotificationSheet = true
+                }
             }
         } label: {
             Text(states == .firstOpen ? "Далее" : "Принять")
