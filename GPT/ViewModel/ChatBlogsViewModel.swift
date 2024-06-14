@@ -20,4 +20,16 @@ class ChatBlogsViewModel: BaseChatViewModel {
         await send(text: message.sendText)
         isInteractingWithChatGPT = false
     }
+    
+    @MainActor
+    func sentTextWorthReading() async {
+        let text = "Рекомендуй 3 книг которые, стоит прочитать, напищи интерестный факт об авторах данных книг. Так же расскажи подробно почему ты выбрал эти книги"
+        await send(text: text)
+    }
+    
+    @MainActor
+    func sentBooksAboutLife() async {
+        let text = "Рекамендуй 3 книги о жизнe, кратко дай интерестную информацию об авторе. Так же расскажи подробно почему ты выбрал эти книги"
+        await send(text: text)
+    }
 }

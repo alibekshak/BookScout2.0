@@ -34,13 +34,6 @@ class FavoritesViewModel: ObservableObject {
             saveFavoriteItems()
         }
     }
-
-    func removeFromFavorites(item: FavoriteItem) {
-        if let index = favoriteItems.firstIndex(of: item) {
-            favoriteItems.remove(at: index)
-            saveFavoriteItems()
-        }
-    }
     
     func refreshFavoriteItems() {
         DispatchQueue.main.asyncAfter(deadline: .now()) {

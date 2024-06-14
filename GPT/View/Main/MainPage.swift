@@ -156,7 +156,7 @@ struct MainPage: View {
             withAnimation {
                 isActiveBlog = true
                 Task {
-                    await vm.send(text: "Рекомендуй 3 книг которые, стоит прочитать, напищи интерестный факт об авторах данных книг. Так же расскажи подробно почему ты выбрал эти книги")
+                    await vm.sentTextWorthReading()
                 }
             }
         } label: {
@@ -172,7 +172,7 @@ struct MainPage: View {
             withAnimation {
                 isActiveBlog2 = true
                 Task {
-                    await vm.send(text: "Рекамендуй 3 книги о жизнe, кратко дай интерестную информацию об авторе. Так же расскажи подробно почему ты выбрал эти книги")
+                    await vm.sentBooksAboutLife()
                 }
             }
         } label: {

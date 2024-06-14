@@ -21,6 +21,7 @@ class ChatCategoryViewModel: BaseChatViewModel {
         let text = "Рекомендуй книгу в жанре \(category) ?"
         isInteractingWithChatGPT = true
         await send(text: text)
+        isInteractingWithChatGPT = false
     }
 
     @MainActor
@@ -28,7 +29,9 @@ class ChatCategoryViewModel: BaseChatViewModel {
         guard let index = messages.firstIndex(where: { $0.id == message.id }) else {
             return
         }
+        isInteractingWithChatGPT = true
         self.messages.remove(at: index)
         await send(text: message.sendText)
+        isInteractingWithChatGPT = false
     }
 }
