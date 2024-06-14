@@ -14,7 +14,7 @@ struct NotificationSheetView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             if isShowing {
-                CustomColors.backgroundColor
+                CustomColors.customBlack
                     .ignoresSafeArea()
                     .onTapGesture {
                         withAnimation {
@@ -31,7 +31,7 @@ struct NotificationSheetView: View {
                 VStack(spacing: 12) {
                     Image(systemName: "books.vertical.circle")
                         .font(.system(
-                            size: 32,
+                            size: 42,
                             weight: .semibold,
                             design: .rounded)
                         )
@@ -42,13 +42,14 @@ struct NotificationSheetView: View {
                             design: .serif)
                         )
                 }
+                .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
-                .frame(maxHeight: 250)
-                .cornerRadius(14, corners: [.topLeft, .topRight])
+                .frame(maxHeight: 230)
                 .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+        .cornerRadius(14, corners: [.topLeft, .topRight])
         .ignoresSafeArea()
         .animation(.easeInOut, value: isShowing)
 
