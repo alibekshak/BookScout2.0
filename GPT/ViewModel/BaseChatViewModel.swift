@@ -27,9 +27,7 @@ class BaseChatViewModel: ObservableObject {
         var streamText = ""
         var messageRow = MessageRow(
             isInteractingWithChatGPT: true,
-            sendImage: "profile",
             sendText: text,
-            responseImage: "openai",
             responseText: streamText,
             responseError: nil)
 

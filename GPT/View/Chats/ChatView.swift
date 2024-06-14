@@ -16,6 +16,9 @@ struct ChatView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            isTextFieldFocused = true
+        }
     }
     
     var navigationBar: some View {
@@ -36,7 +39,7 @@ struct ChatView: View {
         ScrollViewReader { proxy in
             VStack(spacing: .zero) {
                 messages
-                bottomView(image: "profile", proxy: proxy)
+                bottomView(proxy: proxy)
             }
             .onChange(of: vm.messages.last?.responseText) { _ in
                 scrollToBottom(proxy: proxy)
@@ -61,12 +64,8 @@ struct ChatView: View {
         }
     }
     
-    func bottomView(image: String, proxy: ScrollViewProxy) -> some View {
-        HStack(alignment: .top, spacing: 8) {
-            Image(image)
-                .resizable()
-                .frame(width: 30, height: 30)
-                .cornerRadius(20)
+    func bottomView(proxy: ScrollViewProxy) -> some View {
+        HStack(alignment: .center) {
             textField
             buttonSend(proxy: proxy)
         }
