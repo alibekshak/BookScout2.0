@@ -8,8 +8,8 @@
 import Foundation
 
 class GenreSelectionViewModel: ObservableObject {
-    @Published var selectedGenres: Set<BookGenre> = []
-    @Published var originalGenres: Set<BookGenre> = []
+    @Published var selectedGenres: [BookGenre] = []
+    @Published var originalGenres: [BookGenre] = []
     @Published var userDefaultsEmpty: Bool = false
     
 
@@ -20,14 +20,14 @@ class GenreSelectionViewModel: ObservableObject {
 
     func loadGenresFromUserDefaults() {
         if let genresData = UserDefaults.standard.data(forKey: "selectedGenres") {
-            if let genres = try? JSONDecoder().decode(Set<BookGenre>.self, from: genresData) {
+            if let genres = try? JSONDecoder().decode(Array<BookGenre>.self, from: genresData) {
                 selectedGenres = genres
                 originalGenres = genres
             }
         }
     }
     
-    func addNewGenres(newGenres: Set<BookGenre>) {
+    func addNewGenres(newGenres: Array<BookGenre>) {
         let genresData = try? JSONEncoder().encode(newGenres)
         UserDefaults.standard.set(genresData, forKey: "selectedGenres")
         originalGenres = newGenres
@@ -39,10 +39,10 @@ class GenreSelectionViewModel: ObservableObject {
     }
     
     func removeOrInsert(genre: BookGenre) {
-        if selectedGenres.contains(genre) {
-            selectedGenres.remove(genre)
+        if let index = selectedGenres.firstIndex(of: genre) {
+            selectedGenres.remove(at: index)
         } else {
-           selectedGenres.insert(genre)
+            selectedGenres.append(genre)
         }
     }
     
