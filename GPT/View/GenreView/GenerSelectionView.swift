@@ -86,7 +86,7 @@ struct GenreSelectionView: View {
                 .frame(maxWidth: .infinity)
         }
         .buttonStyle(DarkButtonStyle())
-        .disabled(viewModel.selectedGenres.isEmpty)
+        .disabled(viewModel.selectedGenres.isEmpty || !viewModel.hasChanges())
         .padding(.horizontal, 20)
         .padding(.bottom, 4)
     }
