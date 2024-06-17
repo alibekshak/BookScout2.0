@@ -61,5 +61,5 @@ struct CategoriesView: View {
 }
 
 #Preview {
-    CategoriesView(viewModel: CategoriesViewModel(categoryName: .fiction), API: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
+    CategoriesView(viewModel: CategoriesViewModel(categoryName: .fiction), API: APIManager.shared.api)
 }

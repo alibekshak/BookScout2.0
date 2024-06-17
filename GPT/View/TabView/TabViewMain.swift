@@ -10,7 +10,7 @@ import SwiftUI
 struct TabViewMain: View {
     
     @StateObject var appState: GenreSelectionViewModel
-    @StateObject var chatViewModel = ChatViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
+    @StateObject var chatViewModel = ChatViewModel(api: APIManager.shared.api)
     
     @State var selectedTab: Tab = .main
     

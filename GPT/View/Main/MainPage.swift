@@ -2,11 +2,11 @@ import SwiftUI
 
 struct MainPage: View {
     
-    var API = ChatGPTAPI(apiKey: "PROVIDE_API_KEY")
+    var API = APIManager.shared.api
     
-    @StateObject var vm = ChatBlogsViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
+    @StateObject var chatBlogsViewModel = ChatBlogsViewModel(api: APIManager.shared.api)
     @StateObject var favoritesViewModel = FavoritesViewModel()
-    @StateObject var chatBookViewModel = ChatBookViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"))
+    @StateObject var chatBookViewModel = ChatBookViewModel(api: APIManager.shared.api)
     
     @State var isActiveBlog: Bool = false
     @State var isActiveBlog2: Bool = false
@@ -110,7 +110,6 @@ struct MainPage: View {
             CategoriesView(
                 viewModel: CategoriesViewModel(categoryName: .nonFiction),
                 API: API)
-            
         }
     }
     
@@ -156,14 +155,14 @@ struct MainPage: View {
             withAnimation {
                 isActiveBlog = true
                 Task {
-                    await vm.sentTextWorthReading()
+                    await chatBlogsViewModel.sentTextWorthReading()
                 }
             }
         } label: {
             NewIconView(image: "text.bubble.fill", title: "Топ 3 книг которые стоит прочитать", backgroundColor: CustomColors.customBlue, viewState: .alternative)
         }
         .navigationDestination(isPresented: $isActiveBlog) {
-            ChatBlogsView(vm: vm)
+            ChatBlogsView(vm: chatBlogsViewModel)
         }
     }
     
@@ -172,14 +171,14 @@ struct MainPage: View {
             withAnimation {
                 isActiveBlog2 = true
                 Task {
-                    await vm.sentBooksAboutLife()
+                    await chatBlogsViewModel.sentBooksAboutLife()
                 }
             }
         } label: {
             NewIconView(image: "text.quote", title: "Книги о жизни", backgroundColor: CustomColors.customBlue, viewState: .alternative)
         }
         .navigationDestination(isPresented: $isActiveBlog2) {
-            ChatBlogsView(vm: vm)
+            ChatBlogsView(vm: chatBlogsViewModel)
         }
     }
 }

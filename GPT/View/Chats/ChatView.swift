@@ -122,8 +122,6 @@ struct ChatView: View {
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            ChatView(vm: ChatViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY")))
-        }
+        ChatView(vm: ChatViewModel(api: APIManager.shared.api))
     }
 }

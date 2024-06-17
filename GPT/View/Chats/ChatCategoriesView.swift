@@ -145,7 +145,7 @@ struct ChatCategoryView: View {
 struct ChatCategoryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ChatCategoryView(vm: ChatCategoryViewModel(api: ChatGPTAPI(apiKey: "PROVIDE_API_KEY"), category: "CATEGORY_VALUE"), title: "Роман")
+            ChatCategoryView(vm: ChatCategoryViewModel(api: APIManager.shared.api, category: "CATEGORY_VALUE"), title: "Роман")
         }
     }
 }
