@@ -28,31 +28,34 @@ struct NotificationSheetView: View {
                             }
                         }
                     }
-                VStack(spacing: 12) {
-                    Image(systemName: "books.vertical.circle")
-                        .font(.system(
-                            size: 42,
-                            weight: .semibold,
-                            design: .rounded)
-                        )
-                    Text("Изменения добавлены")
-                        .font(.system(
-                            size: 22,
-                            weight: .semibold,
-                            design: .serif)
-                        )
-                }
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .frame(maxHeight: 230)
-                .transition(.opacity.combined(with: .move(edge: .bottom)))
+                mainInfo
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
         .cornerRadius(14, corners: [.topLeft, .topRight])
         .ignoresSafeArea()
         .animation(.easeInOut, value: isShowing)
-
+    }
+    
+    var mainInfo: some View {
+        VStack(spacing: 12) {
+            Image(systemName: "books.vertical.circle")
+                .font(.system(
+                    size: 42,
+                    weight: .semibold,
+                    design: .rounded)
+                )
+            Text("Изменения добавлены")
+                .font(.system(
+                    size: 22,
+                    weight: .semibold,
+                    design: .serif)
+                )
+        }
+        .foregroundColor(.white)
+        .frame(maxWidth: .infinity)
+        .frame(maxHeight: 230)
+        .transition(.opacity.combined(with: .move(edge: .bottom)))
     }
 }
 

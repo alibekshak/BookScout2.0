@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CategoryView: View{
-    @StateObject var vm: ChatCategoryViewModel
+    @StateObject var chatCategoryViewModel: ChatCategoryViewModel
     
     @Binding  var isActive: Bool
     
@@ -42,13 +42,13 @@ struct CategoryView: View{
             .padding(.horizontal, 20)
         }
         .navigationDestination(isPresented: $isChatPresented) {
-            ChatCategoryView(vm: vm, title: title)
+            ChatCategoryView(chatCategoryViewModel: chatCategoryViewModel, title: title)
         }
     }
     
     private func sendCategory() {
         Task {
-            await vm.send(text: text_send)
+            await chatCategoryViewModel.send(text: text_send)
             isActive = true
         }
     }

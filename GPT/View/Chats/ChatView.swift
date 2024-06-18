@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ChatView: View {
     
-    @StateObject var vm: ChatViewModel
+    @StateObject var chatViewModel: ChatViewModel
     @FocusState var isTextFieldFocused: Bool
     
     var body: some View {
@@ -41,7 +41,7 @@ struct ChatView: View {
                 messages
                 bottomView(proxy: proxy)
             }
-            .onChange(of: vm.messages.last?.responseText) { _ in
+            .onChange(of: chatViewModel.messages.last?.responseText) { _ in
                 scrollToBottom(proxy: proxy)
             }
         }
@@ -50,10 +50,10 @@ struct ChatView: View {
     var messages: some View {
         ScrollView {
             LazyVStack(spacing: 0) {
-                ForEach(vm.messages) { message in
+                ForEach(chatViewModel.messages) { message in
                     MessageRowView(message: message) { message in
                         Task { @MainActor in
-                            await vm.retry(message: message)
+                            await chatViewModel.retry(message: message)
                         }
                     }
                 }
@@ -79,7 +79,7 @@ struct ChatView: View {
             Task { @MainActor in
                 isTextFieldFocused = false
                 scrollToBottom(proxy: proxy)
-                await vm.sendTapped()
+                await chatViewModel.sendTapped()
             }
         } label: {
             Image(systemName: "paperplane.circle.fill")
@@ -88,19 +88,19 @@ struct ChatView: View {
         }
         .buttonStyle(.borderless)
         .foregroundColor(.accentColor)
-        .disabled(vm.inputMessage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || vm.isInteractingWithChatGPT)
+        .disabled(chatViewModel.inputMessage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || chatViewModel.isInteractingWithChatGPT)
     }
     
     var textField: some View {
-        TextField("Отправить сообщение", text: $vm.inputMessage, axis: .vertical)
+        TextField("Отправить сообщение", text: $chatViewModel.inputMessage, axis: .vertical)
             .textFieldStyle(.roundedBorder)
             .focused($isTextFieldFocused)
-            .disabled(vm.isInteractingWithChatGPT)
+            .disabled(chatViewModel.isInteractingWithChatGPT)
     }
     
     var refreshButton: some View {
         Button(action: {
-            vm.refreshChat()
+            chatViewModel.refreshChat()
         }) {
             Image(systemName: "arrow.clockwise")  .foregroundColor(.black)
                 .font(
@@ -110,18 +110,18 @@ struct ChatView: View {
                         design: .serif
                     )
                 )
-                .opacity(vm.isInteractingWithChatGPT ? 0 : 1)
+                .opacity(chatViewModel.isInteractingWithChatGPT ? 0 : 1)
         }
     }
     
     func scrollToBottom(proxy: ScrollViewProxy) {
-        guard let id = vm.messages.last?.id else { return }
+        guard let id = chatViewModel.messages.last?.id else { return }
         proxy.scrollTo(id, anchor: .bottomTrailing)
     }
 }
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView(vm: ChatViewModel(api: APIManager.shared.api))
+        ChatView(chatViewModel: ChatViewModel(api: APIManager.shared.api))
     }
 }

@@ -3,7 +3,7 @@ import SwiftUI
 
 struct ChatBlogsView: View {
     
-    @StateObject var vm: ChatBlogsViewModel
+    @StateObject var chatBlogsViewModel: ChatBlogsViewModel
     @State private var showingSheet = false
     
     var body: some View {
@@ -21,7 +21,7 @@ struct ChatBlogsView: View {
     
     var navigationBar: some View {
         HStack {
-            Chevron(isDisabled: vm.isInteractingWithChatGPT)
+            Chevron(isDisabled: chatBlogsViewModel.isInteractingWithChatGPT)
             Spacer()
             Text("Blog")
                 .foregroundColor(.black)
@@ -38,7 +38,7 @@ struct ChatBlogsView: View {
             VStack(spacing: .zero) {
                 message
             }
-            .onChange(of: vm.messages.last?.responseText) { _ in
+            .onChange(of: chatBlogsViewModel.messages.last?.responseText) { _ in
                 scrollToBottom(proxy: proxy)
             }
         }
@@ -47,10 +47,10 @@ struct ChatBlogsView: View {
     var message: some View {
         ScrollView {
             LazyVStack(spacing: 0) {
-                ForEach(vm.messages) { message in
+                ForEach(chatBlogsViewModel.messages) { message in
                     MessageRowView(message: message) { message in
                         Task { @MainActor in
-                            await vm.retry(message: message)
+                            await chatBlogsViewModel.retry(message: message)
                         }
                     }
                 }
@@ -80,7 +80,7 @@ struct ChatBlogsView: View {
     }
     
     private func scrollToBottom(proxy: ScrollViewProxy) {
-        guard let id = vm.messages.last?.id else { return }
+        guard let id = chatBlogsViewModel.messages.last?.id else { return }
         proxy.scrollTo(id, anchor: .bottomTrailing)
     }
 }
@@ -88,7 +88,7 @@ struct ChatBlogsView: View {
 struct ChatBlogsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ChatBlogsView(vm: ChatBlogsViewModel(api: APIManager.shared.api))
+            ChatBlogsView(chatBlogsViewModel: ChatBlogsViewModel(api: APIManager.shared.api))
         }
     }
 }

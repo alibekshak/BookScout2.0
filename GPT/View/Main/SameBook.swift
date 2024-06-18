@@ -7,7 +7,7 @@ struct SameBookFiction: View {
     
     @FocusState var isWordFieldFocused: Bool
     
-    @StateObject var vm: ChatBookViewModel
+    @StateObject var chatBookViewModel: ChatBookViewModel
     
     var body: some View {
         ZStack {
@@ -20,7 +20,7 @@ struct SameBookFiction: View {
                     textWarning
                 }
                 Spacer()
-                ButtonFind(vm: vm, sendType: .sameBook, selectedAuthor: author, selectedBook: book)
+                ButtonFind(chatBookViewModel: chatBookViewModel, sendType: .sameBook, selectedAuthor: author, selectedBook: book)
                     .padding(.bottom)
             }
             .padding(.horizontal, 20)
@@ -59,7 +59,7 @@ struct SameBookFiction: View {
 
 struct SameBookFiction_Previews: PreviewProvider {
     static var previews: some View {
-        SameBookFiction(vm: ChatBookViewModel(api: ChatGPTAPI(apiKey: "CATEGORY_VALUE")))
+        SameBookFiction(chatBookViewModel: ChatBookViewModel(api: ChatGPTAPI(apiKey: "CATEGORY_VALUE")))
     }
 }
 

@@ -7,7 +7,7 @@ enum SendType {
 
 struct ButtonFind: View {
     
-    @StateObject var vm: ChatBookViewModel
+    @StateObject var chatBookViewModel: ChatBookViewModel
     
     @State var sendType: SendType
     @State var isChatBookViewPresent = false
@@ -30,7 +30,7 @@ struct ButtonFind: View {
             sendSelectedCategory()
         })
         .navigationDestination(isPresented: $isChatBookViewPresent) {
-            ChatBookView(vm: vm)
+            ChatBookView(chatBookViewModel: chatBookViewModel)
         }
         .disabled(selectedAuthor == "")
     }
@@ -45,7 +45,7 @@ struct ButtonFind: View {
         }
         
         Task {
-            await vm.send(text: text)
+            await chatBookViewModel.send(text: text)
         }
     }
 }

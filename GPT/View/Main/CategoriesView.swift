@@ -33,7 +33,7 @@ struct CategoriesView: View {
             VStack(spacing: 12) {
                 ForEach(viewModel.categoriess) { category in
                     CategoryView(
-                        vm: ChatCategoryViewModel(
+                        chatCategoryViewModel: ChatCategoryViewModel(
                             api: API, category: category.title),
                         isActive: $isActive,
                         title: category.title,

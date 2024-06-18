@@ -122,7 +122,7 @@ struct MainPage: View {
             NewIconView(image: "character.book.closed.fill", title: "Автор книги", backgroundColor: CustomColors.darkGray, viewState: .standard)
         }
         .navigationDestination(isPresented: $isAuthorPresented) {
-            SelectAuthorFiction(vm: chatBookViewModel)
+            SelectAuthorFiction(chatBookViewModel: chatBookViewModel)
         }
     }
     
@@ -133,12 +133,11 @@ struct MainPage: View {
             NewIconView(image: "text.book.closed.fill", title: "Похожие книги", backgroundColor: CustomColors.darkGray, viewState: .standard)
         }
         .navigationDestination(isPresented: $isSameBookPresented) {
-            SameBookFiction(vm: chatBookViewModel)
+            SameBookFiction(chatBookViewModel: chatBookViewModel)
         }
     }
     
     // MARK: blogsPart
-    
     var blogsPart: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Блог о книгах")
@@ -162,7 +161,7 @@ struct MainPage: View {
             NewIconView(image: "text.bubble.fill", title: "Топ 3 книг которые стоит прочитать", backgroundColor: CustomColors.customBlue, viewState: .alternative)
         }
         .navigationDestination(isPresented: $isActiveBlog) {
-            ChatBlogsView(vm: chatBlogsViewModel)
+            ChatBlogsView(chatBlogsViewModel: chatBlogsViewModel)
         }
     }
     
@@ -178,7 +177,7 @@ struct MainPage: View {
             NewIconView(image: "text.quote", title: "Книги о жизни", backgroundColor: CustomColors.customBlue, viewState: .alternative)
         }
         .navigationDestination(isPresented: $isActiveBlog2) {
-            ChatBlogsView(vm: chatBlogsViewModel)
+            ChatBlogsView(chatBlogsViewModel: chatBlogsViewModel)
         }
     }
 }

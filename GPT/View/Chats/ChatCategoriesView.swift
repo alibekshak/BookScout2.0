@@ -3,7 +3,7 @@ import SwiftUI
 
 struct ChatCategoryView: View {
     
-    @StateObject var vm: ChatCategoryViewModel
+    @StateObject var chatCategoryViewModel: ChatCategoryViewModel
     
     @FocusState var isTextFieldFocused: Bool
     
@@ -24,13 +24,13 @@ struct ChatCategoryView: View {
         }
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            vm.loadFavorites()
+            chatCategoryViewModel.loadFavorites()
         }
     }
     
     var navigationBar: some View {
         HStack {
-            Chevron(isDisabled: vm.isInteractingWithChatGPT)
+            Chevron(isDisabled: chatCategoryViewModel.isInteractingWithChatGPT)
             Spacer()
             Text(title)
                 .foregroundColor(.black)
@@ -47,10 +47,10 @@ struct ChatCategoryView: View {
             VStack(spacing: .zero) {
                 ScrollView {
                     LazyVStack(spacing: 4) {
-                        ForEach(vm.messages) { message in
+                        ForEach(chatCategoryViewModel.messages) { message in
                             MessageRowView(message: message) { message in
                                 Task { @MainActor in
-                                    await vm.retry(message: message)
+                                    await chatCategoryViewModel.retry(message: message)
                                 }
                             }
                         }
@@ -59,15 +59,15 @@ struct ChatCategoryView: View {
                         isTextFieldFocused = false
                     }
                 }
-                bottomView(image: "profile", proxy: proxy)
+                bottomView(proxy: proxy)
             }
-            .onChange(of: vm.messages.last?.responseText) { _ in scrollToBottom(proxy: proxy) }
+            .onChange(of: chatCategoryViewModel.messages.last?.responseText) { _ in scrollToBottom(proxy: proxy) }
         }
     }
     
-    func bottomView(image: String, proxy: ScrollViewProxy) -> some View {
+    func bottomView(proxy: ScrollViewProxy) -> some View {
         VStack {
-            if !vm.isInteractingWithChatGPT {
+            if !chatCategoryViewModel.isInteractingWithChatGPT {
                 suggestButton(proxy: proxy)
             }
             tabView
@@ -79,7 +79,7 @@ struct ChatCategoryView: View {
             Task {
                 isTextFieldFocused = false
                 scrollToBottom(proxy: proxy)
-                await vm.sendTapped()
+                await chatCategoryViewModel.sendTapped()
             }
         }) {
             Text("Предложить еще книгу")
@@ -94,19 +94,19 @@ struct ChatCategoryView: View {
             Divider()
             HStack(alignment: .center, spacing: 120) {
                 buttonSheet
-                if let generatedText = vm.messages.last?.responseText {
+                if let generatedText = chatCategoryViewModel.messages.last?.responseText {
                     bookmark(generatedText: generatedText)
                 }
             }
             .padding(.top, 8)
-            .disabled(vm.isInteractingWithChatGPT)
+            .disabled(chatCategoryViewModel.isInteractingWithChatGPT)
         }
     }
     
     func bookmark(generatedText: String) -> some View {
         Button(action: {
             addToFavoritesTapped.toggle()
-            vm.addToFavorites(text: generatedText)
+            chatCategoryViewModel.addToFavorites(text: generatedText)
         }) {
             Image(systemName: "bookmark.fill")
                 .foregroundColor(CustomColors.backgroundColor)
@@ -135,7 +135,7 @@ struct ChatCategoryView: View {
     }
     
     private func scrollToBottom(proxy: ScrollViewProxy) {
-        guard let id = vm.messages.last?.id else { return }
+        guard let id = chatCategoryViewModel.messages.last?.id else { return }
         withAnimation {
             proxy.scrollTo(id, anchor: .bottom)
         }
@@ -145,7 +145,7 @@ struct ChatCategoryView: View {
 struct ChatCategoryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ChatCategoryView(vm: ChatCategoryViewModel(api: APIManager.shared.api, category: "CATEGORY_VALUE"), title: "Роман")
+            ChatCategoryView(chatCategoryViewModel: ChatCategoryViewModel(api: APIManager.shared.api, category: "CATEGORY_VALUE"), title: "Роман")
         }
     }
 }

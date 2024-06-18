@@ -19,7 +19,7 @@ struct WordField: View {
         .padding(.horizontal, 12)
         .background(
             RoundedRectangle(cornerRadius: 20)
-            .stroke(Color.gray, lineWidth: 2)
+                .stroke(Color.gray, lineWidth: 2)
         )
     }
 }

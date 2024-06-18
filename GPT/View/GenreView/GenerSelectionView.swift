@@ -25,12 +25,12 @@ struct GenreSelectionView: View {
                 .padding(.bottom, 70)
                 buttonNext
             }
-            .navigationBarHidden(true)
-            .onAppear {
-                viewModel.loadGenresFromUserDefaults()
-            }
             NotificationSheetView(isShowing: $isShowingNotificationSheet)
                 .frame(maxHeight: 230)
+        }
+        .navigationBarHidden(true)
+        .onAppear {
+            viewModel.loadGenresFromUserDefaults()
         }
     }
     

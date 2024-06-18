@@ -32,7 +32,8 @@ struct NewIconView: View {
                     Text(title)
                         .font(.system(size: 16,
                                       weight: .semibold,
-                                      design: .monospaced)
+                                      design: .monospaced
+                                     )
                         )
                         .multilineTextAlignment(.center)
                 }
@@ -41,7 +42,8 @@ struct NewIconView: View {
                     Image(systemName: image)
                         .font(.system(size: 36, 
                                       weight: .semibold,
-                                      design: .rounded)
+                                      design: .rounded
+                                     )
                         )
                         .padding(.leading)
                     Text(title)

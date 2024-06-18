@@ -6,7 +6,7 @@ struct SelectAuthorFiction: View {
     
     @FocusState var isWordFieldFocused: Bool
     
-    @StateObject var vm: ChatBookViewModel
+    @StateObject var chatBookViewModel: ChatBookViewModel
     
     var body: some View {
         ZStack {
@@ -19,7 +19,7 @@ struct SelectAuthorFiction: View {
                     textWarning
                 }
                 Spacer()
-                ButtonFind(vm: vm, sendType: .selectAutor, selectedAuthor: author)
+                ButtonFind(chatBookViewModel: chatBookViewModel, sendType: .selectAutor, selectedAuthor: author)
                     .padding(.bottom)
             }
             .padding(.horizontal, 20)
@@ -51,7 +51,7 @@ struct SelectAuthorFiction: View {
 
 struct SelectAuthorFiction_Previews: PreviewProvider {
     static var previews: some View {
-        SelectAuthorFiction(vm: ChatBookViewModel(api: ChatGPTAPI(apiKey: "")))
+        SelectAuthorFiction(chatBookViewModel: ChatBookViewModel(api: ChatGPTAPI(apiKey: "")))
     }
 }
 

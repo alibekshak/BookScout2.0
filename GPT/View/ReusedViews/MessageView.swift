@@ -2,12 +2,12 @@ import SwiftUI
 
 
 struct MessageRowView: View {
-
+    
     @Environment(\.colorScheme) private var colorScheme
     
     let message: MessageRow
     let retryCallback: (MessageRow) -> Void
-
+    
     var body: some View {
         VStack(spacing: 8) {
             if let text = message.responseText {
@@ -16,7 +16,7 @@ struct MessageRowView: View {
             Divider()
         }
     }
-
+    
     func messageRowContent(text: String, bgColor: Color, responseError: String? = nil, showDotLoading: Bool = false) -> some View {
         VStack(alignment: .leading) {
             Text(text)

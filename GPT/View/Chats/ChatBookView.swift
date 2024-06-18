@@ -3,7 +3,7 @@ import SwiftUI
 
 struct ChatBookView: View {
     
-    @StateObject var vm: ChatBookViewModel
+    @StateObject var chatBookViewModel: ChatBookViewModel
     
     @FocusState var isTextFieldFocused: Bool
     
@@ -22,13 +22,13 @@ struct ChatBookView: View {
         }
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            vm.loadFavorites()
+            chatBookViewModel.loadFavorites()
         }
     }
     
     var navigationBar: some View {
         HStack {
-            Chevron(isDisabled: vm.isInteractingWithChatGPT)
+            Chevron(isDisabled: chatBookViewModel.isInteractingWithChatGPT)
             Spacer()
             Text("Книги")
                 .foregroundColor(.black)
@@ -44,10 +44,10 @@ struct ChatBookView: View {
             VStack(spacing: .zero) {
                 ScrollView {
                     LazyVStack(spacing: 0) {
-                        ForEach(vm.messages) { message in
+                        ForEach(chatBookViewModel.messages) { message in
                             MessageRowView(message: message) { message in
                                 Task { @MainActor in
-                                    await vm.retry(message: message)
+                                    await chatBookViewModel.retry(message: message)
                                 }
                             }
                         }
@@ -56,27 +56,27 @@ struct ChatBookView: View {
                         isTextFieldFocused = false
                     }
                 }
-                bottomView(image: "profile", proxy: proxy)
+                bottomView(proxy: proxy)
             }
-            .onChange(of: vm.messages.last?.responseText) { _ in scrollToBottom(proxy: proxy) }
+            .onChange(of: chatBookViewModel.messages.last?.responseText) { _ in scrollToBottom(proxy: proxy) }
         }
     }
     
-    func bottomView(image: String, proxy: ScrollViewProxy) -> some View {
+    func bottomView(proxy: ScrollViewProxy) -> some View {
         VStack(spacing: .zero) {
             Divider()
-            if vm.isInteractingWithChatGPT {
+            if chatBookViewModel.isInteractingWithChatGPT {
                 DotLoadingView()
                     .frame(width: 100, height: 50)
             } else {
                 HStack(alignment: .center, spacing: 120) {
                     buttonSheet
-                    if let generatedText = vm.messages.last?.responseText {
+                    if let generatedText = chatBookViewModel.messages.last?.responseText {
                         bookmark(generatedText: generatedText)
                     }
                 }
                 .padding(.top, 8)
-                .disabled(vm.isInteractingWithChatGPT)
+                .disabled(chatBookViewModel.isInteractingWithChatGPT)
             }
         }
     }
@@ -84,7 +84,7 @@ struct ChatBookView: View {
     func bookmark(generatedText: String) -> some View {
         Button(action: {
             addToFavoritesTapped.toggle()
-            vm.addToFavorites(text: generatedText)
+            chatBookViewModel.addToFavorites(text: generatedText)
         }) {
             Image(systemName: "bookmark.fill")
                 .foregroundColor(CustomColors.backgroundColor)
@@ -113,13 +113,13 @@ struct ChatBookView: View {
     }
     
     private func scrollToBottom(proxy: ScrollViewProxy) {
-        guard let id = vm.messages.last?.id else { return }
+        guard let id = chatBookViewModel.messages.last?.id else { return }
         proxy.scrollTo(id, anchor: .bottomTrailing)
     }
 }
 
 struct ChatBookView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatBookView(vm: ChatBookViewModel(api: APIManager.shared.api))
+        ChatBookView(chatBookViewModel: ChatBookViewModel(api: APIManager.shared.api))
     }
 }

@@ -21,7 +21,7 @@ struct TabViewMain: View {
                 case .main:
                     MainPage()
                 case .chat:
-                    ChatView(vm: chatViewModel)
+                    ChatView(chatViewModel: chatViewModel)
                 case .genre:
                     GenreSelectionView(viewModel: appState, states: .genreTab)
                 }
