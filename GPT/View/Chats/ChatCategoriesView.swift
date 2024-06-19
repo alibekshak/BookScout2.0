@@ -69,19 +69,19 @@ struct ChatCategoryView: View {
         VStack {
             if !chatCategoryViewModel.isInteractingWithChatGPT {
                 suggestButton(proxy: proxy)
+                tabView
             }
-            tabView
         }
     }
     
     func suggestButton(proxy: ScrollViewProxy) -> some View {
-        Button(action: {
+        Button {
             Task {
                 isTextFieldFocused = false
                 scrollToBottom(proxy: proxy)
                 await chatCategoryViewModel.sendTapped()
             }
-        }) {
+        } label: {
             Text("Предложить еще книгу")
                 .frame(maxWidth: .infinity)
         }
@@ -91,28 +91,27 @@ struct ChatCategoryView: View {
     
     var tabView: some View {
         VStack(spacing: .zero) {
-            Divider()
-            HStack(alignment: .center, spacing: 120) {
-                buttonSheet
-                if let generatedText = chatCategoryViewModel.messages.last?.responseText {
-                    bookmark(generatedText: generatedText)
+                Divider()
+                HStack(alignment: .center, spacing: 120) {
+                    buttonSheet
+                    if let generatedText = chatCategoryViewModel.messages.last?.responseText {
+                        bookmark(generatedText: generatedText)
+                    }
                 }
-            }
-            .padding(.top, 8)
-            .disabled(chatCategoryViewModel.isInteractingWithChatGPT)
+                .padding(.top, 8)
         }
     }
     
     func bookmark(generatedText: String) -> some View {
-        Button(action: {
-            addToFavoritesTapped.toggle()
-            chatCategoryViewModel.addToFavorites(text: generatedText)
-        }) {
+        Button {
+            withAnimation {
+                addToFavoritesTapped.toggle()
+                chatCategoryViewModel.addToFavorites(text: generatedText)
+            }
+        } label: {
             Image(systemName: "bookmark.fill")
-                .foregroundColor(CustomColors.backgroundColor)
-                .frame(width: 30, height: 30)
-                .background(Color.black)
-                .cornerRadius(20)
+                .foregroundColor(.black)
+                .font(.title)
         }
         .alert(isPresented: $addToFavoritesTapped) {
             Alert(title: Text("Избранное"), message: Text("Текст добавлен в избранное"), dismissButton: .default(Text("Ок")))
@@ -120,9 +119,11 @@ struct ChatCategoryView: View {
     }
     
     var buttonSheet: some View {
-        Button(action: {
-            self.showingSheet = true
-        }) {
+        Button {
+            withAnimation {
+                self.showingSheet = true
+            }
+        } label: {
             Image(systemName: "exclamationmark.octagon")
                 .foregroundColor(Color.black)
                 .font(.title)
@@ -135,7 +136,8 @@ struct ChatCategoryView: View {
     }
     
     private func scrollToBottom(proxy: ScrollViewProxy) {
-        guard let id = chatCategoryViewModel.messages.last?.id else { return }
+        guard let id = chatCategoryViewModel.messages.last?.id else { return
+        }
         withAnimation {
             proxy.scrollTo(id, anchor: .bottom)
         }

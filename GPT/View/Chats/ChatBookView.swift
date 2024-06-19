@@ -41,34 +41,31 @@ struct ChatBookView: View {
     
     var chatListView: some View {
         ScrollViewReader { proxy in
-            VStack(spacing: .zero) {
-                ScrollView {
-                    LazyVStack(spacing: 0) {
-                        ForEach(chatBookViewModel.messages) { message in
-                            MessageRowView(message: message) { message in
-                                Task { @MainActor in
-                                    await chatBookViewModel.retry(message: message)
-                                }
+            ScrollView {
+                LazyVStack(spacing: 0) {
+                    ForEach(chatBookViewModel.messages) { message in
+                        MessageRowView(message: message) { message in
+                            Task { @MainActor in
+                                await chatBookViewModel.retry(message: message)
                             }
                         }
                     }
-                    .onTapGesture {
-                        isTextFieldFocused = false
-                    }
                 }
-                bottomView(proxy: proxy)
+                .onTapGesture {
+                    isTextFieldFocused = false
+                }
             }
-            .onChange(of: chatBookViewModel.messages.last?.responseText) { _ in scrollToBottom(proxy: proxy) }
+            bottomView(proxy: proxy)
+                .onChange(of: chatBookViewModel.messages.last?.responseText) { _ in scrollToBottom(proxy: proxy)
+                }
         }
+        
     }
     
     func bottomView(proxy: ScrollViewProxy) -> some View {
         VStack(spacing: .zero) {
-            Divider()
-            if chatBookViewModel.isInteractingWithChatGPT {
-                DotLoadingView()
-                    .frame(width: 100, height: 50)
-            } else {
+            if !chatBookViewModel.isInteractingWithChatGPT {
+                Divider()
                 HStack(alignment: .center, spacing: 120) {
                     buttonSheet
                     if let generatedText = chatBookViewModel.messages.last?.responseText {
@@ -76,7 +73,6 @@ struct ChatBookView: View {
                     }
                 }
                 .padding(.top, 8)
-                .disabled(chatBookViewModel.isInteractingWithChatGPT)
             }
         }
     }
@@ -87,10 +83,8 @@ struct ChatBookView: View {
             chatBookViewModel.addToFavorites(text: generatedText)
         }) {
             Image(systemName: "bookmark.fill")
-                .foregroundColor(CustomColors.backgroundColor)
-                .frame(width: 30, height: 30)
-                .background(Color.black)
-                .cornerRadius(20)
+                .foregroundColor(.black)
+                .font(.title)
         }
         .alert(isPresented: $addToFavoritesTapped) {
             Alert(title: Text("Избранное"), message: Text("Текст добавлен в избранное"), dismissButton: .default(Text("Ок")))
@@ -98,9 +92,11 @@ struct ChatBookView: View {
     }
     
     var buttonSheet: some View {
-        Button(action: {
-            self.showingSheet = true
-        }) {
+        Button {
+            withAnimation {
+                self.showingSheet = true
+            }
+        } label: {
             Image(systemName: "exclamationmark.octagon")
                 .foregroundColor(Color.black)
                 .font(.title)

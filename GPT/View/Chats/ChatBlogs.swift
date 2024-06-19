@@ -46,7 +46,7 @@ struct ChatBlogsView: View {
     
     var message: some View {
         ScrollView {
-            LazyVStack(spacing: 0) {
+            LazyVStack(spacing: .zero) {
                 ForEach(chatBlogsViewModel.messages) { message in
                     MessageRowView(message: message) { message in
                         Task { @MainActor in
@@ -59,9 +59,11 @@ struct ChatBlogsView: View {
     }
     
     var buttonSheet: some View {
-        Button(action: {
-            self.showingSheet = true
-        }) {
+        Button {
+            withAnimation {
+                self.showingSheet = true
+            }
+        } label: {
             Image(systemName: "exclamationmark.octagon")
                 .foregroundColor(Color.black)
                 .font(
