@@ -6,7 +6,7 @@ struct SelectAuthorFiction: View {
     
     @FocusState var isWordFieldFocused: Bool
     
-    @StateObject var chatBookViewModel: ChatBookViewModel
+    @StateObject var chatBookViewModel = ChatBookViewModel(api: APIManager.shared.api)
     
     var body: some View {
         ZStack {

@@ -6,7 +6,6 @@ struct MainPage: View {
     
     @StateObject var chatBlogsViewModel = ChatBlogsViewModel(api: APIManager.shared.api)
     @StateObject var favoritesViewModel = FavoritesViewModel()
-    @StateObject var chatBookViewModel = ChatBookViewModel(api: APIManager.shared.api)
     
     @State var isActiveBlog: Bool = false
     @State var isActiveBlog2: Bool = false
@@ -122,7 +121,7 @@ struct MainPage: View {
             NewIconView(image: "character.book.closed.fill", title: "Автор книги", backgroundColor: CustomColors.darkGray, viewState: .standard)
         }
         .navigationDestination(isPresented: $isAuthorPresented) {
-            SelectAuthorFiction(chatBookViewModel: chatBookViewModel)
+            SelectAuthorFiction()
         }
     }
     
@@ -133,7 +132,7 @@ struct MainPage: View {
             NewIconView(image: "text.book.closed.fill", title: "Похожие книги", backgroundColor: CustomColors.darkGray, viewState: .standard)
         }
         .navigationDestination(isPresented: $isSameBookPresented) {
-            SameBookFiction(chatBookViewModel: chatBookViewModel)
+            SameBookFiction()
         }
     }
     
