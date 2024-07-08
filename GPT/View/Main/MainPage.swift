@@ -133,11 +133,14 @@ struct MainPage: View {
             Text("Блог о книгах")
                 .font(.system(size: 22, weight: .semibold))
                 .foregroundColor(Color.black)
-                .padding(.horizontal, 20)
-            blogButton1
-            blogButton2
+            VStack(alignment: .center, spacing: 20) {
+                blogButton1
+                blogButton2
+            }
         }
         .padding(.top)
+        .padding(.bottom)
+        .padding(.horizontal, 20)
     }
     
     var blogButton1: some View {
@@ -149,7 +152,7 @@ struct MainPage: View {
                 }
             }
         } label: {
-            NewIconView(image: "text.bubble.fill", title: "Топ 3 книг которые стоит прочитать", backgroundColor: CustomColors.customBlue, viewState: .alternative)
+            MainFunctionsView(image: "blog", text: "Топ 3 книг которые стоит прочитать")
         }
         .navigationDestination(isPresented: $isActiveBlog) {
             ChatBlogsView(chatBlogsViewModel: chatBlogsViewModel)
@@ -165,7 +168,7 @@ struct MainPage: View {
                 }
             }
         } label: {
-            NewIconView(image: "text.quote", title: "Книги о жизни", backgroundColor: CustomColors.customBlue, viewState: .alternative)
+            MainFunctionsView(image: "blog2", text: "Книги о жизни")
         }
         .navigationDestination(isPresented: $isActiveBlog2) {
             ChatBlogsView(chatBlogsViewModel: chatBlogsViewModel)
