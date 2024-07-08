@@ -26,7 +26,7 @@ struct MainPage: View {
                     blogsPart
                 }
             }
-            .padding(.horizontal, 20)
+            
         }
         .sheet(isPresented: $isFavoritesListPresented) {
             FavoritesListView(viewModel: favoritesViewModel)
@@ -49,6 +49,7 @@ struct MainPage: View {
         }
         .padding(.top)
         .padding(.bottom, 24)
+        .padding(.horizontal, 20)
     }
     
     // MARK: mainFanction
@@ -58,16 +59,16 @@ struct MainPage: View {
             Text("Жанры и темы")
                 .font(.system(size: 22, weight: .semibold))
                 .foregroundColor(Color.black)
-            HStack {
-                fictionButton
-                Spacer()
-                nonFictionButton
+                .padding(.horizontal, 20)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 12) {
+                    fictionButton
+                    nonFictionButton
+                    authorButton
+                    findBookButton
+                }
             }
-            HStack {
-                authorButton
-                Spacer()
-                findBookButton
-            }
+            .padding(.leading, 20)
         }
     }
     
@@ -77,12 +78,7 @@ struct MainPage: View {
                 isFictionPresentend = true
             }
         } label: {
-            NewIconView(
-                image: "books.vertical",
-                title: "Литература",
-                backgroundColor: CustomColors.darkGray,
-                viewState: .standard
-            )
+            MainFunctionsView(image: "choice_fiction", text: "Художественная литература")
         }
         .navigationDestination(isPresented: $isFictionPresentend) {
             CategoriesView(
@@ -98,12 +94,7 @@ struct MainPage: View {
                 isNonFictionPresented = true
             }
         } label: {
-            NewIconView(
-                image: "books.vertical.fill",
-                title: "Нон-фикшн",
-                backgroundColor: CustomColors.darkGray,
-                viewState: .standard
-            )
+            MainFunctionsView(image: "choice_nonfic1", text: "Нон-фикшн литкература")
         }
         .navigationDestination(isPresented: $isNonFictionPresented) {
             CategoriesView(
@@ -118,7 +109,7 @@ struct MainPage: View {
                 isAuthorPresented = true
             }
         } label: {
-            NewIconView(image: "character.book.closed.fill", title: "Автор книги", backgroundColor: CustomColors.darkGray, viewState: .standard)
+            MainFunctionsView(image: "authors", text: "Найти по автору")
         }
         .navigationDestination(isPresented: $isAuthorPresented) {
             SelectAuthorFiction()
@@ -129,7 +120,7 @@ struct MainPage: View {
         Button {
             isSameBookPresented = true
         } label: {
-            NewIconView(image: "text.book.closed.fill", title: "Похожие книги", backgroundColor: CustomColors.darkGray, viewState: .standard)
+            MainFunctionsView(image: "same_book", text: "Похожик книги")
         }
         .navigationDestination(isPresented: $isSameBookPresented) {
             SameBookFiction()
@@ -142,6 +133,7 @@ struct MainPage: View {
             Text("Блог о книгах")
                 .font(.system(size: 22, weight: .semibold))
                 .foregroundColor(Color.black)
+                .padding(.horizontal, 20)
             blogButton1
             blogButton2
         }
